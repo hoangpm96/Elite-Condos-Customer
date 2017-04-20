@@ -20,6 +20,8 @@ class SubCategoryVC: UIViewController {
         title = navTitle
         
     }
+    
+    
     // get main - subcatergory
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let descriptionVC = segue.destination as? DescriptionVC{

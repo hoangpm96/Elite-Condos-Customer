@@ -27,14 +27,13 @@ class PopupPhotoPickerVC: UIViewController {
         
      
     }
-   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
        
         if touches.first?.view != subView{
+            // subView is your view
             dismiss(animated: true, completion: nil)
         }
     }
-    
     @IBAction func deleteAllBtnPressed(_ sender: Any) {
         Api.Order.images = []
         collectionView.reloadData()

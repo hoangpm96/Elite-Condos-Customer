@@ -53,6 +53,9 @@
 		D2BC647C1E7A23500031FA31 /* OrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647B1E7A23500031FA31 /* OrderDescription.swift */; };
 		D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */; };
 		D2BF5B121DCF8206002534EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BF5B111DCF8206002534EC /* Assets.xcassets */; };
+		D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D66D841E7C15540029345F /* DateTimePicker.swift */; };
+		D2D66D881E7C15540029345F /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D66D851E7C15540029345F /* DateCollectionViewCell.swift */; };
+		D2D66D891E7C15540029345F /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D66D861E7C15540029345F /* StepCollectionViewFlowLayout.swift */; };
 		D2F5CD4C1DDE932200FC7E42 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F5CD4B1DDE932200FC7E42 /* Employee.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +111,9 @@
 		D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		D2BF5B051DCEE2AE002534EC /* Elite Condos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elite Condos-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2BF5B111DCF8206002534EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2D66D841E7C15540029345F /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		D2D66D851E7C15540029345F /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2D66D861E7C15540029345F /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D2F5CD4B1DDE932200FC7E42 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		EFCDFA6E1F512AFF638BD72C /* Pods_Elite_Condos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Elite_Condos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -251,7 +257,6 @@
 				D28EE7CC1DD9731000BCE1E9 /* LoginVC.swift */,
 				D28EE7CE1DD9762900BCE1E9 /* StartVC.swift */,
 				D2159A091E7B787E006517B2 /* PopupPhotoPickerVC.swift */,
-				D2159A0B1E7B7AEA006517B2 /* PopupPhotoCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 		D2BF5B091DCEE2C4002534EC /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				D2D66D831E7C15460029345F /* DateTimePicker */,
 				D23ECC151DF1A9F2002B6E1D /* CosmosDistrib.swift */,
 				D2BF5B051DCEE2AE002534EC /* Elite Condos-Bridging-Header.h */,
 			);
@@ -268,6 +274,7 @@
 		D2BF5B0C1DCF1DDD002534EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D2159A0B1E7B7AEA006517B2 /* PopupPhotoCell.swift */,
 				D20E96111E798C7900A8F3EE /* ServiceCell.swift */,
 				D20E96171E79943500A8F3EE /* SubCategoryCell.swift */,
 				D29C36041DE97B5000034404 /* Customer_OrderCell.swift */,
@@ -277,6 +284,16 @@
 				D2154FBC1DE9344A00D0DF23 /* CustomViews */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D2D66D831E7C15460029345F /* DateTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				D2D66D841E7C15540029345F /* DateTimePicker.swift */,
+				D2D66D851E7C15540029345F /* DateCollectionViewCell.swift */,
+				D2D66D861E7C15540029345F /* StepCollectionViewFlowLayout.swift */,
+			);
+			name = DateTimePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,13 +462,16 @@
 				D2154FBB1DE91D5600D0DF23 /* Order.swift in Sources */,
 				D2BC647C1E7A23500031FA31 /* OrderDescription.swift in Sources */,
 				D28EE7CD1DD9731000BCE1E9 /* LoginVC.swift in Sources */,
+				D2D66D891E7C15540029345F /* StepCollectionViewFlowLayout.swift in Sources */,
 				D2159A0A1E7B787E006517B2 /* PopupPhotoPickerVC.swift in Sources */,
 				D2159A111E7B8B3D006517B2 /* Api.swift in Sources */,
 				D20E96161E79924400A8F3EE /* SubCategoryVC.swift in Sources */,
 				D28EE7CF1DD9762900BCE1E9 /* StartVC.swift in Sources */,
+				D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */,
 				D25556C81DD9C56D004E7649 /* Errors.swift in Sources */,
 				D25556C41DD9B9C4004E7649 /* DataService.swift in Sources */,
 				D2598BDD1E7938AB0096769D /* ServiceData.swift in Sources */,
+				D2D66D881E7C15540029345F /* DateCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KCA-aa-U0v" id="3Wa-b2-esA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="electrical" translatesAutoresizingMaskIntoConstraints="NO" id="MSa-tj-Bvw">
@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NU1-Pc-vdY" id="q6g-xP-Cq0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wD8-5v-Xam">
@@ -210,6 +210,9 @@
                                         <rect key="frame" x="36" y="0.0" width="254" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Location"/>
+                                        <connections>
+                                            <action selector="getLocationBtnPressed:" destination="YrN-bK-PvK" eventType="touchUpInside" id="ZQr-q0-Yt1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -240,6 +243,9 @@
                                         <rect key="frame" x="54" y="0.0" width="236" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="now"/>
+                                        <connections>
+                                            <action selector="getTimeBtnPressed:" destination="YrN-bK-PvK" eventType="touchUpInside" id="0O7-UN-Nzo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -280,6 +286,10 @@
                     <navigationItem key="navigationItem" title="What do you need?" id="PYV-nv-RYZ">
                         <barButtonItem key="rightBarButtonItem" title="Help?" id="j9c-IS-Qyu"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="photoImage" destination="JRK-BI-vWw" id="znH-aV-lp6"/>
+                        <outlet property="timeBtn" destination="wJw-l6-xyL" id="bbQ-Qa-gxd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbd-VJ-Qcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
