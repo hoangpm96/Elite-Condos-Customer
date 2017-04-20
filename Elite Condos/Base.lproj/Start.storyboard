@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
         <!--StartVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="StartVC" id="BYZ-38-t0r" customClass="StartVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -44,7 +44,7 @@
                                     <color key="titleColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="VWh-ig-Xfd" kind="showDetail" id="j5G-yo-5zZ"/>
+                                    <action selector="signInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="loa-hG-2sV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elite Condos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCa-6S-8yI">
@@ -74,10 +74,10 @@
                                     <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wvE-nX-e3Y" kind="showDetail" id="c7O-Ub-YQo"/>
+                                    <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UTT-au-OG4"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-dD-svc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp_home_logo" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-dD-svc">
                                 <rect key="frame" x="27" y="224" width="267" height="160"/>
                             </imageView>
                         </subviews>
@@ -101,7 +101,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="SYD-Rk-QYg" kind="showDetail" identifier="StartVCToHome" action="showViewController:sender:" id="HxG-WZ-mS0"/>
+                        <segue destination="wvE-nX-e3Y" kind="show" identifier="CustomerSignIn" action="showDetailViewController:sender:" id="H9T-WK-B9e"/>
+                        <segue destination="VWh-ig-Xfd" kind="showDetail" identifier="CustomerSignUp" id="fu8-Rj-Rg3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -111,235 +112,170 @@
         <!--Đăng Ký-->
         <scene sceneID="gj6-nc-su7">
             <objects>
-                <viewController id="UMv-7U-gds" customClass="SignUpVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UMv-7U-gds" customClass="CustomerSignUpVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dd0-uo-6Lz"/>
                         <viewControllerLayoutGuide type="bottom" id="vwJ-iB-vSu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8lS-4c-KHG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlY-yK-bBv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-5f-FvZ" customClass="FancyView" customModule="Elite_Condos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="320" height="110"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fc3-3N-Plw">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-5f-FvZ" customClass="FancyView" customModule="Elite_Condos" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-user" translatesAutoresizingMaskIntoConstraints="NO" id="R1w-SY-wXi" customClass="CircleImage" customModule="Elite_Condos" customModuleProvider="target">
-                                                        <rect key="frame" x="130" y="25" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="5c6-32-pqc"/>
-                                                            <constraint firstAttribute="height" constant="60" id="qRo-qG-jON"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upj-ea-npa">
-                                                        <rect key="frame" x="115" y="10" width="90" height="90"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="90" id="D3V-FW-1FS"/>
-                                                            <constraint firstAttribute="width" constant="90" id="qXN-yv-eiz"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <action selector="pickAvatar:" destination="UMv-7U-gds" eventType="touchUpInside" id="hfN-IZ-984"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="Upj-ea-npa" firstAttribute="centerX" secondItem="ReG-5f-FvZ" secondAttribute="centerX" id="1im-G0-u6s"/>
-                                                    <constraint firstItem="R1w-SY-wXi" firstAttribute="centerX" secondItem="Upj-ea-npa" secondAttribute="centerX" id="2HO-lR-BP7"/>
-                                                    <constraint firstItem="Upj-ea-npa" firstAttribute="centerY" secondItem="ReG-5f-FvZ" secondAttribute="centerY" id="KTS-q2-g3g"/>
-                                                    <constraint firstItem="R1w-SY-wXi" firstAttribute="centerY" secondItem="Upj-ea-npa" secondAttribute="centerY" id="Umz-K4-bcy"/>
-                                                    <constraint firstAttribute="height" constant="110" id="hFP-QB-Mn1"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6H-wX-iFl" customClass="FancyView" customModule="Elite_Condos" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="140" width="280" height="275"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fo1-qN-33c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="275"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VbR-VW-R6e" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="34" id="cYt-oe-aaY"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                                            </textField>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-Mg-yEy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="80.5" width="280" height="34"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="34" id="heH-ZN-A5u"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
-                                                            </textField>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-CD-nVm" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="160.5" width="280" height="34"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="34" id="Mmh-nE-8Vh"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
-                                                            </textField>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEF-q6-vLe" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="241" width="280" height="34"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="34" id="nRx-gW-WyZ"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="go"/>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="275" id="5Vq-er-iSm"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Fo1-qN-33c" secondAttribute="bottom" id="7LS-cz-y4y"/>
-                                                    <constraint firstItem="Fo1-qN-33c" firstAttribute="top" secondItem="B6H-wX-iFl" secondAttribute="top" id="RUw-tp-wSl"/>
-                                                    <constraint firstItem="Fo1-qN-33c" firstAttribute="leading" secondItem="B6H-wX-iFl" secondAttribute="leading" id="Z2y-Uc-grm"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Fo1-qN-33c" secondAttribute="trailing" id="qZi-sy-UbT"/>
-                                                </constraints>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoK-QI-7PU" customClass="FancyBtn" customModule="Elite_Condos" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="445" width="240" height="35"/>
-                                                <color key="backgroundColor" red="0.35686274509999999" green="0.76078431369999999" blue="0.12791053920000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="0XK-Pk-Fdj"/>
-                                                    <constraint firstAttribute="width" constant="240" id="0fT-OO-Zwb"/>
-                                                </constraints>
-                                                <state key="normal" title="Đăng Ký">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signUp:" destination="UMv-7U-gds" eventType="touchUpInside" id="DZo-SQ-O69"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-user" translatesAutoresizingMaskIntoConstraints="NO" id="R1w-SY-wXi" customClass="CircleImage" customModule="Elite_Condos" customModuleProvider="target">
+                                        <rect key="frame" x="130" y="25" width="60" height="60"/>
                                         <constraints>
-                                            <constraint firstItem="GoK-QI-7PU" firstAttribute="centerX" secondItem="fc3-3N-Plw" secondAttribute="centerX" id="M5G-Q5-2dh"/>
-                                            <constraint firstAttribute="trailing" secondItem="B6H-wX-iFl" secondAttribute="trailing" constant="20" id="N9Q-My-hpj"/>
-                                            <constraint firstAttribute="height" constant="800" id="Ops-iO-rny"/>
-                                            <constraint firstItem="ReG-5f-FvZ" firstAttribute="top" secondItem="fc3-3N-Plw" secondAttribute="top" id="ZPu-O1-LXh"/>
-                                            <constraint firstItem="B6H-wX-iFl" firstAttribute="leading" secondItem="fc3-3N-Plw" secondAttribute="leading" constant="20" id="eaN-1t-YEV"/>
-                                            <constraint firstItem="ReG-5f-FvZ" firstAttribute="leading" secondItem="fc3-3N-Plw" secondAttribute="leading" id="hpL-xD-9Tg"/>
-                                            <constraint firstItem="B6H-wX-iFl" firstAttribute="top" secondItem="ReG-5f-FvZ" secondAttribute="bottom" constant="30" id="qD6-r4-c4b"/>
-                                            <constraint firstItem="GoK-QI-7PU" firstAttribute="top" secondItem="B6H-wX-iFl" secondAttribute="bottom" constant="30" id="xmv-oc-xpr"/>
-                                            <constraint firstAttribute="trailing" secondItem="ReG-5f-FvZ" secondAttribute="trailing" id="zq0-zt-1Jl"/>
+                                            <constraint firstAttribute="width" constant="60" id="5c6-32-pqc"/>
+                                            <constraint firstAttribute="height" constant="60" id="qRo-qG-jON"/>
                                         </constraints>
-                                    </view>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upj-ea-npa">
+                                        <rect key="frame" x="115" y="10" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="HWk-h9-Yvx"/>
+                                            <constraint firstAttribute="width" constant="90" id="dv7-fx-fyf"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="pickAvatar:" destination="UMv-7U-gds" eventType="touchUpInside" id="NDf-CS-Z1e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Upj-ea-npa" firstAttribute="centerX" secondItem="ReG-5f-FvZ" secondAttribute="centerX" id="7ga-6j-bLa"/>
+                                    <constraint firstItem="R1w-SY-wXi" firstAttribute="centerX" secondItem="ReG-5f-FvZ" secondAttribute="centerX" id="HS4-ed-YK7"/>
+                                    <constraint firstItem="Upj-ea-npa" firstAttribute="centerY" secondItem="ReG-5f-FvZ" secondAttribute="centerY" id="Lgf-cL-ILg"/>
+                                    <constraint firstAttribute="height" constant="110" id="WX8-IF-lVy"/>
+                                    <constraint firstItem="R1w-SY-wXi" firstAttribute="centerY" secondItem="ReG-5f-FvZ" secondAttribute="centerY" id="qpY-WO-CNd"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6H-wX-iFl" customClass="FancyView" customModule="Elite_Condos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="140" width="320" height="275"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fo1-qN-33c">
+                                        <rect key="frame" x="40" y="5" width="240" height="220"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VbR-VW-R6e" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="cYt-oe-aaY"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-Mg-yEy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="46.5" width="240" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="heH-ZN-A5u"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-CD-nVm" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="93" width="240" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="Mmh-nE-8Vh"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RBg-zI-l0X" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="139.5" width="240" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="Rgo-AB-9R3"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEF-q6-vLe" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="186" width="240" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="nRx-gW-WyZ"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="FC4-hG-d48"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="fc3-3N-Plw" firstAttribute="leading" secondItem="UlY-yK-bBv" secondAttribute="leading" id="7Vm-Im-G1t"/>
-                                    <constraint firstItem="fc3-3N-Plw" firstAttribute="top" secondItem="UlY-yK-bBv" secondAttribute="top" id="Edi-OO-Wit"/>
-                                    <constraint firstAttribute="bottom" secondItem="fc3-3N-Plw" secondAttribute="bottom" id="Veo-1V-aV6"/>
-                                    <constraint firstAttribute="trailing" secondItem="fc3-3N-Plw" secondAttribute="trailing" id="gn5-SH-fUu"/>
+                                    <constraint firstItem="Fo1-qN-33c" firstAttribute="top" secondItem="B6H-wX-iFl" secondAttribute="top" constant="5" id="FA4-Cv-SIW"/>
+                                    <constraint firstItem="Fo1-qN-33c" firstAttribute="leading" secondItem="B6H-wX-iFl" secondAttribute="leading" constant="40" id="Uea-99-Nyn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fo1-qN-33c" secondAttribute="trailing" constant="40" id="vkr-Nc-16Z"/>
                                 </constraints>
-                            </scrollView>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNw-eP-X1t">
+                                <rect key="frame" x="0.0" y="450" width="320" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="q2Q-OZ-4pO"/>
+                                </constraints>
+                                <state key="normal" title="Đã có tài khoản? Đăng nhập"/>
+                                <connections>
+                                    <segue destination="wvE-nX-e3Y" kind="show" id="RFf-N1-Lx6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoK-QI-7PU" customClass="FancyBtn" customModule="Elite_Condos" customModuleProvider="target">
+                                <rect key="frame" x="40" y="415" width="240" height="35"/>
+                                <color key="backgroundColor" red="0.35686274509999999" green="0.76078431369999999" blue="0.12791053920000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="IrK-kE-dW6"/>
+                                </constraints>
+                                <state key="normal" title="Đăng Ký">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButton:" destination="UMv-7U-gds" eventType="touchUpInside" id="yt0-jo-9vS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UlY-yK-bBv" firstAttribute="top" secondItem="8lS-4c-KHG" secondAttribute="top" id="8PA-3d-6Ey"/>
-                            <constraint firstItem="vwJ-iB-vSu" firstAttribute="top" secondItem="UlY-yK-bBv" secondAttribute="bottom" id="9O6-WM-85C"/>
-                            <constraint firstItem="fc3-3N-Plw" firstAttribute="width" secondItem="8lS-4c-KHG" secondAttribute="width" id="Yv0-AP-3xC"/>
-                            <constraint firstItem="UlY-yK-bBv" firstAttribute="leading" secondItem="8lS-4c-KHG" secondAttribute="leading" id="ewa-MN-8u6"/>
-                            <constraint firstAttribute="trailing" secondItem="UlY-yK-bBv" secondAttribute="trailing" id="gsM-hW-J6H"/>
+                            <constraint firstItem="ReG-5f-FvZ" firstAttribute="top" secondItem="Dd0-uo-6Lz" secondAttribute="bottom" id="5dc-mn-ian"/>
+                            <constraint firstItem="uNw-eP-X1t" firstAttribute="top" secondItem="GoK-QI-7PU" secondAttribute="bottom" id="7Y0-6w-jih"/>
+                            <constraint firstItem="B6H-wX-iFl" firstAttribute="leading" secondItem="8lS-4c-KHG" secondAttribute="leading" id="AUj-cT-MnV"/>
+                            <constraint firstItem="ReG-5f-FvZ" firstAttribute="leading" secondItem="8lS-4c-KHG" secondAttribute="leading" id="DQo-pA-9so"/>
+                            <constraint firstItem="GoK-QI-7PU" firstAttribute="leading" secondItem="8lS-4c-KHG" secondAttribute="leading" constant="40" id="EQN-1P-UxT"/>
+                            <constraint firstAttribute="trailing" secondItem="ReG-5f-FvZ" secondAttribute="trailing" id="KiL-cp-2fh"/>
+                            <constraint firstAttribute="trailing" secondItem="GoK-QI-7PU" secondAttribute="trailing" constant="40" id="WbQ-mU-stU"/>
+                            <constraint firstAttribute="trailing" secondItem="B6H-wX-iFl" secondAttribute="trailing" id="bDA-J1-pqD"/>
+                            <constraint firstAttribute="bottom" secondItem="uNw-eP-X1t" secondAttribute="bottom" id="d4z-U9-owh"/>
+                            <constraint firstAttribute="trailing" secondItem="uNw-eP-X1t" secondAttribute="trailing" id="iJf-5Q-NCL"/>
+                            <constraint firstItem="GoK-QI-7PU" firstAttribute="top" secondItem="B6H-wX-iFl" secondAttribute="bottom" id="sjh-1V-4AH"/>
+                            <constraint firstItem="B6H-wX-iFl" firstAttribute="top" secondItem="ReG-5f-FvZ" secondAttribute="bottom" constant="10" id="wcj-yZ-ove">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="uNw-eP-X1t" firstAttribute="leading" secondItem="8lS-4c-KHG" secondAttribute="leading" id="zZ6-eE-VZJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Đăng Ký" id="6Ff-Y6-Uww">
                         <barButtonItem key="leftBarButtonItem" image="left-arrow" id="Jiz-70-me1">
                             <connections>
-                                <action selector="goBack:" destination="UMv-7U-gds" id="0Lt-Io-RLD"/>
+                                <action selector="backButton:" destination="UMv-7U-gds" id="eSW-Aa-RM6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="800"/>
                     <connections>
-                        <outlet property="avatarImage" destination="R1w-SY-wXi" id="vIo-k8-2EJ"/>
-                        <outlet property="emailTF" destination="8U6-Mg-yEy" id="dMZ-SS-exe"/>
-                        <outlet property="nameTF" destination="VbR-VW-R6e" id="3oM-cZ-FoN"/>
-                        <outlet property="passwordTF" destination="Tx1-CD-nVm" id="adf-tA-EiY"/>
-                        <outlet property="phoneTF" destination="mEF-q6-vLe" id="UTV-wA-sJO"/>
-                        <outlet property="profileImage" destination="R1w-SY-wXi" id="DVf-Lo-Nml"/>
-                        <segue destination="SYD-Rk-QYg" kind="showDetail" identifier="SignUpToHome" id="6ib-gO-229"/>
+                        <outlet property="addressTF" destination="RBg-zI-l0X" id="psN-gF-nXG"/>
+                        <outlet property="avatarImage" destination="R1w-SY-wXi" id="uqf-r1-hR7"/>
+                        <outlet property="emailTF" destination="8U6-Mg-yEy" id="JFc-S8-RJP"/>
+                        <outlet property="nameTF" destination="VbR-VW-R6e" id="HSZ-XT-zC6"/>
+                        <outlet property="passwordTF" destination="Tx1-CD-nVm" id="LT0-TT-0qt"/>
+                        <outlet property="phoneTF" destination="mEF-q6-vLe" id="Qmj-Dz-esk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8t-VT-jIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2096" y="346"/>
-        </scene>
-        <!--Quên mật khẩu-->
-        <scene sceneID="BHl-77-Vie">
-            <objects>
-                <viewController id="ZHZ-Jo-VPu" customClass="PasswordForgetVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yv7-Se-26r"/>
-                        <viewControllerLayoutGuide type="bottom" id="bpc-wF-rKh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rvq-cP-y2J">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập email để phục hồi mật khẩu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVT-NH-FQT">
-                                <rect key="frame" x="16" y="86" width="288" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Mgd-Jw-oI4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7t-dM-hfc" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                <rect key="frame" x="16" y="128" width="288" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="gX7-2U-omc"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uP-yG-XD4">
-                                <rect key="frame" x="16" y="181" width="288" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="KY9-xj-OD1"/>
-                                </constraints>
-                                <state key="normal" title="Khôi phục mật khẩu"/>
-                                <connections>
-                                    <action selector="forgetPassword_TouchInside:" destination="ZHZ-Jo-VPu" eventType="touchUpInside" id="X99-h1-eWb"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="oVT-NH-FQT" firstAttribute="leading" secondItem="rvq-cP-y2J" secondAttribute="leading" constant="16" id="5M1-mS-fKJ"/>
-                            <constraint firstItem="7uP-yG-XD4" firstAttribute="leading" secondItem="L7t-dM-hfc" secondAttribute="leading" id="KvV-j3-N23"/>
-                            <constraint firstItem="oVT-NH-FQT" firstAttribute="top" secondItem="yv7-Se-26r" secondAttribute="bottom" constant="22" id="WBI-xf-84i"/>
-                            <constraint firstItem="7uP-yG-XD4" firstAttribute="trailing" secondItem="L7t-dM-hfc" secondAttribute="trailing" id="bKO-wI-jBC"/>
-                            <constraint firstItem="7uP-yG-XD4" firstAttribute="top" secondItem="L7t-dM-hfc" secondAttribute="bottom" constant="18" id="bNY-Og-5B4"/>
-                            <constraint firstAttribute="trailing" secondItem="oVT-NH-FQT" secondAttribute="trailing" constant="16" id="dHu-ge-TSf"/>
-                            <constraint firstItem="L7t-dM-hfc" firstAttribute="top" secondItem="oVT-NH-FQT" secondAttribute="bottom" constant="21" id="fCR-RD-hB1"/>
-                            <constraint firstItem="L7t-dM-hfc" firstAttribute="trailing" secondItem="oVT-NH-FQT" secondAttribute="trailing" id="fj8-AL-MkB"/>
-                            <constraint firstItem="L7t-dM-hfc" firstAttribute="leading" secondItem="oVT-NH-FQT" secondAttribute="leading" id="wFf-k1-OrH"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Quên mật khẩu" id="IjT-Rv-dXM"/>
-                    <connections>
-                        <outlet property="emailTF" destination="L7t-dM-hfc" id="GFC-Dr-MsQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mAi-lV-PQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-727.5" y="93.75"/>
+            <point key="canvasLocation" x="3166.875" y="460"/>
         </scene>
         <!--Đăng Nhập-->
         <scene sceneID="zJP-Xc-WlV">
@@ -354,19 +290,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="P19-m0-Ye5">
-                                <rect key="frame" x="20" y="130" width="280" height="100"/>
+                                <rect key="frame" x="40" y="130" width="240" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qJi-0m-nOx" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="DPu-C0-txD"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzf-sj-EaZ" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="65" width="280" height="35"/>
+                                        <rect key="frame" x="0.0" y="65" width="240" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="0Q7-Qm-GVb"/>
                                         </constraints>
@@ -395,29 +331,29 @@
                                     <action selector="loginButton:" destination="TNd-3I-YEX" eventType="touchUpInside" id="kj2-vR-Uzv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-ul-cY8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3q-Cw-Pc8">
                                 <rect key="frame" x="0.0" y="450" width="320" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uAA-Hi-kV7"/>
+                                    <constraint firstAttribute="height" constant="30" id="PQh-aC-rte"/>
                                 </constraints>
-                                <state key="normal" title="Quên mật khẩu"/>
+                                <state key="normal" title="Chưa có tài khoản? Đăng ký ngay"/>
                                 <connections>
-                                    <segue destination="ZHZ-Jo-VPu" kind="show" id="mCq-ea-uM0"/>
+                                    <segue destination="VWh-ig-Xfd" kind="show" id="Uuh-Nc-zS7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="P19-m0-Ye5" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="20" id="4eE-Pn-wkI"/>
-                            <constraint firstAttribute="trailing" secondItem="gEt-ul-cY8" secondAttribute="trailing" id="69K-l4-eqw"/>
-                            <constraint firstItem="gEt-ul-cY8" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" id="7jd-B2-bR3"/>
-                            <constraint firstItem="3cd-nN-AvQ" firstAttribute="top" secondItem="gEt-ul-cY8" secondAttribute="bottom" id="CTM-z1-gju"/>
+                            <constraint firstItem="P19-m0-Ye5" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="40" id="4eE-Pn-wkI"/>
                             <constraint firstAttribute="trailing" secondItem="Viy-Hq-C8A" secondAttribute="trailing" constant="40" id="TfP-5N-wUx"/>
+                            <constraint firstAttribute="trailing" secondItem="i3q-Cw-Pc8" secondAttribute="trailing" id="ULs-uY-kmL"/>
                             <constraint firstItem="Viy-Hq-C8A" firstAttribute="top" secondItem="P19-m0-Ye5" secondAttribute="bottom" constant="44" id="ZKR-xU-3Hb"/>
+                            <constraint firstItem="i3q-Cw-Pc8" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" id="hlA-wq-h2R"/>
                             <constraint firstItem="P19-m0-Ye5" firstAttribute="centerX" secondItem="Zu9-29-mki" secondAttribute="centerX" id="kgs-db-R2a"/>
+                            <constraint firstItem="3cd-nN-AvQ" firstAttribute="top" secondItem="i3q-Cw-Pc8" secondAttribute="bottom" id="lPg-mL-uu7"/>
                             <constraint firstItem="P19-m0-Ye5" firstAttribute="centerY" secondItem="Zu9-29-mki" secondAttribute="centerY" constant="-60" id="nCm-58-RnA"/>
                             <constraint firstItem="Viy-Hq-C8A" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="40" id="nFT-5e-bVc"/>
-                            <constraint firstAttribute="trailing" secondItem="P19-m0-Ye5" secondAttribute="trailing" constant="20" id="u0h-fC-j17"/>
+                            <constraint firstAttribute="trailing" secondItem="P19-m0-Ye5" secondAttribute="trailing" constant="40" id="u0h-fC-j17"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Đăng Nhập" id="46o-CV-QM3">
@@ -435,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYU-bL-4W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="83" y="113"/>
+            <point key="canvasLocation" x="86" y="401"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tmV-lB-TKX">
@@ -448,12 +384,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="TNd-3I-YEX" kind="relationship" relationship="rootViewController" id="wk4-Lt-e9M"/>
+                        <segue destination="UMv-7U-gds" kind="relationship" relationship="rootViewController" id="zr8-T0-Azx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0z3-MJ-uxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84" y="-630"/>
+            <point key="canvasLocation" x="2173" y="-349"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cv5-ov-sJk">
@@ -466,12 +402,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UMv-7U-gds" kind="relationship" relationship="rootViewController" id="bFD-9h-nam"/>
+                        <segue destination="TNd-3I-YEX" kind="relationship" relationship="rootViewController" id="NLb-bg-61z"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Tw-SM-iJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2098" y="-629"/>
+            <point key="canvasLocation" x="84" y="-388"/>
         </scene>
         <!--HomeID-->
         <scene sceneID="rg8-hs-Lsl">
@@ -483,11 +419,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add-user" width="128" height="128"/>
+        <image name="avatar-user" width="64" height="64"/>
         <image name="left-arrow" width="32" height="32"/>
-        <image name="logo" width="1024" height="1024"/>
+        <image name="temp_home_logo" width="426" height="426"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HxG-WZ-mS0"/>
+        <segue reference="RFf-N1-Lx6"/>
+        <segue reference="Uuh-Nc-zS7"/>
     </inferredMetricsTieBreakers>
 </document>

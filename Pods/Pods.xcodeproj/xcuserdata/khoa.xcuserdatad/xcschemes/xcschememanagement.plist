@@ -7,35 +7,17 @@
 		<key>Pods-Elite Condos.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SDWebImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<true />
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13FD2AC293F0E788DFAE46E2EEAF7117</key>
+		<key>53096883BECA7641FD0D0617A3480B4E</key>
 		<dict>
 			<key>primary</key>
-			<true/>
-		</dict>
-		<key>20E81554931FBBEB49909635FCCED9E6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>248CED73FDF1C10DF5106004F4F8009B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
+			<true />
 		</dict>
 	</dict>
 </dict>

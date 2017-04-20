@@ -22,21 +22,15 @@ class HomeVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
-        backItem.title = ""
+        backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
         if let subVC = segue.destination as? SubCategoryVC{
             if let data = sender as? [String:Any]{
                 if let subServices = data["data"] as? [ServiceData]{
                     subVC.services = subServices
                 }
-                
-                if let id = data["id"] as? String{
-                    Api.Order.serviceId = id
-                }
-                
                 if let title = data["title"] as? String{
                     subVC.navTitle = title
-                    Api.Order.mainService = title
                 }
             }
         }
@@ -67,9 +61,6 @@ extension HomeVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "HomeToSubCategory", sender:
             ["data": services[indexPath.row].subCategory! ,
-            "title": services[indexPath.row].name,
-            "id" : services[indexPath.row].id!
-            ] as [String:Any]
-                )
+            "title": services[indexPath.row].name ] as [String:Any] )
     }
 }

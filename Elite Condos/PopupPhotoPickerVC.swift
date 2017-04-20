@@ -8,16 +8,10 @@
 
 import UIKit
 
-protocol PopoverDelegate {
-    func showPhotoImage()
-}
-
 class PopupPhotoPickerVC: UIViewController {
     
     @IBOutlet weak var subView: UIView!
     
-    
-    var delegate: PopoverDelegate?
     
     let imagePicker: UIImagePickerController = UIImagePickerController()
     var subViewTapped = false
@@ -33,17 +27,14 @@ class PopupPhotoPickerVC: UIViewController {
         
      
     }
+   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
        
         if touches.first?.view != subView{
-            // subView is your view
-            dismiss(animated: true, completion: {
-                print("In popup dismiss")
-                self.delegate?.showPhotoImage()
-            })
-           
+            dismiss(animated: true, completion: nil)
         }
     }
+    
     @IBAction func deleteAllBtnPressed(_ sender: Any) {
         Api.Order.images = []
         collectionView.reloadData()
@@ -57,7 +48,7 @@ extension PopupPhotoPickerVC: UICollectionViewDataSource{
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if Api.Order.images.count  == 0 {
+        if Api.Order.images == nil {
             return 1
         }
         else {
@@ -69,9 +60,9 @@ extension PopupPhotoPickerVC: UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopupPhotoCell", for: indexPath) as! PopupPhotoCell
         
-//        guard Api.Order.images != nil else {
-//            return cell
-//        }
+        guard Api.Order.images != nil else {
+            return cell
+        }
         
         if indexPath.row == Api.Order.images.count {
             let img = UIImage(named: "add.png")
@@ -89,10 +80,10 @@ extension PopupPhotoPickerVC: UICollectionViewDataSource{
 
 extension PopupPhotoPickerVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        guard Api.Order.images != nil else {
-//            return 
-//        }
+        
+        guard Api.Order.images != nil else {
+            return 
+        }
         
         if indexPath.row == Api.Order.images.count {
             present(imagePicker, animated: true, completion: nil)

@@ -9,42 +9,68 @@
 import UIKit
 import Firebase
 
-protocol SupplierCellDelegate {
-    func book(supplierId: String)
-}
-
 class SupplierCell: UITableViewCell {
 
     @IBOutlet weak var rating: CosmosView!
-    @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
     
-    var delegate: SupplierCellDelegate?
-    var supplier: Supplier?{
-        didSet{
-            updateView()
-        }
+    func configureCell(supplier : Supplier){
+        nameLbl.text = supplier.name
+        addressLbl.text = supplier.address
+        
+        let ref = FIRStorage.storage().reference(forURL: supplier.logo)
+        
+        ref.data(withMaxSize: 2 * 1024 * 1024, completion:
+            { data, error in
+                if error != nil{
+                    print("can't download image from Firebase")
+                }else{
+                    
+                    if let data = data {
+                    
+                        if let imageData = UIImage(data: data){
+                            self.logoImage.image = imageData
+                        }
+                    }
+                }
+        
+        })
+        var totalStars = 0.0
+        var count = 0
+        DataService.ds.REF_SUPPLIERS.child(supplier.id).child("reviews").observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
+                
+                for snap in snapshots{
+                    //print(snap.value)
+                    if let snapData = snap.value as? Dictionary<String,Any>{
+                        if let star = snapData["stars"] as? Double{
+                            count += 1
+                            totalStars += star
+                            
+                        }
+                        
+                    }
+                }
+                if count == 0{
+                    totalStars = 0.0
+                    self.rating.rating = totalStars
+                }else {
+                    self.rating.rating = totalStars / Double(count)
+                }
+                self.rating.text = "\(count) lượt nhận xét"
+            }
+        })
+     
+        
     }
-    
-    func updateView(){
-        nameLbl.text = supplier?.name
-        
-        if let imgUrl = supplier?.logo {
-            let url = URL(string: imgUrl)
-            logoImage.sd_setImage(with: url)
-        }
-        
-        
-    }
-    @IBAction func book_TouchUpInside(_ sender: Any) {
-        
-        if let supplierId = supplier?.id {
-            delegate?.book(supplierId: supplierId)
-        }
-    }
+  
+
 }
-
-
-
-
