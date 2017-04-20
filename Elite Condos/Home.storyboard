@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KCA-aa-U0v" id="3Wa-b2-esA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="electrical" translatesAutoresizingMaskIntoConstraints="NO" id="MSa-tj-Bvw">
@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NU1-Pc-vdY" id="q6g-xP-Cq0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wD8-5v-Xam">
@@ -198,7 +198,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jZd-ew-50U">
-                                <rect key="frame" x="10" y="254" width="290" height="30"/>
+                                <rect key="frame" x="10" y="254" width="310" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0F3-5f-8NC">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="30"/>
@@ -207,7 +207,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTI-m3-0TI">
-                                        <rect key="frame" x="36" y="0.0" width="254" height="30"/>
+                                        <rect key="frame" x="36" y="0.0" width="274" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Location"/>
                                         <connections>
@@ -252,34 +252,40 @@
                                     <constraint firstAttribute="height" constant="30" id="sjc-hX-Vlq"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRT-AM-oZX">
-                                <rect key="frame" x="0.0" y="450" width="320" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-1M-plE">
+                                <rect key="frame" x="35" y="314" width="250" height="35"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.69019607839999997" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="37c-8P-kpm"/>
+                                    <constraint firstAttribute="height" constant="35" id="MpP-eT-Pte"/>
+                                    <constraint firstAttribute="width" constant="250" id="YrB-Yq-aus"/>
                                 </constraints>
-                                <state key="normal" title="Continue"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueBtnPressed:" destination="YrN-bK-PvK" eventType="touchUpInside" id="TbR-Ue-rzZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EFb-ct-kgZ" firstAttribute="top" secondItem="JRT-AM-oZX" secondAttribute="bottom" id="0ij-fi-wuB"/>
                             <constraint firstItem="ETV-oX-mhq" firstAttribute="leading" secondItem="P4p-Vu-FiT" secondAttribute="leading" constant="10" id="0lW-KQ-arZ"/>
-                            <constraint firstItem="JRT-AM-oZX" firstAttribute="leading" secondItem="P4p-Vu-FiT" secondAttribute="leading" id="4pR-ga-OBO"/>
                             <constraint firstAttribute="trailing" secondItem="6Ks-2i-QDd" secondAttribute="trailing" constant="16" id="8UZ-o1-pFv"/>
                             <constraint firstItem="jZd-ew-50U" firstAttribute="leading" secondItem="P4p-Vu-FiT" secondAttribute="leading" constant="10" id="8Wo-LO-1TQ"/>
                             <constraint firstItem="JRK-BI-vWw" firstAttribute="leading" secondItem="ETV-oX-mhq" secondAttribute="trailing" constant="15" id="ADn-rc-lrV"/>
+                            <constraint firstItem="dhB-1M-plE" firstAttribute="centerX" secondItem="P4p-Vu-FiT" secondAttribute="centerX" id="Gse-UQ-19h"/>
                             <constraint firstItem="1Vk-Kz-7u7" firstAttribute="leading" secondItem="P4p-Vu-FiT" secondAttribute="leading" constant="10" id="ILv-II-g7h"/>
                             <constraint firstAttribute="trailing" secondItem="1Vk-Kz-7u7" secondAttribute="trailing" constant="16" id="Iee-wK-hTB"/>
                             <constraint firstItem="ETV-oX-mhq" firstAttribute="top" secondItem="1Vk-Kz-7u7" secondAttribute="bottom" constant="8" id="Qyi-Nw-p8Y"/>
+                            <constraint firstItem="dhB-1M-plE" firstAttribute="top" secondItem="jZd-ew-50U" secondAttribute="bottom" constant="30" id="Sb6-bU-shF"/>
                             <constraint firstItem="6Ks-2i-QDd" firstAttribute="leading" secondItem="P4p-Vu-FiT" secondAttribute="leading" constant="10" id="YY1-3o-wyD"/>
                             <constraint firstItem="jZd-ew-50U" firstAttribute="top" secondItem="npd-x1-U7v" secondAttribute="bottom" constant="8" id="amD-cL-pfp"/>
                             <constraint firstAttribute="trailing" secondItem="npd-x1-U7v" secondAttribute="trailing" constant="20" id="hyT-Fb-kme"/>
                             <constraint firstItem="JRK-BI-vWw" firstAttribute="top" secondItem="1Vk-Kz-7u7" secondAttribute="bottom" constant="11" id="iHF-41-2oe"/>
                             <constraint firstItem="npd-x1-U7v" firstAttribute="top" secondItem="ETV-oX-mhq" secondAttribute="bottom" constant="8" id="maM-5k-E1a"/>
-                            <constraint firstAttribute="trailing" secondItem="JRT-AM-oZX" secondAttribute="trailing" id="nZ3-3J-vj4"/>
                             <constraint firstItem="npd-x1-U7v" firstAttribute="leading" secondItem="P4p-Vu-FiT" secondAttribute="leading" constant="10" id="qQD-gx-6lJ"/>
                             <constraint firstItem="1Vk-Kz-7u7" firstAttribute="top" secondItem="6Ks-2i-QDd" secondAttribute="bottom" constant="8" id="qsg-1A-bgE"/>
-                            <constraint firstAttribute="trailing" secondItem="jZd-ew-50U" secondAttribute="trailing" constant="20" id="wap-n4-TI4"/>
+                            <constraint firstAttribute="trailing" secondItem="jZd-ew-50U" secondAttribute="trailing" id="wap-n4-TI4"/>
                             <constraint firstItem="6Ks-2i-QDd" firstAttribute="top" secondItem="ezT-2y-0pS" secondAttribute="bottom" constant="8" id="yEc-Ie-ep8"/>
                         </constraints>
                     </view>
@@ -287,6 +293,9 @@
                         <barButtonItem key="rightBarButtonItem" title="Help?" id="j9c-IS-Qyu"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="continueBtn" destination="dhB-1M-plE" id="NJc-gx-lkb"/>
+                        <outlet property="descriptionTF" destination="1Vk-Kz-7u7" id="Jzv-En-ey5"/>
+                        <outlet property="locationBtn" destination="gTI-m3-0TI" id="1mu-BE-YD7"/>
                         <outlet property="photoImage" destination="JRK-BI-vWw" id="znH-aV-lp6"/>
                         <outlet property="timeBtn" destination="wJw-l6-xyL" id="bbQ-Qa-gxd"/>
                     </connections>

@@ -11,7 +11,9 @@ import UIKit
 
 class OrderApi{
     var images: [UIImage] = [UIImage]()
-    func saveImages(imgCollection: [UIImage]){
-        self.images = imgCollection
-    }
+    
+    
+    var mainService = ""
+    var subService = ""
+
 }

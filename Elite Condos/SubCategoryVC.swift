@@ -28,9 +28,11 @@ class SubCategoryVC: UIViewController {
             if let data = sender as? [String:Any]{
                 if let main = data["main"] as? String{
                     descriptionVC.mainService = main
+                    Api.Order.mainService = main
                 }
                 if let sub = data["sub"] as? String{
                     descriptionVC.subService = sub
+                    Api.Order.subService = sub 
                 }
             }
         }

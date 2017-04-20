@@ -10,9 +10,16 @@ import UIKit
 import CoreLocation
 class DescriptionVC: UIViewController {
 
+    @IBOutlet weak var descriptionTF: UITextField!
+    @IBOutlet weak var continueBtn: UIButton!
     let locationManager = CLLocationManager()
 
+    var userLocation = CLLocation()
+    
+    var isGetTime = false
+    var isGetLocation = false
     @IBOutlet weak var photoImage: UIButton!
+    @IBOutlet weak var locationBtn: UIButton!
     @IBOutlet weak var timeBtn: UIButton!
     var mainService = ""
     var subService = ""
@@ -20,10 +27,11 @@ class DescriptionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         locationManager.delegate = self
-        print(mainService)
-        print(subService)
-
+        locationManager.delegate = self
+        
+        locationBtn.titleLabel?.numberOfLines = 2
+        locationBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        locationBtn.titleLabel?.lineBreakMode = .byClipping
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,18 +69,42 @@ class DescriptionVC: UIViewController {
             let finalDate = formatter.string(from: date)
             
             self.timeBtn.setTitle(finalDate, for: .normal)
-            print(finalDate)
+            self.isGetTime = true
         }
         
         
         
     }
     
+    @IBAction func continueBtnPressed(_ sender: Any) {
+        guard let description = descriptionTF.text, description != "" else {
+            showAlert(title: APP_NAME, message: "You should fill in description")
+            return
+        }
+        guard Api.Order.images.count > 0 else {
+            showAlert(title: APP_NAME, message: "You should pick at least one picture")
+            return
+        }
+        guard isGetTime == true else {
+            showAlert(title: APP_NAME, message: "You should pick a time")
+            return
+        }
+        guard isGetLocation == true else {
+            showAlert(title: APP_NAME, message: "You should choose your address")
+            return
+        }
+        
+        
+       
+        
+        
+    }
     @IBAction func getLocationBtnPressed(_ sender: Any) {
+        
+        
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-       
     }
     func showAlert(title: String, message : String){
         
@@ -85,6 +117,23 @@ class DescriptionVC: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    
+    func reserveGeo(){
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) in
+            guard let addressDict = placemarks?[0].addressDictionary else {
+                return
+            }
+            if let formattedAddress = addressDict["FormattedAddressLines"] as? [String] {
+                let address  = formattedAddress.joined(separator: ", ")
+                
+                // set value to your control
+                self.locationBtn.setTitle(address, for: .normal)
+                self.isGetLocation = true
+            }
+            
+        })
+    }
 }
 
 extension DescriptionVC: CLLocationManagerDelegate{
@@ -93,6 +142,9 @@ extension DescriptionVC: CLLocationManagerDelegate{
         if let location = locations.first {
             print(location.coordinate.latitude)
             print(location.coordinate.longitude )
+            userLocation = location
+            reserveGeo()
+            
         }
     }
     
