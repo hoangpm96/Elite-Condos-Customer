@@ -13,7 +13,6 @@ UINavigationControllerDelegate{
     
     @IBOutlet weak var passwordTF: FancyField!
     @IBOutlet weak var phoneTF: FancyField!
-    @IBOutlet weak var addressTF: FancyField!
     @IBOutlet weak var emailTF: FancyField!
     @IBOutlet weak var nameTF: FancyField!
     @IBOutlet weak var profileImage: CircleImage!
@@ -45,10 +44,12 @@ UINavigationControllerDelegate{
         
     }
     
-    @IBAction func signUpBtnPressed(_ sender: Any) {
-    }
-    
-    @IBAction func signUpButton(_ sender: Any) {
+    @IBAction func signUp(_ sender: Any) {
+        
+        guard pickedImage == true else {
+            showAlert(title: APP_NAME, message: "Vui lòng chọn hình profile")
+            return
+        }
         
         guard let name = nameTF.text, name != ""
             else {
@@ -60,54 +61,34 @@ UINavigationControllerDelegate{
                 showAlert(title: SIGN_UP_ERROR, message: SIGN_UP_ERROR_EMAIL_PASSWORD )
                 return
         }
-        guard let address = addressTF.text, address != ""
-            else {
-                showAlert(title: SIGN_UP_ERROR, message: SIGN_UP_ERROR_ADDRESS)
-                return
-        }
-        guard let phone = phoneTF.text, address != ""
+        
+        guard let phone = phoneTF.text, phone != ""
             else {
                 showAlert(title: SIGN_UP_ERROR, message: SIGN_UP_ERROR_PHONE)
                 return
         }
-        var avatarUrl = DEFAULT_CUSTOMER_AVATAR
-        if let imgData = UIImageJPEGRepresentation(avatarImage.image!, 0.2){
-            let imgUid = NSUUID().uuidString
-            let metadata = FIRStorageMetadata()
-            metadata.contentType = "image/jpeg"
-            DataService.ds.REF_CUSTOMER_AVATAR.child(imgUid).put(imgData, metadata: metadata, completion: { (metadata, error) in
-                if error != nil{
-                    print("Error to upload to server")
-                }else{
-                    avatarUrl = (metadata?.downloadURL()?.absoluteString)!
-                }
+        
+        Api.User.signUp(name: name, email: email, password: password, phone: phone, avatarImg: avatarImage.image!, onSuccess: {
+            let alert = UIAlertController(title: APP_NAME, message: "Đăng Ký Thành Công, tự động đăng nhập", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "SignUpToHome", sender: nil)
             })
+            
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            
+            
+        }) { (error) in
+            self.showAlert(title: APP_NAME, message: error)
         }
         
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            if error != nil{
-                
-                let errorDetail = (error as! NSError).localizedDescription
-                
-                self.showAlert(title: SIGN_UP_ERROR, message: errorDetail)
-            }
-            if let user = user{
-                let uid = user.uid
-                let userData = [
-                    "name" : name,
-                    "email" : email,
-                    "address" : address,
-                    "phone" : phone,
-                    "avatarUrl" : avatarUrl
-                ]
-                DataService.ds.createFirebaseDBCutomer(uid: uid, userData: userData)
-            }
-            
-            
-        })
         
     }
+    
+    
+    
     func showAlert(title: String, message : String){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -123,7 +104,7 @@ UINavigationControllerDelegate{
         present(imagePicker, animated: true, completion: nil)
     }
     @IBAction func goBack(_ sender: Any) {
-         dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }

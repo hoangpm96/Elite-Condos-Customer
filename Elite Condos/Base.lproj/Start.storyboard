@@ -169,7 +169,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-Mg-yEy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="60.5" width="280" height="34"/>
+                                                                <rect key="frame" x="0.0" y="80.5" width="280" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="heH-ZN-A5u"/>
                                                                 </constraints>
@@ -178,22 +178,13 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-CD-nVm" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="120.5" width="280" height="34"/>
+                                                                <rect key="frame" x="0.0" y="160.5" width="280" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="Mmh-nE-8Vh"/>
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                            </textField>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RBg-zI-l0X" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="181" width="280" height="34"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="34" id="Rgo-AB-9R3"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEF-q6-vLe" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="241" width="280" height="34"/>
@@ -226,8 +217,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="signUpBtnPressed:" destination="UMv-7U-gds" eventType="touchUpInside" id="rbC-nA-u9T"/>
-                                                    <action selector="signUpButton:" destination="UMv-7U-gds" eventType="touchUpInside" id="yt0-jo-9vS"/>
+                                                    <action selector="signUp:" destination="UMv-7U-gds" eventType="touchUpInside" id="DZo-SQ-O69"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -272,13 +262,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>
-                        <outlet property="addressTF" destination="RBg-zI-l0X" id="mSR-0u-erc"/>
                         <outlet property="avatarImage" destination="R1w-SY-wXi" id="vIo-k8-2EJ"/>
                         <outlet property="emailTF" destination="8U6-Mg-yEy" id="dMZ-SS-exe"/>
                         <outlet property="nameTF" destination="VbR-VW-R6e" id="3oM-cZ-FoN"/>
                         <outlet property="passwordTF" destination="Tx1-CD-nVm" id="adf-tA-EiY"/>
                         <outlet property="phoneTF" destination="mEF-q6-vLe" id="UTV-wA-sJO"/>
                         <outlet property="profileImage" destination="R1w-SY-wXi" id="DVf-Lo-Nml"/>
+                        <segue destination="SYD-Rk-QYg" kind="showDetail" identifier="SignUpToHome" id="6ib-gO-229"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8t-VT-jIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -418,4 +408,7 @@
         <image name="left-arrow" width="32" height="32"/>
         <image name="temp_home_logo" width="426" height="426"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6ib-gO-229"/>
+    </inferredMetricsTieBreakers>
 </document>
