@@ -53,6 +53,10 @@
 		D2BC647C1E7A23500031FA31 /* OrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647B1E7A23500031FA31 /* OrderDescription.swift */; };
 		D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */; };
 		D2BF5B121DCF8206002534EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BF5B111DCF8206002534EC /* Assets.xcassets */; };
+		D2CFB66C1E7FC35E00618683 /* MyJobsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CFB66B1E7FC35E00618683 /* MyJobsVC.swift */; };
+		D2CFB66E1E7FC36A00618683 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CFB66D1E7FC36A00618683 /* AccountVC.swift */; };
+		D2D5E4521E8100890031F79F /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E4511E8100890031F79F /* UserApi.swift */; };
+		D2D5E4541E8107FE0031F79F /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E4531E8107FE0031F79F /* SignUpVC.swift */; };
 		D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D66D841E7C15540029345F /* DateTimePicker.swift */; };
 		D2D66D881E7C15540029345F /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D66D851E7C15540029345F /* DateCollectionViewCell.swift */; };
 		D2D66D891E7C15540029345F /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D66D861E7C15540029345F /* StepCollectionViewFlowLayout.swift */; };
@@ -111,6 +115,10 @@
 		D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		D2BF5B051DCEE2AE002534EC /* Elite Condos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elite Condos-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2BF5B111DCF8206002534EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2CFB66B1E7FC35E00618683 /* MyJobsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJobsVC.swift; sourceTree = "<group>"; };
+		D2CFB66D1E7FC36A00618683 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		D2D5E4511E8100890031F79F /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		D2D5E4531E8107FE0031F79F /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		D2D66D841E7C15540029345F /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		D2D66D851E7C15540029345F /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2D66D861E7C15540029345F /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -164,6 +172,7 @@
 			children = (
 				D2159A0D1E7B8A70006517B2 /* OrderApi.swift */,
 				D2159A101E7B8B3D006517B2 /* Api.swift */,
+				D2D5E4511E8100890031F79F /* UserApi.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -257,6 +266,9 @@
 				D28EE7CC1DD9731000BCE1E9 /* LoginVC.swift */,
 				D28EE7CE1DD9762900BCE1E9 /* StartVC.swift */,
 				D2159A091E7B787E006517B2 /* PopupPhotoPickerVC.swift */,
+				D2CFB66B1E7FC35E00618683 /* MyJobsVC.swift */,
+				D2CFB66D1E7FC36A00618683 /* AccountVC.swift */,
+				D2D5E4531E8107FE0031F79F /* SignUpVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -444,6 +456,7 @@
 				D29C36051DE97B5000034404 /* Customer_OrderCell.swift in Sources */,
 				D24459261DDDF2FB00F51EE6 /* Service.swift in Sources */,
 				D2159A0C1E7B7AEA006517B2 /* PopupPhotoCell.swift in Sources */,
+				D2D5E4541E8107FE0031F79F /* SignUpVC.swift in Sources */,
 				D24459241DDDED4200F51EE6 /* RandomString.swift in Sources */,
 				D28EE7CB1DD95AF200BCE1E9 /* Constant.swift in Sources */,
 				D20C5CA11E00484200D15C92 /* ServiceListCell.swift in Sources */,
@@ -458,7 +471,9 @@
 				D20C5C9F1E0031FD00D15C92 /* SupplierCell.swift in Sources */,
 				D23ECC161DF1A9F2002B6E1D /* CosmosDistrib.swift in Sources */,
 				D25556CF1DDA7A88004E7649 /* Supplier.swift in Sources */,
+				D2CFB66C1E7FC35E00618683 /* MyJobsVC.swift in Sources */,
 				D20C5CA61E004BFB00D15C92 /* PriceTag.swift in Sources */,
+				D2D5E4521E8100890031F79F /* UserApi.swift in Sources */,
 				D2154FBB1DE91D5600D0DF23 /* Order.swift in Sources */,
 				D2BC647C1E7A23500031FA31 /* OrderDescription.swift in Sources */,
 				D28EE7CD1DD9731000BCE1E9 /* LoginVC.swift in Sources */,
@@ -467,6 +482,7 @@
 				D2159A111E7B8B3D006517B2 /* Api.swift in Sources */,
 				D20E96161E79924400A8F3EE /* SubCategoryVC.swift in Sources */,
 				D28EE7CF1DD9762900BCE1E9 /* StartVC.swift in Sources */,
+				D2CFB66E1E7FC36A00618683 /* AccountVC.swift in Sources */,
 				D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */,
 				D25556C81DD9C56D004E7649 /* Errors.swift in Sources */,
 				D25556C41DD9B9C4004E7649 /* DataService.swift in Sources */,

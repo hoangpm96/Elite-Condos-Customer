@@ -26,19 +26,6 @@ class StartVC: UIViewController {
         }
     }
 
-
-
-    
-    @IBAction func signUpButton(_ sender: Any) {
-    self.performSegue(withIdentifier: "CustomerSignUp", sender: nil)
-        
-    }
-   
-  
-    @IBAction func signInButton(_ sender: Any) {
-        performSegue(withIdentifier: "CustomerSignIn", sender: nil)
-    
-    }
    
 
 }
