@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "ProgressHUD.h"
 
-FOUNDATION_EXPORT double Pods_Elite_CondosVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Elite_CondosVersionString[];
+FOUNDATION_EXPORT double ProgressHUDVersionNumber;
+FOUNDATION_EXPORT const unsigned char ProgressHUDVersionString[];
 

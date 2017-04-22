@@ -9,6 +9,7 @@ target 'Elite Condos' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'ProgressHUD'
 
   # Pods for Elite Condos
 

@@ -169,7 +169,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-Mg-yEy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="80.5" width="280" height="34"/>
+                                                                <rect key="frame" x="0.0" y="80" width="280" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="heH-ZN-A5u"/>
                                                                 </constraints>
@@ -178,7 +178,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-CD-nVm" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="160.5" width="280" height="34"/>
+                                                                <rect key="frame" x="0.0" y="161" width="280" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="Mmh-nE-8Vh"/>
                                                                 </constraints>

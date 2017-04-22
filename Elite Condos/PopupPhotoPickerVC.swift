@@ -47,7 +47,7 @@ extension PopupPhotoPickerVC: UICollectionViewDataSource{
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if Api.Order.images == nil {
+        if Api.Order.images.count  == 0 {
             return 1
         }
         else {

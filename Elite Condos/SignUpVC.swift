@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ProgressHUD
 class SignUpVC: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
     
@@ -67,7 +68,7 @@ UINavigationControllerDelegate{
                 showAlert(title: SIGN_UP_ERROR, message: SIGN_UP_ERROR_PHONE)
                 return
         }
-        
+        ProgressHUD.show("Creating account")
         Api.User.signUp(name: name, email: email, password: password, phone: phone, avatarImg: avatarImage.image!, onSuccess: {
             let alert = UIAlertController(title: APP_NAME, message: "Đăng Ký Thành Công, tự động đăng nhập", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -76,6 +77,7 @@ UINavigationControllerDelegate{
             
             alert.addAction(okAction)
             
+            ProgressHUD.dismiss()
             self.present(alert, animated: true, completion: nil)
 
             
