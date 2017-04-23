@@ -28,14 +28,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="MXQ-Mq-1FO">
-                                                <rect key="frame" x="8" y="287" width="30" height="30"/>
+                                                <rect key="frame" x="8" y="333" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="dto-wN-nLl"/>
                                                     <constraint firstAttribute="height" constant="30" id="spb-1p-H84"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dx7-QH-5cH">
-                                                <rect key="frame" x="40" y="277" width="280" height="1"/>
+                                                <rect key="frame" x="40" y="323" width="280" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="280" id="t5x-DM-8Nn"/>
@@ -57,30 +57,21 @@
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="Vl8-ip-MKo">
-                                                <rect key="frame" x="8" y="191" width="30" height="30"/>
+                                                <rect key="frame" x="8" y="237" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Yj4-D4-npH"/>
                                                     <constraint firstAttribute="width" constant="30" id="lwE-bH-eqU"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kb-do-2yy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                <rect key="frame" x="54" y="191" width="266" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="KZp-RP-hWn"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="TnH-RZ-umE">
-                                                <rect key="frame" x="8" y="239" width="30" height="30"/>
+                                                <rect key="frame" x="8" y="285" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Egx-GK-qtf"/>
                                                     <constraint firstAttribute="height" constant="30" id="hMt-Ek-e8c"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUL-Ws-GpJ" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                <rect key="frame" x="54" y="239" width="266" height="30"/>
+                                                <rect key="frame" x="54" y="285" width="266" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="r5D-cn-LZa"/>
                                                 </constraints>
@@ -89,7 +80,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yD9-vF-Q2r">
-                                                <rect key="frame" x="40" y="229" width="280" height="1"/>
+                                                <rect key="frame" x="40" y="276" width="280" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="36N-qp-e6C"/>
@@ -97,39 +88,125 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfa-K5-Zx8">
-                                                <rect key="frame" x="54" y="291" width="266" height="22"/>
+                                                <rect key="frame" x="54" y="337" width="266" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="JcD-kg-PYo"/>
                                                 </constraints>
                                                 <state key="normal" title="Change password"/>
                                             </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kb-do-2yy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="54" y="238" width="266" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="KZp-RP-hWn"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kK-vv-Imq">
+                                                <rect key="frame" x="0.0" y="543" width="320" height="30"/>
+                                                <color key="backgroundColor" red="1" green="0.01832725235" blue="0.1540104256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="NnN-ub-sGA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <state key="normal" title="Đăng xuất">
+                                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="signOut_TouchInside:" destination="NGT-7u-1gB" eventType="touchUpInside" id="daG-sJ-Bm7"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-gc-NIo">
+                                                <rect key="frame" x="20" y="393" width="280" height="120"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLx-UX-7NP" customClass="FancyBtn" customModule="Elite_Condos" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="33.5"/>
+                                                        <state key="normal" title="Trung tâm hỗ trợ">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qq7-MD-9hd" customClass="FancyBtn" customModule="Elite_Condos" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="43.5" width="280" height="33"/>
+                                                        <state key="normal" title="Điều khoản sử dụng">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unJ-vt-ANT" customClass="FancyBtn" customModule="Elite_Condos" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="86.5" width="280" height="33.5"/>
+                                                        <state key="normal" title="Góp ý">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="kgc-8v-P3Q"/>
+                                                </constraints>
+                                            </stackView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="xjx-Cw-umJ">
+                                                <rect key="frame" x="8" y="191" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="CR3-k4-EPl"/>
+                                                    <constraint firstAttribute="height" constant="30" id="Ev7-kj-aPA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Laf-ou-nYO">
+                                                <rect key="frame" x="40" y="229" width="280" height="1"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="280" id="CQn-8W-WpS"/>
+                                                    <constraint firstAttribute="height" constant="1" id="mrD-LE-WFc"/>
+                                                </constraints>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2t-Sa-Bss" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                                <rect key="frame" x="54" y="191" width="266" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Onz-OW-FCB"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Npq-0s-0oO" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" id="2rV-8Z-cIe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Laf-ou-nYO" secondAttribute="trailing" id="4yl-kd-GBP"/>
+                                            <constraint firstAttribute="trailing" secondItem="4IU-gc-NIo" secondAttribute="trailing" constant="20" id="5My-eO-ViR"/>
+                                            <constraint firstItem="K2t-Sa-Bss" firstAttribute="top" secondItem="Npq-0s-0oO" secondAttribute="bottom" constant="8" id="61F-H8-Dzp"/>
                                             <constraint firstAttribute="trailing" secondItem="pfa-K5-Zx8" secondAttribute="trailing" id="66k-AW-RHu"/>
+                                            <constraint firstAttribute="trailing" secondItem="K2t-Sa-Bss" secondAttribute="trailing" id="7Dv-PD-mgn"/>
+                                            <constraint firstItem="0kK-vv-Imq" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" id="7Kc-qz-9zR"/>
                                             <constraint firstItem="MXQ-Mq-1FO" firstAttribute="top" secondItem="TnH-RZ-umE" secondAttribute="bottom" constant="18" id="Bqg-2s-R2v"/>
+                                            <constraint firstItem="4IU-gc-NIo" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" constant="20" id="Eci-4l-fvD"/>
                                             <constraint firstItem="rUL-Ws-GpJ" firstAttribute="centerY" secondItem="TnH-RZ-umE" secondAttribute="centerY" id="FNR-oj-FMG"/>
                                             <constraint firstItem="haE-Do-SoT" firstAttribute="centerX" secondItem="JrF-Sv-dhO" secondAttribute="centerX" id="H97-T9-uBy"/>
                                             <constraint firstAttribute="trailing" secondItem="2kb-do-2yy" secondAttribute="trailing" id="ICr-S3-Xg1"/>
                                             <constraint firstItem="pfa-K5-Zx8" firstAttribute="centerY" secondItem="MXQ-Mq-1FO" secondAttribute="centerY" id="JuZ-YO-lU7"/>
                                             <constraint firstItem="pfa-K5-Zx8" firstAttribute="leading" secondItem="MXQ-Mq-1FO" secondAttribute="trailing" constant="16" id="Kn9-UV-3i6"/>
+                                            <constraint firstItem="xjx-Cw-umJ" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" constant="8" id="Mm0-10-gVA"/>
                                             <constraint firstAttribute="trailing" secondItem="rUL-Ws-GpJ" secondAttribute="trailing" id="NLH-i7-DEy"/>
+                                            <constraint firstItem="xjx-Cw-umJ" firstAttribute="top" secondItem="Npq-0s-0oO" secondAttribute="bottom" constant="8" id="Np0-VJ-gD4"/>
                                             <constraint firstAttribute="height" constant="800" id="NuP-f1-3O8"/>
                                             <constraint firstAttribute="trailing" secondItem="Npq-0s-0oO" secondAttribute="trailing" id="Rlb-Hn-0ns"/>
                                             <constraint firstItem="Npq-0s-0oO" firstAttribute="top" secondItem="haE-Do-SoT" secondAttribute="bottom" constant="16" id="X7k-eR-CgN"/>
                                             <constraint firstItem="TnH-RZ-umE" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" constant="8" id="Yoh-QP-VNL"/>
+                                            <constraint firstItem="K2t-Sa-Bss" firstAttribute="leading" secondItem="xjx-Cw-umJ" secondAttribute="trailing" constant="16" id="YzJ-B3-GkH"/>
                                             <constraint firstItem="MXQ-Mq-1FO" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" constant="8" id="bGl-M7-nWe"/>
                                             <constraint firstAttribute="trailing" secondItem="dx7-QH-5cH" secondAttribute="trailing" id="caP-aK-JN2"/>
                                             <constraint firstItem="yD9-vF-Q2r" firstAttribute="top" secondItem="2kb-do-2yy" secondAttribute="bottom" constant="8" id="cs4-XU-djR"/>
                                             <constraint firstItem="Vl8-ip-MKo" firstAttribute="leading" secondItem="JrF-Sv-dhO" secondAttribute="leading" constant="8" id="d4F-LW-TmU"/>
+                                            <constraint firstItem="0kK-vv-Imq" firstAttribute="top" secondItem="4IU-gc-NIo" secondAttribute="bottom" constant="30" id="eab-0T-zyb"/>
+                                            <constraint firstItem="2kb-do-2yy" firstAttribute="top" secondItem="Laf-ou-nYO" secondAttribute="bottom" constant="8" id="fUP-2a-2cj"/>
+                                            <constraint firstItem="4IU-gc-NIo" firstAttribute="top" secondItem="MXQ-Mq-1FO" secondAttribute="bottom" constant="30" id="fhp-N1-OWU"/>
                                             <constraint firstItem="dx7-QH-5cH" firstAttribute="top" secondItem="rUL-Ws-GpJ" secondAttribute="bottom" constant="8" id="gnz-y6-iT1"/>
-                                            <constraint firstItem="Vl8-ip-MKo" firstAttribute="top" secondItem="Npq-0s-0oO" secondAttribute="bottom" constant="8" id="hw2-YW-LJS"/>
+                                            <constraint firstItem="Laf-ou-nYO" firstAttribute="top" secondItem="K2t-Sa-Bss" secondAttribute="bottom" constant="8" id="pLd-xV-fgJ"/>
                                             <constraint firstAttribute="trailing" secondItem="yD9-vF-Q2r" secondAttribute="trailing" id="psT-pd-q7c"/>
                                             <constraint firstItem="haE-Do-SoT" firstAttribute="top" secondItem="JrF-Sv-dhO" secondAttribute="top" constant="16" id="qKS-qN-cib"/>
+                                            <constraint firstAttribute="trailing" secondItem="0kK-vv-Imq" secondAttribute="trailing" id="rj9-Nd-SQX"/>
+                                            <constraint firstItem="Vl8-ip-MKo" firstAttribute="top" secondItem="xjx-Cw-umJ" secondAttribute="bottom" constant="16" id="rv3-RJ-oh2"/>
                                             <constraint firstItem="2kb-do-2yy" firstAttribute="leading" secondItem="Vl8-ip-MKo" secondAttribute="trailing" constant="16" id="u5B-GW-SKy"/>
                                             <constraint firstItem="TnH-RZ-umE" firstAttribute="top" secondItem="Vl8-ip-MKo" secondAttribute="bottom" constant="18" id="zEL-fK-lx2"/>
-                                            <constraint firstItem="2kb-do-2yy" firstAttribute="top" secondItem="Npq-0s-0oO" secondAttribute="bottom" constant="8" id="zFJ-YX-exI"/>
                                             <constraint firstItem="rUL-Ws-GpJ" firstAttribute="leading" secondItem="TnH-RZ-umE" secondAttribute="trailing" constant="16" id="zqI-aJ-bbK"/>
                                         </constraints>
                                     </view>
@@ -160,6 +237,11 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="800"/>
+                    <connections>
+                        <outlet property="emailTF" destination="2kb-do-2yy" id="cKh-kV-9jp"/>
+                        <outlet property="nameTF" destination="K2t-Sa-Bss" id="nLP-gb-XOs"/>
+                        <outlet property="phoneTF" destination="rUL-Ws-GpJ" id="zHC-db-bvE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4f-a5-uIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -656,5 +738,6 @@
         <image name="password" width="128" height="128"/>
         <image name="phone" width="128" height="128"/>
         <image name="photo" width="128" height="128"/>
+        <image name="user" width="64" height="64"/>
     </resources>
 </document>

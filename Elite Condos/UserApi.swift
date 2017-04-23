@@ -10,8 +10,16 @@ import Foundation
 import Firebase
 
 class UserApi{
+   
     
-    
+    func signOut(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void){
+        do {
+           try  FIRAuth.auth()?.signOut()
+            onSuccess()
+        } catch{
+            onError("can't sign out")
+        }
+    }
     
     func uploadAvatar(avatarImg: UIImage,onSuccess: @escaping (String) -> Void, onError: @escaping (String) -> Void ){
         
@@ -63,14 +71,28 @@ class UserApi{
     }
     
     
-    func loadUserData(){
+    func loadUserData(completed: @escaping (String,String,String) -> Void){
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
-        
-        DataService.ds.REF_USERS.child(user.uid).observe(.value, with: { (snapshot) in
-            if let snapshot = snapshot.value as? [String:Any]{
-                print(snapshot)
+        DataService.ds.REF_CUSTOMERS.child(user.uid).observe(.value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String:Any]{
+                guard let phone = dict["phone"] as? String else{
+                    return
+                }
+                guard let name = dict["name"] as? String else{
+                    return
+                }
+                
+//                let uid = FIRAuth.auth()?.currentUser?.uid
+                
+                let email = FIRAuth.auth()?.currentUser?.email
+                
+                completed(name, email!, phone)
+                
+                
+                
+                ///["phone": 01647778186, "name": Khoa, "email": user3@gmail.com, "avatarUrl": https://firebasestorage.googleapis.com/v0/b/elite-condos.appspot.com/o/customer_avatar%2F9CB04EFD-1B1E-4DA7-8D27-7511B9BC2C49?alt=media&token=ba430d22-49a9-40ef-936d-1e11b50e78ad]
             }
         })
     }

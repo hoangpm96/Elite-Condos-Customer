@@ -7,25 +7,21 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class StartVC: UIViewController {
-
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        
+        super.viewDidLoad()  
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDefaults.standard.string(forKey: CUSTOMER_ID) != nil{
-            print("Hello")
-            performSegue(withIdentifier: "HomeVC", sender: nil)
-            
+        if ( FIRAuth.auth()?.currentUser != nil  ){
+            performSegue(withIdentifier: "StartVCToHome", sender: nil)
         }
+        
     }
-
-   
-
+    
+    
+    
 }
