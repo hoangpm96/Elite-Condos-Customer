@@ -59,9 +59,9 @@ extension PopupPhotoPickerVC: UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopupPhotoCell", for: indexPath) as! PopupPhotoCell
         
-        guard Api.Order.images != nil else {
-            return cell
-        }
+//        guard Api.Order.images != nil else {
+//            return cell
+//        }
         
         if indexPath.row == Api.Order.images.count {
             let img = UIImage(named: "add.png")
@@ -79,10 +79,10 @@ extension PopupPhotoPickerVC: UICollectionViewDataSource{
 
 extension PopupPhotoPickerVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard Api.Order.images != nil else {
-            return 
-        }
+//        
+//        guard Api.Order.images != nil else {
+//            return 
+//        }
         
         if indexPath.row == Api.Order.images.count {
             present(imagePicker, animated: true, completion: nil)
