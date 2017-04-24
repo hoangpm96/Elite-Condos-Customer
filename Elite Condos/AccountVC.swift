@@ -30,7 +30,9 @@ class AccountVC: UIViewController {
         phoneTF.text = phone
     }
    
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
