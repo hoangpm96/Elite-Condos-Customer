@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ProgressHUD
 class AccountVC: UIViewController {
     @IBOutlet weak var nameTF: FancyField!
 
@@ -19,9 +19,16 @@ class AccountVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ProgressHUD.show("")
         Api.User.loadUserData { (name, email, phone ) in
             self.updateUI(name: name, email: email, phone: phone)
+            ProgressHUD.dismiss()
         }
+        
+        nameTF.delegate = self
+        phoneTF.delegate = self
+        emailTF.delegate = self
+        
     }
 
     func updateUI(name: String, email: String, phone: String){
@@ -33,6 +40,7 @@ class AccountVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -49,9 +57,26 @@ class AccountVC: UIViewController {
         
     }
 }
-
 extension AccountVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        nameTF.resignFirstResponder()
+        phoneTF.resignFirstResponder()
+        emailTF.resignFirstResponder()
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == nameTF{
+            // API here
+            print("nameTF \(textField.text!)")
+        }
+        if textField == emailTF{
+            print("emailTF \(textField.text!)")
+        }
+        if textField == phoneTF{
+            print("phoneTF \(textField.text!)")
+        }
+    }
 }
+
