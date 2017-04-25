@@ -278,6 +278,64 @@
             </objects>
             <point key="canvasLocation" x="2096" y="346"/>
         </scene>
+        <!--Quên mật khẩu-->
+        <scene sceneID="BHl-77-Vie">
+            <objects>
+                <viewController id="ZHZ-Jo-VPu" customClass="PasswordForgetVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yv7-Se-26r"/>
+                        <viewControllerLayoutGuide type="bottom" id="bpc-wF-rKh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rvq-cP-y2J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập email để phục hồi mật khẩu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVT-NH-FQT">
+                                <rect key="frame" x="16" y="86" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Mgd-Jw-oI4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7t-dM-hfc" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
+                                <rect key="frame" x="16" y="128" width="288" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="gX7-2U-omc"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uP-yG-XD4">
+                                <rect key="frame" x="91" y="171" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="forgetPassword_TouchInside:" destination="ZHZ-Jo-VPu" eventType="touchUpInside" id="X99-h1-eWb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oVT-NH-FQT" firstAttribute="leading" secondItem="rvq-cP-y2J" secondAttribute="leading" constant="16" id="5M1-mS-fKJ"/>
+                            <constraint firstItem="oVT-NH-FQT" firstAttribute="top" secondItem="yv7-Se-26r" secondAttribute="bottom" constant="22" id="WBI-xf-84i"/>
+                            <constraint firstAttribute="trailing" secondItem="oVT-NH-FQT" secondAttribute="trailing" constant="16" id="dHu-ge-TSf"/>
+                            <constraint firstItem="L7t-dM-hfc" firstAttribute="top" secondItem="oVT-NH-FQT" secondAttribute="bottom" constant="21" id="fCR-RD-hB1"/>
+                            <constraint firstItem="L7t-dM-hfc" firstAttribute="trailing" secondItem="oVT-NH-FQT" secondAttribute="trailing" id="fj8-AL-MkB"/>
+                            <constraint firstItem="L7t-dM-hfc" firstAttribute="leading" secondItem="oVT-NH-FQT" secondAttribute="leading" id="wFf-k1-OrH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Quên mật khẩu" id="IjT-Rv-dXM"/>
+                    <connections>
+                        <outlet property="emailTF" destination="L7t-dM-hfc" id="GFC-Dr-MsQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mAi-lV-PQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-727.5" y="93.75"/>
+        </scene>
         <!--Đăng Nhập-->
         <scene sceneID="zJP-Xc-WlV">
             <objects>
@@ -332,10 +390,23 @@
                                     <action selector="loginButton:" destination="TNd-3I-YEX" eventType="touchUpInside" id="kj2-vR-Uzv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-ul-cY8">
+                                <rect key="frame" x="0.0" y="450" width="320" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uAA-Hi-kV7"/>
+                                </constraints>
+                                <state key="normal" title="Quên mật khẩu"/>
+                                <connections>
+                                    <segue destination="ZHZ-Jo-VPu" kind="show" id="mCq-ea-uM0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="P19-m0-Ye5" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="40" id="4eE-Pn-wkI"/>
+                            <constraint firstAttribute="trailing" secondItem="gEt-ul-cY8" secondAttribute="trailing" id="69K-l4-eqw"/>
+                            <constraint firstItem="gEt-ul-cY8" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" id="7jd-B2-bR3"/>
+                            <constraint firstItem="3cd-nN-AvQ" firstAttribute="top" secondItem="gEt-ul-cY8" secondAttribute="bottom" id="CTM-z1-gju"/>
                             <constraint firstAttribute="trailing" secondItem="Viy-Hq-C8A" secondAttribute="trailing" constant="40" id="TfP-5N-wUx"/>
                             <constraint firstItem="Viy-Hq-C8A" firstAttribute="top" secondItem="P19-m0-Ye5" secondAttribute="bottom" constant="44" id="ZKR-xU-3Hb"/>
                             <constraint firstItem="P19-m0-Ye5" firstAttribute="centerX" secondItem="Zu9-29-mki" secondAttribute="centerX" id="kgs-db-R2a"/>
@@ -412,6 +483,6 @@
         <image name="logo" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HxG-WZ-mS0"/>
+        <segue reference="hGz-0c-piI"/>
     </inferredMetricsTieBreakers>
 </document>

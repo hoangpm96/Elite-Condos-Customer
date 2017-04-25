@@ -12,6 +12,43 @@ import Firebase
 class UserApi{
    
     
+    func forgetPassword(email: String, onError: @escaping (String) -> Void, onSuccess: @escaping () -> Void ){
+        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+            if error != nil {
+                onError((error?.localizedDescription)!)
+                return 
+            }
+            onSuccess()
+        })
+    }
+    
+    func updatePhone(phone: String, onSuccess: @escaping () -> Void) {
+        guard let user = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        DataService.ds.REF_CUSTOMERS.child(user.uid).updateChildValues(["phone": phone])
+        
+        onSuccess()
+    }
+    func updateEmail(email: String, onError: @escaping (String) -> Void){
+ 
+        FIRAuth.auth()?.currentUser?.updateEmail(email, completion: { (callback) in
+            if callback != nil {
+                onError((callback?.localizedDescription)!)
+            }
+            
+        })
+    }
+    
+    func updatePassword(password: String, onError: @escaping (String) -> Void){
+       
+        FIRAuth.auth()?.currentUser?.updatePassword(password, completion: { (error) in
+            if error != nil {
+                onError((error?.localizedDescription)!)
+            }
+        })
+    }
+    
     func signOut(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void){
         do {
            try  FIRAuth.auth()?.signOut()

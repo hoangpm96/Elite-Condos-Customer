@@ -15,6 +15,10 @@ class AccountVC: UIViewController {
     @IBOutlet weak var emailTF: FancyField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -67,15 +71,31 @@ extension AccountVC: UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
         if textField == nameTF{
             // API here
+        
             print("nameTF \(textField.text!)")
+        
         }
         if textField == emailTF{
             print("emailTF \(textField.text!)")
+            if let email = textField.text {
+                Api.User.updateEmail(email: email, onError: { (error) in
+                    ProgressHUD.showError(error)
+                })
+            }
         }
         if textField == phoneTF{
             print("phoneTF \(textField.text!)")
+            ProgressHUD.show("")
+            if let phone = textField.text {
+                Api.User.updatePhone(phone: phone, onSuccess: { 
+                    ProgressHUD.showSuccess("Đã cập nhật số điện thoại mới")
+                })
+                
+            }
+            
         }
     }
 }

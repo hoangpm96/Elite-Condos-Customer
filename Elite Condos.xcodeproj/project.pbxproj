@@ -23,6 +23,8 @@
 		D2159A111E7B8B3D006517B2 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2159A101E7B8B3D006517B2 /* Api.swift */; };
 		D23B2FF51DE095BA00EF6A19 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B2FF41DE095BA00EF6A19 /* CartCell.swift */; };
 		D23ECC161DF1A9F2002B6E1D /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23ECC151DF1A9F2002B6E1D /* CosmosDistrib.swift */; };
+		D2411EC31E8CEEFE0022C468 /* PasswordUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2411EC21E8CEEFE0022C468 /* PasswordUpdateVC.swift */; };
+		D2411EC51E8CFC8C0022C468 /* PasswordForgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2411EC41E8CFC8C0022C468 /* PasswordForgetVC.swift */; };
 		D24459241DDDED4200F51EE6 /* RandomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24459231DDDED4200F51EE6 /* RandomString.swift */; };
 		D24459261DDDF2FB00F51EE6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24459251DDDF2FB00F51EE6 /* Service.swift */; };
 		D2502C161DC8E2DF009189E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2502C151DC8E2DF009189E7 /* AppDelegate.swift */; };
@@ -81,6 +83,8 @@
 		D2159A101E7B8B3D006517B2 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		D23B2FF41DE095BA00EF6A19 /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		D23ECC151DF1A9F2002B6E1D /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		D2411EC21E8CEEFE0022C468 /* PasswordUpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordUpdateVC.swift; sourceTree = "<group>"; };
+		D2411EC41E8CFC8C0022C468 /* PasswordForgetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordForgetVC.swift; sourceTree = "<group>"; };
 		D24459231DDDED4200F51EE6 /* RandomString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomString.swift; sourceTree = "<group>"; };
 		D24459251DDDF2FB00F51EE6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D2502C121DC8E2DF009189E7 /* Elite Condos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Elite Condos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				D20E96151E79924400A8F3EE /* SubCategoryVC.swift */,
+				D2411EC21E8CEEFE0022C468 /* PasswordUpdateVC.swift */,
+				D2411EC41E8CFC8C0022C468 /* PasswordForgetVC.swift */,
 				D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */,
 				D20E96131E798DC000A8F3EE /* HomeVC.swift */,
 				D28EE7CC1DD9731000BCE1E9 /* LoginVC.swift */,
@@ -448,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2411EC51E8CFC8C0022C468 /* PasswordForgetVC.swift in Sources */,
 				D28EE7C51DD95A9600BCE1E9 /* FancyBtn.swift in Sources */,
 				D2159A0E1E7B8A70006517B2 /* OrderApi.swift in Sources */,
 				D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */,
@@ -488,6 +495,7 @@
 				D25556C41DD9B9C4004E7649 /* DataService.swift in Sources */,
 				D2598BDD1E7938AB0096769D /* ServiceData.swift in Sources */,
 				D2D66D881E7C15540029345F /* DateCollectionViewCell.swift in Sources */,
+				D2411EC31E8CEEFE0022C468 /* PasswordUpdateVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

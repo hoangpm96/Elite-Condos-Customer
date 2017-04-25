@@ -22,7 +22,7 @@ class HomeVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         if let subVC = segue.destination as? SubCategoryVC{
             if let data = sender as? [String:Any]{
