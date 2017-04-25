@@ -42,7 +42,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="wBO-AK-vwt"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nhanvien1" translatesAutoresizingMaskIntoConstraints="NO" id="haE-Do-SoT" customClass="CircleImage" customModule="Elite_Condos" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="haE-Do-SoT" customClass="CircleImage" customModule="Elite_Condos" customModuleProvider="target">
                                                 <rect key="frame" x="85" y="16" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="Wme-HY-DuZ"/>
@@ -241,6 +241,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>
+                        <outlet property="avatarImg" destination="haE-Do-SoT" id="kMx-0F-gyO"/>
                         <outlet property="emailTF" destination="2kb-do-2yy" id="cKh-kV-9jp"/>
                         <outlet property="nameTF" destination="K2t-Sa-Bss" id="nLP-gb-XOs"/>
                         <outlet property="phoneTF" destination="rUL-Ws-GpJ" id="zHC-db-bvE"/>
@@ -539,7 +540,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="here are some photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETV-oX-mhq">
-                                <rect key="frame" x="10" y="178" width="177" height="30"/>
+                                <rect key="frame" x="10" y="178" width="176.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Xlc-wO-KHz"/>
                                 </constraints>
@@ -570,7 +571,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRK-BI-vWw">
-                                <rect key="frame" x="202" y="181" width="24" height="24"/>
+                                <rect key="frame" x="201.5" y="181" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="3af-Z0-drH"/>
                                     <constraint firstAttribute="width" constant="24" id="S1I-GW-kmw"/>
@@ -805,7 +806,6 @@
         <image name="add" width="128" height="128"/>
         <image name="electrical" width="1200" height="800"/>
         <image name="email" width="128" height="128"/>
-        <image name="nhanvien1" width="1632" height="2048"/>
         <image name="password" width="128" height="128"/>
         <image name="phone" width="128" height="128"/>
         <image name="photo" width="128" height="128"/>

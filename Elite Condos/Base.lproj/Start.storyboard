@@ -306,12 +306,14 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uP-yG-XD4">
-                                <rect key="frame" x="91" y="171" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uP-yG-XD4">
+                                <rect key="frame" x="16" y="181" width="288" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="KY9-xj-OD1"/>
+                                </constraints>
+                                <state key="normal" title="Khôi phục mật khẩu"/>
                                 <connections>
                                     <action selector="forgetPassword_TouchInside:" destination="ZHZ-Jo-VPu" eventType="touchUpInside" id="X99-h1-eWb"/>
                                 </connections>
@@ -320,7 +322,10 @@
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oVT-NH-FQT" firstAttribute="leading" secondItem="rvq-cP-y2J" secondAttribute="leading" constant="16" id="5M1-mS-fKJ"/>
+                            <constraint firstItem="7uP-yG-XD4" firstAttribute="leading" secondItem="L7t-dM-hfc" secondAttribute="leading" id="KvV-j3-N23"/>
                             <constraint firstItem="oVT-NH-FQT" firstAttribute="top" secondItem="yv7-Se-26r" secondAttribute="bottom" constant="22" id="WBI-xf-84i"/>
+                            <constraint firstItem="7uP-yG-XD4" firstAttribute="trailing" secondItem="L7t-dM-hfc" secondAttribute="trailing" id="bKO-wI-jBC"/>
+                            <constraint firstItem="7uP-yG-XD4" firstAttribute="top" secondItem="L7t-dM-hfc" secondAttribute="bottom" constant="18" id="bNY-Og-5B4"/>
                             <constraint firstAttribute="trailing" secondItem="oVT-NH-FQT" secondAttribute="trailing" constant="16" id="dHu-ge-TSf"/>
                             <constraint firstItem="L7t-dM-hfc" firstAttribute="top" secondItem="oVT-NH-FQT" secondAttribute="bottom" constant="21" id="fCR-RD-hB1"/>
                             <constraint firstItem="L7t-dM-hfc" firstAttribute="trailing" secondItem="oVT-NH-FQT" secondAttribute="trailing" id="fj8-AL-MkB"/>

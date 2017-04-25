@@ -11,6 +11,36 @@ import Firebase
 
 class UserApi{
    
+    func downloadUserImage(onError: @escaping (String) -> Void, onSuccess: @escaping (UIImage) -> Void){
+        guard let user = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        
+        DataService.ds.REF_CUSTOMERS.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snap = snapshot.value as? [String:Any]{
+                if let imgUrl = snap["avatarUrl"] as? String{
+                    self.downloadImage(imgUrl: imgUrl, onError: { (error) in
+                        onError(error)
+                    }, onSuccess: { (img) in
+                        onSuccess(img)
+                    })
+                }
+            }
+        })
+    }
+    
+    func downloadImage(imgUrl: String, onError: @escaping (String) -> Void, onSuccess: @escaping (UIImage) -> Void ){
+        let storage = FIRStorage.storage()
+        let ref = storage.reference(forURL: imgUrl)
+        ref.data(withMaxSize: 3 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                onError(error.localizedDescription)
+            }else{
+                let img = UIImage(data: data!)
+                onSuccess(img!)
+            }
+        }
+    }
     
     func forgetPassword(email: String, onError: @escaping (String) -> Void, onSuccess: @escaping () -> Void ){
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
@@ -120,8 +150,7 @@ class UserApi{
                 guard let name = dict["name"] as? String else{
                     return
                 }
-                
-//                let uid = FIRAuth.auth()?.currentUser?.uid
+            
                 
                 let email = FIRAuth.auth()?.currentUser?.email
                 
@@ -129,7 +158,7 @@ class UserApi{
                 
                 
                 
-                ///["phone": 01647778186, "name": Khoa, "email": user3@gmail.com, "avatarUrl": https://firebasestorage.googleapis.com/v0/b/elite-condos.appspot.com/o/customer_avatar%2F9CB04EFD-1B1E-4DA7-8D27-7511B9BC2C49?alt=media&token=ba430d22-49a9-40ef-936d-1e11b50e78ad]
+       
             }
         })
     }

@@ -9,13 +9,13 @@
 import UIKit
 import ProgressHUD
 class AccountVC: UIViewController {
+    @IBOutlet weak var avatarImg: CircleImage!
     @IBOutlet weak var nameTF: FancyField!
 
     @IBOutlet weak var phoneTF: FancyField!
     @IBOutlet weak var emailTF: FancyField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
@@ -24,6 +24,13 @@ class AccountVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ProgressHUD.show("")
+        
+        Api.User.downloadUserImage(onError: { (error) in
+            print(error)
+        }) { (img) in
+            self.avatarImg.image = img
+        }
+        
         Api.User.loadUserData { (name, email, phone ) in
             self.updateUI(name: name, email: email, phone: phone)
             ProgressHUD.dismiss()
