@@ -21,6 +21,8 @@
 		D2159A0C1E7B7AEA006517B2 /* PopupPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2159A0B1E7B7AEA006517B2 /* PopupPhotoCell.swift */; };
 		D2159A0E1E7B8A70006517B2 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2159A0D1E7B8A70006517B2 /* OrderApi.swift */; };
 		D2159A111E7B8B3D006517B2 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2159A101E7B8B3D006517B2 /* Api.swift */; };
+		D21DA0821E98CE6C005BE50A /* SupplierApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DA0811E98CE6C005BE50A /* SupplierApi.swift */; };
+		D21DA0841E98D025005BE50A /* SupplierListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DA0831E98D025005BE50A /* SupplierListVC.swift */; };
 		D23B2FF51DE095BA00EF6A19 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B2FF41DE095BA00EF6A19 /* CartCell.swift */; };
 		D23ECC161DF1A9F2002B6E1D /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23ECC151DF1A9F2002B6E1D /* CosmosDistrib.swift */; };
 		D2411EC31E8CEEFE0022C468 /* PasswordUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2411EC21E8CEEFE0022C468 /* PasswordUpdateVC.swift */; };
@@ -81,6 +83,8 @@
 		D2159A0B1E7B7AEA006517B2 /* PopupPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupPhotoCell.swift; sourceTree = "<group>"; };
 		D2159A0D1E7B8A70006517B2 /* OrderApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
 		D2159A101E7B8B3D006517B2 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		D21DA0811E98CE6C005BE50A /* SupplierApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierApi.swift; sourceTree = "<group>"; };
+		D21DA0831E98D025005BE50A /* SupplierListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierListVC.swift; sourceTree = "<group>"; };
 		D23B2FF41DE095BA00EF6A19 /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		D23ECC151DF1A9F2002B6E1D /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		D2411EC21E8CEEFE0022C468 /* PasswordUpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordUpdateVC.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				D2159A0D1E7B8A70006517B2 /* OrderApi.swift */,
 				D2159A101E7B8B3D006517B2 /* Api.swift */,
 				D2D5E4511E8100890031F79F /* UserApi.swift */,
+				D21DA0811E98CE6C005BE50A /* SupplierApi.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				D2CFB66B1E7FC35E00618683 /* MyJobsVC.swift */,
 				D2CFB66D1E7FC36A00618683 /* AccountVC.swift */,
 				D2D5E4531E8107FE0031F79F /* SignUpVC.swift */,
+				D21DA0831E98D025005BE50A /* SupplierListVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				D24459241DDDED4200F51EE6 /* RandomString.swift in Sources */,
 				D28EE7CB1DD95AF200BCE1E9 /* Constant.swift in Sources */,
 				D20C5CA11E00484200D15C92 /* ServiceListCell.swift in Sources */,
+				D21DA0821E98CE6C005BE50A /* SupplierApi.swift in Sources */,
 				D20E96181E79943500A8F3EE /* SubCategoryCell.swift in Sources */,
 				D2F5CD4C1DDE932200FC7E42 /* Employee.swift in Sources */,
 				D2502C161DC8E2DF009189E7 /* AppDelegate.swift in Sources */,
@@ -492,6 +499,7 @@
 				D2159A111E7B8B3D006517B2 /* Api.swift in Sources */,
 				D20E96161E79924400A8F3EE /* SubCategoryVC.swift in Sources */,
 				D28EE7CF1DD9762900BCE1E9 /* StartVC.swift in Sources */,
+				D21DA0841E98D025005BE50A /* SupplierListVC.swift in Sources */,
 				D2CFB66E1E7FC36A00618683 /* AccountVC.swift in Sources */,
 				D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */,
 				D25556C81DD9C56D004E7649 /* Errors.swift in Sources */,

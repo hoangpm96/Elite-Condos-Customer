@@ -9,56 +9,34 @@
 import Foundation
 import Firebase
 class Supplier {
+    var id : String?
+    var name : String?
+    var address : String?
+    var logo : String?
+    var phone: String?
+    var email: String?
+    var stars: String?
+    //var serviceRef : FIRDatabaseReference!
     
-    private var _id : String!
-    private var _name : String!
-    private var _address : String!
-    private var _description : String!
-    private var _logo : String!
-    private var _serviceRef : FIRDatabaseReference!
-    
-    var name : String{
-        if _name == nil{
-            return "NO NAME"
-        }
-        return _name
-    }
-    var address : String{
-        return _address
-    }
-    var description : String{
-        return _description
-    }
-    var logo : String{
-        if _logo == nil{
-            return ""
-        }
-        return _logo
-    }
-    
-    var id : String{
-        return _id
-    }
-    var serviceRef : FIRDatabaseReference{
-        return _serviceRef
-    }
     init(id : String, data : Dictionary<String, Any>) {
-        self._id = id
+        self.id = id
         if let name = data["name"] as? String{
-            self._name = name
+            self.name = name
         }
         if let address = data["address"] as? String{
-            self._address = address
+            self.address = address
         }
-        if let description = data["description"] as? String{
-            self._description = description
-        }
-
         if let logo = data["logoUrl"] as? String{
-           self._logo = logo
+            self.logo = logo
+        }
+        if let email = data["email"] as? String{
+            self.email = email
+        }
+        if let phone = data["phone"] as? String{
+            self.phone = phone
         }
         
-       
+        
         
     }
     

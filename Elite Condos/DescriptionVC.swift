@@ -12,11 +12,11 @@ import CoreLocation
 import ProgressHUD
 
 class DescriptionVC: UIViewController {
-
+    
     @IBOutlet weak var descriptionTF: UITextField!
     @IBOutlet weak var continueBtn: UIButton!
     let locationManager = CLLocationManager()
-
+    
     var userLocation = CLLocation()
     
     var isGetTime = false
@@ -30,9 +30,9 @@ class DescriptionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let popover = segue.destination as! PopupPhotoPickerVC
-//        popover.delegate = self
-        
+        //        let popover = segue.destination as! PopupPhotoPickerVC
+        //        popover.delegate = self
+        self.title = "What do you need?"
         locationManager.delegate = self
         
         locationBtn.titleLabel?.numberOfLines = 2
@@ -47,12 +47,12 @@ class DescriptionVC: UIViewController {
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if  segue.identifier == "DesciptionToPopup"{
-        
-        if let popover = segue.destination as? PopupPhotoPickerVC{
-            print("pop over")
-            popover.delegate = self
-        }
+        if  segue.identifier == "DesciptionToPopup"{
+            
+            if let popover = segue.destination as? PopupPhotoPickerVC{
+                print("pop over")
+                popover.delegate = self
+            }
         }
     }
     
@@ -89,53 +89,49 @@ class DescriptionVC: UIViewController {
     
     @IBAction func continueBtnPressed(_ sender: Any) {
         
-          ProgressHUD.show("Đang tải hình ảnh lên server")
+        //        ProgressHUD.show("Đang tải hình ảnh lên server")
+        //
+        //        guard let description = descriptionTF.text, description != "" else {
+        //            showAlert(title: APP_NAME, message: "You should fill in description")
+        //            return
+        //        }
+        //        guard Api.Order.images.count > 0 else {
+        //            showAlert(title: APP_NAME, message: "You should pick at least one picture")
+        //            return
+        //        }
+        //        guard isGetTime == true else {
+        //            showAlert(title: APP_NAME, message: "You should pick a time")
+        //            return
+        //        }
+        //        guard isGetLocation == true else {
+        //            showAlert(title: APP_NAME, message: "You should choose your address")
+        //            return
+        //        }
+        //
+        //        let today = Date().description
+        //
+        //
+        //        var orderDescription: [String:Any]
+        //        orderDescription = [
+        //        "created_at": today,
+        //        "lat": userLocation.coordinate.latitude,
+        //        "long": userLocation.coordinate.longitude,
+        //        "time": (timeBtn.titleLabel?.text)! as String,
+        //      //  "customerId": user.uid,
+        //        "serviceId": 1,
+        //        "status": ORDER_STATUS.ONGOING.hashValue
+        //        ]
+        //        Api.Order.addNewOrder(orderData: orderDescription) {
+        //            print("Successful")
+        //            ProgressHUD.showSuccess("Đã đặt lịch thành công")
+        //        }
         
-        guard let description = descriptionTF.text, description != "" else {
-            showAlert(title: APP_NAME, message: "You should fill in description")
-            return
-        }
-        guard Api.Order.images.count > 0 else {
-            showAlert(title: APP_NAME, message: "You should pick at least one picture")
-            return
-        }
-        guard isGetTime == true else {
-            showAlert(title: APP_NAME, message: "You should pick a time")
-            return
-        }
-        guard isGetLocation == true else {
-            showAlert(title: APP_NAME, message: "You should choose your address")
-            return
-        }
-       
-//        guard let user = FIRAuth.auth()?.currentUser else {
-//            return
-//        }
-//        let today = Date()
-        
-      
-        
-        let today = Date().description
-        
-        
-        var orderDescription: [String:Any]
-        orderDescription = [
-        "created_at": today,
-        "lat": userLocation.coordinate.latitude,
-        "long": userLocation.coordinate.longitude,
-        "time": (timeBtn.titleLabel?.text)! as String,
-      //  "customerId": user.uid,
-        "serviceId": 1,
-        "status": ORDER_STATUS.ONGOING.hashValue
-        ]
-        Api.Order.addNewOrder(orderData: orderDescription) { 
-            print("Successful")
-            ProgressHUD.showSuccess("Đã đặt lịch thành công")
-        }
-       
+        performSegue(withIdentifier: "DescriptionToSupplierList", sender: nil)
         
         
     }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

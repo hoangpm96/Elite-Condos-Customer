@@ -12,4 +12,5 @@ import Foundation
 struct Api {
     static var Order = OrderApi()
     static var User = UserApi()
+    static var Supplier = SupplierApi()
 }

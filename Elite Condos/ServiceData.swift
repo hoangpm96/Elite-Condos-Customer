@@ -11,11 +11,20 @@ import Foundation
 
 
 struct ServiceData{
+    
+    var id: String?
     var name: String!
     var imgUrl: String!
     var subCategory: [ServiceData]?
     
     init(name: String, imgUrl: String, subCategories: [ServiceData]?) {
+        self.name = name
+        self.imgUrl = imgUrl
+        self.subCategory = subCategories
+    }
+    
+    init(id: String, name: String, imgUrl: String, subCategories: [ServiceData]?) {
+        self.id = id
         self.name = name
         self.imgUrl = imgUrl
         self.subCategory = subCategories
@@ -49,11 +58,11 @@ func getServiceData() -> [ServiceData]{
     
     
     
-    let electricalService = ServiceData(name: "Electrical", imgUrl: "electrical.jpg", subCategories: [e1,e2,e3])
+    let electricalService = ServiceData(id: "service01", name: "Electrical", imgUrl: "electrical.jpg", subCategories: [e1,e2,e3])
     
-    let plumbing = ServiceData(name: "Pluming", imgUrl: "plumbing.png", subCategories: [p1,p2,p3,p4,p5])
+    let plumbing = ServiceData(id: "service02", name: "Pluming", imgUrl: "plumbing.png", subCategories: [p1,p2,p3,p4,p5])
 
-    let appliances = ServiceData(name: "Appliances", imgUrl: "appliances.png", subCategories: [a1,a2,a3])
+    let appliances = ServiceData(id: "service03", name: "Appliances", imgUrl: "appliances.png", subCategories: [a1,a2,a3])
     
     
     
