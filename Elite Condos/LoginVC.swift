@@ -9,26 +9,34 @@
 import UIKit
 import Firebase
 import ProgressHUD
-class LoginVC: UIViewController , UITextFieldDelegate {
+class LoginVC: UIViewController {
 
     @IBOutlet weak var passwordTF: FancyField!
     @IBOutlet weak var emailTF: FancyField!
     @IBAction func backBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+       
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTF.delegate = self
+        emailTF.delegate = self
     }
     @IBAction func loginButton(_ sender: Any) {
-        
+        login()
+    }
+    
+    func login(){
         ProgressHUD.show("Đang đăng nhập")
         
         guard let email = emailTF.text, email != "" else {
             showAlert(title: SIGN_IN_ERROR, message: SIGN_IN_ERROR_EMAIL)
+            ProgressHUD.dismiss()
             return
         }
         guard let password = passwordTF.text, password != "" else {
             showAlert(title: SIGN_IN_ERROR, message: SIGN_IN_ERROR_PASSWORD)
+            ProgressHUD.dismiss()
             return
         }
         
@@ -39,6 +47,7 @@ class LoginVC: UIViewController , UITextFieldDelegate {
             ProgressHUD.showError(error)
         }
         
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -63,7 +72,18 @@ class LoginVC: UIViewController , UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
         
     }
-
- 
-    
+}
+extension LoginVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTF{
+            print("email")
+            emailTF.resignFirstResponder()
+            passwordTF.becomeFirstResponder()
+        }
+        else if textField == passwordTF{
+            self.login()
+        }
+        return false
+        
+    }
 }

@@ -31,6 +31,19 @@ UINavigationControllerDelegate{
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
+        setupTextField()
+        
+    }
+    func setupTextField(){
+        nameTF.delegate = self
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        phoneTF.delegate = self
+        
+        nameTF.tag = 0
+        emailTF.tag = 1
+        passwordTF.tag = 2
+        phoneTF.tag = 3
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -109,4 +122,19 @@ UINavigationControllerDelegate{
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension SignUpVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if let nextTF = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField{
+            nextTF.becomeFirstResponder()
+            nextTF.updateFocusIfNeeded()
+        }
+        else {
+            textField.resignFirstResponder()
+        }
+        
+        return false
+    }
 }

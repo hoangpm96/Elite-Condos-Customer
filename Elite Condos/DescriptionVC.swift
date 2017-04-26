@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+
+
 class DescriptionVC: UIViewController {
 
     @IBOutlet weak var descriptionTF: UITextField!
@@ -24,8 +26,11 @@ class DescriptionVC: UIViewController {
     var mainService = ""
     var subService = ""
     var current = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let popover = segue.destination as! PopupPhotoPickerVC
+//        popover.delegate = self
         
         locationManager.delegate = self
         
@@ -39,10 +44,15 @@ class DescriptionVC: UIViewController {
         if Api.Order.images.count > 0 {
             photoImage.imageView?.image = Api.Order.images[0]
         }
-        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
+      if  segue.identifier == "DesciptionToPopup"{
+        
+        if let popover = segue.destination as? PopupPhotoPickerVC{
+            print("pop over")
+            popover.delegate = self
+        }
+        }
     }
     
     @IBAction func getTimeBtnPressed(_ sender: Any) {
@@ -99,6 +109,11 @@ class DescriptionVC: UIViewController {
         
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func getLocationBtnPressed(_ sender: Any) {
         
         
@@ -147,9 +162,20 @@ extension DescriptionVC: CLLocationManagerDelegate{
             
         }
     }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }
     
+}
+
+extension DescriptionVC: PopoverDelegate{
+    func showPhotoImage() {
+        print("In show photo image")
+        if Api.Order.images.count > 0 {
+            photoImage.setImage(Api.Order.images[0], for: .normal)
+        }else {
+            let img = UIImage(named: "photo")
+            photoImage.setImage(img, for: .normal)
+        }
+    }
 }

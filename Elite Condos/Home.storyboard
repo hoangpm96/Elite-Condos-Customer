@@ -578,7 +578,7 @@
                                 </constraints>
                                 <state key="normal" image="photo"/>
                                 <connections>
-                                    <segue destination="kAQ-0w-bJG" kind="presentation" id="LoG-wX-e0n"/>
+                                    <segue destination="kAQ-0w-bJG" kind="presentation" identifier="DesciptionToPopup" id="LoG-wX-e0n"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="npd-x1-U7v">

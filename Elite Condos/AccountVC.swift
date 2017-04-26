@@ -79,14 +79,19 @@ extension AccountVC: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        ProgressHUD.show("")
+
         if textField == nameTF{
             // API here
-        
-            print("nameTF \(textField.text!)")
-        
+            if let name = textField.text {
+                Api.User.updateName(name: name, onSuccess: {
+                    ProgressHUD.showSuccess("Đã cập nhật tên mới")
+                })
+                
+            }
         }
         if textField == emailTF{
-            print("emailTF \(textField.text!)")
+            
             if let email = textField.text {
                 Api.User.updateEmail(email: email, onError: { (error) in
                     ProgressHUD.showError(error)
@@ -94,8 +99,6 @@ extension AccountVC: UITextFieldDelegate{
             }
         }
         if textField == phoneTF{
-            print("phoneTF \(textField.text!)")
-            ProgressHUD.show("")
             if let phone = textField.text {
                 Api.User.updatePhone(phone: phone, onSuccess: { 
                     ProgressHUD.showSuccess("Đã cập nhật số điện thoại mới")

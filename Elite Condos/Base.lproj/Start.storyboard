@@ -129,7 +129,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-5f-FvZ" customClass="FancyView" customModule="Elite_Condos" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-user" translatesAutoresizingMaskIntoConstraints="NO" id="R1w-SY-wXi" customClass="CircleImage" customModule="Elite_Condos" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-user" translatesAutoresizingMaskIntoConstraints="NO" id="R1w-SY-wXi" customClass="CircleImage" customModule="Elite_Condos" customModuleProvider="target">
                                                         <rect key="frame" x="130" y="25" width="60" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="5c6-32-pqc"/>
@@ -169,25 +169,25 @@
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-Mg-yEy" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="80.5" width="280" height="34"/>
+                                                                <rect key="frame" x="0.0" y="80" width="280" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="heH-ZN-A5u"/>
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-CD-nVm" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="160.5" width="280" height="34"/>
+                                                                <rect key="frame" x="0.0" y="161" width="280" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="Mmh-nE-8Vh"/>
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEF-q6-vLe" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="241" width="280" height="34"/>
@@ -196,7 +196,7 @@
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="go"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -354,19 +354,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="P19-m0-Ye5">
-                                <rect key="frame" x="40" y="130" width="240" height="100"/>
+                                <rect key="frame" x="20" y="130" width="280" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qJi-0m-nOx" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="DPu-C0-txD"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzf-sj-EaZ" customClass="FancyField" customModule="Elite_Condos" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="65" width="240" height="35"/>
+                                        <rect key="frame" x="0.0" y="65" width="280" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="0Q7-Qm-GVb"/>
                                         </constraints>
@@ -408,7 +408,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="P19-m0-Ye5" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="40" id="4eE-Pn-wkI"/>
+                            <constraint firstItem="P19-m0-Ye5" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="20" id="4eE-Pn-wkI"/>
                             <constraint firstAttribute="trailing" secondItem="gEt-ul-cY8" secondAttribute="trailing" id="69K-l4-eqw"/>
                             <constraint firstItem="gEt-ul-cY8" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" id="7jd-B2-bR3"/>
                             <constraint firstItem="3cd-nN-AvQ" firstAttribute="top" secondItem="gEt-ul-cY8" secondAttribute="bottom" id="CTM-z1-gju"/>
@@ -417,7 +417,7 @@
                             <constraint firstItem="P19-m0-Ye5" firstAttribute="centerX" secondItem="Zu9-29-mki" secondAttribute="centerX" id="kgs-db-R2a"/>
                             <constraint firstItem="P19-m0-Ye5" firstAttribute="centerY" secondItem="Zu9-29-mki" secondAttribute="centerY" constant="-60" id="nCm-58-RnA"/>
                             <constraint firstItem="Viy-Hq-C8A" firstAttribute="leading" secondItem="Zu9-29-mki" secondAttribute="leading" constant="40" id="nFT-5e-bVc"/>
-                            <constraint firstAttribute="trailing" secondItem="P19-m0-Ye5" secondAttribute="trailing" constant="40" id="u0h-fC-j17"/>
+                            <constraint firstAttribute="trailing" secondItem="P19-m0-Ye5" secondAttribute="trailing" constant="20" id="u0h-fC-j17"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Đăng Nhập" id="46o-CV-QM3">
@@ -483,11 +483,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avatar-user" width="64" height="64"/>
+        <image name="add-user" width="128" height="128"/>
         <image name="left-arrow" width="32" height="32"/>
         <image name="logo" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hGz-0c-piI"/>
+        <segue reference="6ib-gO-229"/>
     </inferredMetricsTieBreakers>
 </document>

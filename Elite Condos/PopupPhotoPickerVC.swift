@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol PopoverDelegate {
+    func showPhotoImage()
+}
+
 class PopupPhotoPickerVC: UIViewController {
     
     @IBOutlet weak var subView: UIView!
     
+    
+    var delegate: PopoverDelegate?
     
     let imagePicker: UIImagePickerController = UIImagePickerController()
     var subViewTapped = false
@@ -31,7 +37,11 @@ class PopupPhotoPickerVC: UIViewController {
        
         if touches.first?.view != subView{
             // subView is your view
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: {
+                print("In popup dismiss")
+                self.delegate?.showPhotoImage()
+            })
+           
         }
     }
     @IBAction func deleteAllBtnPressed(_ sender: Any) {

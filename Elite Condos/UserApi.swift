@@ -60,6 +60,17 @@ class UserApi{
         
         onSuccess()
     }
+    
+    func updateName(name: String, onSuccess: @escaping () -> Void) {
+        guard let user = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        DataService.ds.REF_CUSTOMERS.child(user.uid).updateChildValues(["name": name])
+        
+        onSuccess()
+    }
+    
+    
     func updateEmail(email: String, onError: @escaping (String) -> Void){
  
         FIRAuth.auth()?.currentUser?.updateEmail(email, completion: { (callback) in
