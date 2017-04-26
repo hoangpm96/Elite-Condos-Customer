@@ -28,6 +28,8 @@ class DataService {
     
     // Storage references
     private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    private var _REF_ORDER_IMAGES = STORAGE_BASE.child("order-pics")
+    
     private var _REF_CUSTOMER_AVATAR = STORAGE_BASE.child("customer_avatar")
     private var _REF_SUPPLIER_LOGO = STORAGE_BASE.child("supplier_images")
     private var _REF_EMPLOYEE_AVATAR = STORAGE_BASE.child("employee_avatar")
@@ -70,6 +72,10 @@ class DataService {
     var REF_EMPLOYEE_AVATAR : FIRStorageReference{
         return _REF_EMPLOYEE_AVATAR
     
+    }
+    var REF_ORDER_IMAGES : FIRStorageReference{
+        return _REF_ORDER_IMAGES
+        
     }
     
     

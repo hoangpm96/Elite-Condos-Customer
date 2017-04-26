@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 import CoreLocation
-
+import ProgressHUD
 
 class DescriptionVC: UIViewController {
 
@@ -56,8 +57,8 @@ class DescriptionVC: UIViewController {
     }
     
     @IBAction func getTimeBtnPressed(_ sender: Any) {
-       
-       
+        
+        self.view.endEditing(true)
         let min = Date().addingTimeInterval(-60 * 60 * 24 * 0.5)
         let max = Date().addingTimeInterval(60 * 60 * 24 * 8)
         let picker = DateTimePicker.show(selected: min, minimumDate: min, maximumDate: max)
@@ -87,6 +88,9 @@ class DescriptionVC: UIViewController {
     }
     
     @IBAction func continueBtnPressed(_ sender: Any) {
+        
+          ProgressHUD.show("Đang tải hình ảnh lên server")
+        
         guard let description = descriptionTF.text, description != "" else {
             showAlert(title: APP_NAME, message: "You should fill in description")
             return
@@ -103,8 +107,31 @@ class DescriptionVC: UIViewController {
             showAlert(title: APP_NAME, message: "You should choose your address")
             return
         }
+       
+//        guard let user = FIRAuth.auth()?.currentUser else {
+//            return
+//        }
+//        let today = Date()
+        
+      
+        
+        let today = Date().description
         
         
+        var orderDescription: [String:Any]
+        orderDescription = [
+        "created_at": today,
+        "lat": userLocation.coordinate.latitude,
+        "long": userLocation.coordinate.longitude,
+        "time": (timeBtn.titleLabel?.text)! as String,
+      //  "customerId": user.uid,
+        "serviceId": 1,
+        "status": ORDER_STATUS.ONGOING.hashValue
+        ]
+        Api.Order.addNewOrder(orderData: orderDescription) { 
+            print("Successful")
+            ProgressHUD.showSuccess("Đã đặt lịch thành công")
+        }
        
         
         
@@ -115,8 +142,6 @@ class DescriptionVC: UIViewController {
     }
     
     @IBAction func getLocationBtnPressed(_ sender: Any) {
-        
-        
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()

@@ -93,17 +93,28 @@ extension AccountVC: UITextFieldDelegate{
         if textField == emailTF{
             
             if let email = textField.text {
+                print(email)
+                
                 Api.User.updateEmail(email: email, onError: { (error) in
-                    ProgressHUD.showError(error)
+                    print(error)
+                }, onSuccess: { 
+                    Api.User.signOut(onSuccess: {
+                        let storyboard = UIStoryboard.init(name: "Start", bundle: nil)
+                        let homeVC = storyboard.instantiateViewController(withIdentifier: "StartVC")
+                        self.present(homeVC, animated: true, completion: nil)
+                    }, onError: { (error) in
+                        print(error)
+                    })
                 })
+                
             }
+            
         }
         if textField == phoneTF{
             if let phone = textField.text {
                 Api.User.updatePhone(phone: phone, onSuccess: { 
                     ProgressHUD.showSuccess("Đã cập nhật số điện thoại mới")
                 })
-                
             }
             
         }

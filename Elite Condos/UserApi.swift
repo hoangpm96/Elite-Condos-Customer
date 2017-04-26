@@ -11,6 +11,7 @@ import Firebase
 
 class UserApi{
    
+   
     func downloadUserImage(onError: @escaping (String) -> Void, onSuccess: @escaping (UIImage) -> Void){
         guard let user = FIRAuth.auth()?.currentUser else {
             return
@@ -71,14 +72,23 @@ class UserApi{
     }
     
     
-    func updateEmail(email: String, onError: @escaping (String) -> Void){
+    func updateEmail(email: String, onError: @escaping (String) -> Void, onSuccess: @escaping () -> Void){
  
+        
+        guard let user = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        
+        DataService.ds.REF_CUSTOMERS.child(user.uid).updateChildValues(["email": email])
+       
         FIRAuth.auth()?.currentUser?.updateEmail(email, completion: { (callback) in
             if callback != nil {
                 onError((callback?.localizedDescription)!)
+                return
             }
             
         })
+        onSuccess()
     }
     
     func updatePassword(password: String, onError: @escaping (String) -> Void){
@@ -105,14 +115,12 @@ class UserApi{
             let imgUid = NSUUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
-            DataService.ds.REF_CUSTOMER_AVATAR.child(imgUid).put(imgData, metadata: metadata, completion: { (metadata, error) in
+            DataService.ds.REF_CUSTOMER_AVATAR.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
                 if error != nil{
                     onError(error.debugDescription)
                 }else{
-                    
-                    if let avatarUrl = metadata?.downloadURL()?.absoluteString{
-                        onSuccess(avatarUrl)
-                    }
+                     let downloadURL = metaData!.downloadURL()!.absoluteString
+                    onSuccess(downloadURL)
                 }
             })
         }
@@ -165,7 +173,11 @@ class UserApi{
                 
                 let email = FIRAuth.auth()?.currentUser?.email
                 
-                completed(name, email!, phone)
+                if let email = email{
+                    completed(name, email, phone)
+                }
+                
+                
                 
                 
                 
