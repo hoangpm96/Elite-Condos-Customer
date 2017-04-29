@@ -11,13 +11,22 @@ import Firebase
 
 class UserApi{
    
-   
+    func currentUid() -> String{
+        
+        let currentUser = FIRAuth.auth()?.currentUser
+        
+        return (currentUser?.uid)!
+        
+    }
+    
     func downloadUserImage(onError: @escaping (String) -> Void, onSuccess: @escaping (UIImage) -> Void){
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
         
-        DataService.ds.REF_CUSTOMERS.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+      
+        
+         FirRef.CUSTOMERS.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snap = snapshot.value as? [String:Any]{
                 if let imgUrl = snap["avatarUrl"] as? String{
                     self.downloadImage(imgUrl: imgUrl, onError: { (error) in
@@ -57,7 +66,7 @@ class UserApi{
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
-        DataService.ds.REF_CUSTOMERS.child(user.uid).updateChildValues(["phone": phone])
+         FirRef.CUSTOMERS.child(user.uid).updateChildValues(["phone": phone])
         
         onSuccess()
     }
@@ -66,7 +75,7 @@ class UserApi{
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
-        DataService.ds.REF_CUSTOMERS.child(user.uid).updateChildValues(["name": name])
+         FirRef.CUSTOMERS.child(user.uid).updateChildValues(["name": name])
         
         onSuccess()
     }
@@ -79,7 +88,7 @@ class UserApi{
             return
         }
         
-        DataService.ds.REF_CUSTOMERS.child(user.uid).updateChildValues(["email": email])
+         FirRef.CUSTOMERS.child(user.uid).updateChildValues(["email": email])
        
         FIRAuth.auth()?.currentUser?.updateEmail(email, completion: { (callback) in
             if callback != nil {
@@ -115,7 +124,8 @@ class UserApi{
             let imgUid = NSUUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
-            DataService.ds.REF_CUSTOMER_AVATAR.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
+            
+            FirRef.CUSTOMER_AVATAR.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
                 if error != nil{
                     onError(error.debugDescription)
                 }else{
@@ -145,7 +155,8 @@ class UserApi{
                         "phone" : phone,
                         "avatarUrl" : imgUrl
                     ]
-                    DataService.ds.createFirebaseDBCutomer(uid: user.uid, userData: userData)
+                    
+                    self.createFirebaseDBCutomer(uid: user.uid, userData: userData)
                     onSuccess()
                 }
             })
@@ -161,7 +172,8 @@ class UserApi{
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
-        DataService.ds.REF_CUSTOMERS.child(user.uid).observe(.value, with: { (snapshot) in
+        
+        FirRef.CUSTOMERS.child(user.uid).observe(.value, with: { (snapshot) in
             if let dict = snapshot.value as? [String:Any]{
                 guard let phone = dict["phone"] as? String else{
                     return
@@ -176,12 +188,7 @@ class UserApi{
                 if let email = email{
                     completed(name, email, phone)
                 }
-                
-                
-                
-                
-                
-       
+   
             }
         })
     }
@@ -200,7 +207,7 @@ class UserApi{
                     return
                 }
                 
-                DataService.ds.REF_USERS.child(userId).observeSingleEvent(of: .value, with: {snapshot in
+                FirRef.USERS.child(userId).observeSingleEvent(of: .value, with: {snapshot in
                     if let userData = snapshot.value as? Dictionary<String,Any>{
                         print(userData)
                         if let _ = userData["customer"]{
@@ -224,6 +231,19 @@ class UserApi{
         })
 
     }
+    
+    
+    func createFirebaseDBCutomer(uid : String, userData : Dictionary<String, String>  ){
+        
+        FirRef.CUSTOMERS.child(uid).updateChildValues(userData)
+        
+        
+        
+        let currentTime = getCurrentTime()
+        FirRef.USERS.child(uid).updateChildValues(["customer" : true,
+                                                "created_at" : currentTime])
+    }
+    
     
     
 }

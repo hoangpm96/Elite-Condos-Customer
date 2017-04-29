@@ -303,8 +303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "OrderApi"
-            landmarkType = "3">
+            landmarkName = "uploadPhotos(onSuccess:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

@@ -10,6 +10,7 @@ target 'Elite Condos' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'ProgressHUD'
+  pod 'SDWebImage', '~>3.8'
 
   # Pods for Elite Condos
 

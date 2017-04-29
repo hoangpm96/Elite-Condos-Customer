@@ -27,6 +27,19 @@ class SupplierListVC: UIViewController {
 
 }
 
+extension SupplierListVC: SupplierCellDelegate{
+    func book(supplierId: String) {
+        let currentUid = Api.User.currentUid()
+        let  orderData: [String:Any] =  [
+        "create_at" : getCurrentTime(),
+        "status" : ORDER_STATUS.NOTACCEPT.hashValue ,
+        "customerId" : currentUid,
+        "supplierId" : supplierId,
+//        "name" : self.services[indexPath.row].name,
+        ]
+    }
+}
+
 
 extension SupplierListVC: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {

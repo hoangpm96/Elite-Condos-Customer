@@ -14,6 +14,8 @@ class OrderApi{
     var images: [UIImage] = [UIImage]()
     var mainService = ""
     var subService = ""
+    
+    
     func addNewOrder(orderData: [String:Any], onSuccess: @escaping () -> Void){
         uploadPhotos { (imgUrls) in
             var newData = orderData
@@ -28,8 +30,10 @@ class OrderApi{
             newData["imgUrls"] = imgStrings
             let newChildId = randomString(length: 8)
             
-            DataService.ds.REF_ORDERS.child(newChildId).updateChildValues(newData)
-            onSuccess()
+            
+            
+//            DataService.ds.REF_ORDERS.child(newChildId).updateChildValues(newData)
+//            onSuccess()
         }
     }
     
@@ -82,7 +86,10 @@ class OrderApi{
             let imgUid = NSUUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
-            DataService.ds.REF_ORDER_IMAGES.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
+            
+            
+            
+            FirRef.ORDER_IMAGES.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
                 if error != nil{
                     onError("error \(error.debugDescription)")
                 }else{
@@ -93,6 +100,21 @@ class OrderApi{
             })
         }
     }
+    
+    // customers create order
+    func createOrder(supplierId : String, customerId : String, orderData : Dictionary<String,Any>){
+        
+        
+        // save to 3 paths - remember delete at 3 paths
+        // use the same key for orderId = serviceId
+        
+//        let randomId = randomString(length: 12)
+//        REF_ORDERS.child(randomId).updateChildValues(orderData)
+//        REF_SUPPLIERS.child(supplierId).child("orders").child(randomId).updateChildValues(orderData)
+//        REF_CUSTOMERS.child(customerId).child("orders").child(randomId).updateChildValues(orderData)
+//        // because we use serviceID for orderId
+    }
+
     
     
 }

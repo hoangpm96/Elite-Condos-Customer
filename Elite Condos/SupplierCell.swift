@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol SupplierCellDelegate {
+    func book(supplierId: String)
+}
+
 class SupplierCell: UITableViewCell {
 
     @IBOutlet weak var rating: CosmosView!
@@ -16,6 +20,7 @@ class SupplierCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
     
+    var delegate: SupplierCellDelegate?
     var supplier: Supplier?{
         didSet{
             updateView()
@@ -24,7 +29,19 @@ class SupplierCell: UITableViewCell {
     
     func updateView(){
         nameLbl.text = supplier?.name
+        
+        if let imgUrl = supplier?.logo {
+            let url = URL(string: imgUrl)
+            logoImage.sd_setImage(with: url)
+        }
+        
+        
     }
-  
-
+    @IBAction func book_TouchUpInside(_ sender: Any) {
+        delegate?.book(supplierId: (supplier?.id!)!)
+    }
 }
+
+
+
+

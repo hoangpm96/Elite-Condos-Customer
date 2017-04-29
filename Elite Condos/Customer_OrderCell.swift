@@ -36,7 +36,9 @@ class Customer_OrderCell: UITableViewCell {
         serviceNameLbl.text = order.serviceName
         
         
-        DataService.ds.REF_SUPPLIERS.child(order.supplierId).observeSingleEvent(of: .value, with: {
+       
+        
+         FirRef.SUPPLIERS.child(order.supplierId).observeSingleEvent(of: .value, with: {
             snapshot in
             
             if let snapData = snapshot.value as? Dictionary<String,Any>{
@@ -47,7 +49,7 @@ class Customer_OrderCell: UITableViewCell {
         })
         
         
-        DataService.ds.REF_EMPLOYEES.child(order.employeeId).observeSingleEvent(of: .value, with: {
+        FirRef.EMPLOYEES.child(order.employeeId).observeSingleEvent(of: .value, with: {
             snapshot in
             if let snapData = snapshot.value as? Dictionary<String,Any>{
                 if let employeeImgUrl = snapData["avatarUrl"] as? String{
