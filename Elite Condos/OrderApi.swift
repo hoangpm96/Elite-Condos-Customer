@@ -12,11 +12,15 @@ import UIKit
 
 class OrderApi{
     var images: [UIImage] = [UIImage]()
+    
     var mainService = ""
     var subService = ""
     
+    var serviceId = ""
     
-    func addNewOrder(orderData: [String:Any], onSuccess: @escaping () -> Void){
+    
+    // upload order photos -> img links
+    func initOrder(orderData: [String:Any], onSuccess: @escaping (String) -> Void){
         uploadPhotos { (imgUrls) in
             var newData = orderData
             var imgStrings = ""
@@ -32,11 +36,12 @@ class OrderApi{
             
             
             
-//            DataService.ds.REF_ORDERS.child(newChildId).updateChildValues(newData)
-//            onSuccess()
+            FirRef.ORDERS.child(newChildId).updateChildValues(newData)
+            onSuccess(newChildId)
         }
     }
     
+    // upload multiple photos
     func uploadPhotos(onSuccess: @escaping ([String]) -> Void){
         var imgUrls: [String] = []
         guard images.count > 0 else {
@@ -51,8 +56,8 @@ class OrderApi{
                 }, onError: { (error) in
                     print(error)
                 })
-  
-        }}
+                
+            }}
         
         
         let start = DispatchTime.now()
@@ -73,14 +78,14 @@ class OrderApi{
         
         
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 20 ) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 10 ) {
             print("upload ok")
             onSuccess(imgUrls)
         }
         
     }
     
-    
+    // upload 1 photo
     func uploadPhoto(photo: UIImage, onSuccess: @escaping (String) -> Void, onError: @escaping (String) -> Void){
         if let imgData = UIImageJPEGRepresentation(photo, 0.2){
             let imgUid = NSUUID().uuidString
@@ -101,20 +106,19 @@ class OrderApi{
         }
     }
     
-    // customers create order
-    func createOrder(supplierId : String, customerId : String, orderData : Dictionary<String,Any>){
+    // update order with new supplierid
+    func updateOrder(orderId: String, supplierId : String, customerId : String, orderData : Dictionary<String,Any>, onSuccess: @escaping () -> Void){
         
         
-        // save to 3 paths - remember delete at 3 paths
-        // use the same key for orderId = serviceId
         
-//        let randomId = randomString(length: 12)
-//        REF_ORDERS.child(randomId).updateChildValues(orderData)
-//        REF_SUPPLIERS.child(supplierId).child("orders").child(randomId).updateChildValues(orderData)
-//        REF_CUSTOMERS.child(customerId).child("orders").child(randomId).updateChildValues(orderData)
-//        // because we use serviceID for orderId
+        FirRef.ORDERS.child(orderId).updateChildValues(orderData)
+        
+        FirRef.SUPPLIER_ORDERS.child(supplierId).child(orderId).setValue(true)
+        FirRef.CUSTOMER_ORDERS.child(supplierId).child(orderId).setValue(true)
+        
+        onSuccess()
     }
-
+    
     
     
 }

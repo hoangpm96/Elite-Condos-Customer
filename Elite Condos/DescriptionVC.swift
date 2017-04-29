@@ -54,6 +54,21 @@ class DescriptionVC: UIViewController {
                 popover.delegate = self
             }
         }
+        if segue.identifier == "DescriptionToSupplierList"{
+            if let supplierListVC = segue.destination as? SupplierListVC{
+               
+                guard let sender = sender as? [String:Any] else {
+                    return
+                }
+                if let orderData = sender["orderData"] as? [String:Any]{
+                    supplierListVC.orderData = orderData
+                }
+                if let orderId = sender["orderId"] as? String{
+                    supplierListVC.orderId = orderId
+                    
+                }
+            }
+        }
     }
     
     @IBAction func getTimeBtnPressed(_ sender: Any) {
@@ -89,44 +104,47 @@ class DescriptionVC: UIViewController {
     
     @IBAction func continueBtnPressed(_ sender: Any) {
         
-        //        ProgressHUD.show("Đang tải hình ảnh lên server")
-        //
-        //        guard let description = descriptionTF.text, description != "" else {
-        //            showAlert(title: APP_NAME, message: "You should fill in description")
-        //            return
-        //        }
-        //        guard Api.Order.images.count > 0 else {
-        //            showAlert(title: APP_NAME, message: "You should pick at least one picture")
-        //            return
-        //        }
-        //        guard isGetTime == true else {
-        //            showAlert(title: APP_NAME, message: "You should pick a time")
-        //            return
-        //        }
-        //        guard isGetLocation == true else {
-        //            showAlert(title: APP_NAME, message: "You should choose your address")
-        //            return
-        //        }
-        //
-        //        let today = Date().description
-        //
-        //
-        //        var orderDescription: [String:Any]
-        //        orderDescription = [
-        //        "created_at": today,
-        //        "lat": userLocation.coordinate.latitude,
-        //        "long": userLocation.coordinate.longitude,
-        //        "time": (timeBtn.titleLabel?.text)! as String,
-        //      //  "customerId": user.uid,
-        //        "serviceId": 1,
-        //        "status": ORDER_STATUS.ONGOING.hashValue
-        //        ]
-        //        Api.Order.addNewOrder(orderData: orderDescription) {
-        //            print("Successful")
-        //            ProgressHUD.showSuccess("Đã đặt lịch thành công")
-        //        }
+        ProgressHUD.show("Đang tìm kiếm nhà cung cấp...")
         
-        performSegue(withIdentifier: "DescriptionToSupplierList", sender: nil)
+        guard let description = descriptionTF.text, description != "" else {
+            showAlert(title: APP_NAME, message: "You should fill in description")
+            return
+        }
+        guard Api.Order.images.count > 0 else {
+            showAlert(title: APP_NAME, message: "You should pick at least one picture")
+            return
+        }
+        guard isGetTime == true else {
+            showAlert(title: APP_NAME, message: "You should pick a time")
+            return
+        }
+        guard isGetLocation == true else {
+            showAlert(title: APP_NAME, message: "You should choose your address")
+            return
+        }
+        
+        let today = Date().description
+        
+        
+        var orderData: [String:Any]
+        orderData = [
+            "created_at": today,
+            "lat": userLocation.coordinate.latitude,
+            "long": userLocation.coordinate.longitude,
+            "time": (timeBtn.titleLabel?.text)! as String,
+            "customerId": Api.User.currentUid(),
+            "serviceId": Api.Order.serviceId,
+            "serviceName": Api.Order.mainService,
+            "status": ORDER_STATUS.ONGOING.hashValue
+        ]
+        
+        Api.Order.initOrder(orderData: orderData) { (orderId) in
+             self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,
+                        "orderId": orderId]
+                        )
+        }
+        
+   
         
         
     }

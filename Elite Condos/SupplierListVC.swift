@@ -9,9 +9,11 @@
 import UIKit
 import ProgressHUD
 class SupplierListVC: UIViewController {
-
     @IBOutlet weak var tableView: UITableView!
     var suppliers: [Supplier]!
+    
+    var orderData: [String:Any]!
+    var orderId =  ""
     override func viewDidLoad() {
         super.viewDidLoad()
         suppliers = []
@@ -29,14 +31,16 @@ class SupplierListVC: UIViewController {
 
 extension SupplierListVC: SupplierCellDelegate{
     func book(supplierId: String) {
+        
+        var newOrderData: [String:Any] = orderData
+        newOrderData["supplierId"] = supplierId
         let currentUid = Api.User.currentUid()
-        let  orderData: [String:Any] =  [
-        "create_at" : getCurrentTime(),
-        "status" : ORDER_STATUS.NOTACCEPT.hashValue ,
-        "customerId" : currentUid,
-        "supplierId" : supplierId,
-//        "name" : self.services[indexPath.row].name,
-        ]
+        
+        ProgressHUD.show("Đang tạo đơn hàng...")
+       
+        Api.Order.updateOrder(orderId: self.orderId,supplierId: supplierId, customerId: currentUid, orderData: newOrderData) {
+            ProgressHUD.dismiss()
+        }
     }
 }
 
@@ -51,6 +55,7 @@ extension SupplierListVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SupplierCell", for: indexPath) as! SupplierCell
         cell.supplier = suppliers[indexPath.row]
+        cell.delegate = self
         return cell
     }
     

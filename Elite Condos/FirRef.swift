@@ -20,6 +20,9 @@ class FirRef {
     static let SUPPLIERS = DB_BASE.child("suppliers")
     static let EMPLOYEES = DB_BASE.child("employees")
     static let ORDERS = DB_BASE.child("orders")
+    static let SUPPLIER_ORDERS = DB_BASE.child("supplier-orders")
+    static let CUSTOMER_ORDERS = DB_BASE.child("customer-orders")
+    
     
     // Storage references
     static  let POST_IMAGES = STORAGE_BASE.child("post-pics")
