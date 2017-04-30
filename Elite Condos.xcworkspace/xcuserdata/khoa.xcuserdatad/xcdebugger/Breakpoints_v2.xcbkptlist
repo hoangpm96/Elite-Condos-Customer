@@ -371,5 +371,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Elite Condos/OrderApi.swift"
+            timestampString = "513402952.675114"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "observeOrders(completed:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Elite_Condos.OrderApi.(observeOrders (completed : (Elite_Condos.Order) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Elite Condos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
+                  timestampString = "513402983.991924"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Elite_Condos.OrderApi.(observeOrders (completed : (Elite_Condos.Order) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Elite Condos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
+                  timestampString = "513402983.995932"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "77">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

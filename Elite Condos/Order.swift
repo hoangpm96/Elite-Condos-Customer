@@ -55,6 +55,9 @@ class Order  {
         if let employeeId = data["employeeId"] as? String{
             self._employeeId = employeeId
         }
+        if let serviceName = data["serviceName"] as? String{
+            self._serviceName = serviceName
+        }
     }
     
     

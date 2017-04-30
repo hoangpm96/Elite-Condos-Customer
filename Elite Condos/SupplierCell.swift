@@ -38,7 +38,10 @@ class SupplierCell: UITableViewCell {
         
     }
     @IBAction func book_TouchUpInside(_ sender: Any) {
-        delegate?.book(supplierId: (supplier?.id!)!)
+        
+        if let supplierId = supplier?.id {
+            delegate?.book(supplierId: supplierId)
+        }
     }
 }
 

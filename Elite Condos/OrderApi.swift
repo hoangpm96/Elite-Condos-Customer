@@ -113,12 +113,28 @@ class OrderApi{
         
         FirRef.ORDERS.child(orderId).updateChildValues(orderData)
         
+//        
+        
         FirRef.SUPPLIER_ORDERS.child(supplierId).child(orderId).setValue(true)
-        FirRef.CUSTOMER_ORDERS.child(supplierId).child(orderId).setValue(true)
+        FirRef.CUSTOMER_ORDERS.child(customerId).child(orderId).setValue(true)
         
         onSuccess()
     }
     
+    
+    // observe orders 
+    func observeOrders(completed: @escaping (Order) -> Void){
+        let uid = Api.User.currentUid()
+        FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
+            print(snapshot.key)
+            FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
+                if let dict = orderSnapshot.value as? [String:Any]{
+                    let order = Order(id: orderSnapshot.key, data: dict)
+                    completed(order)
+                }
+            })
+        })
+    }
     
     
 }

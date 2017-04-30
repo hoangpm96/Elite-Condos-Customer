@@ -139,6 +139,7 @@ class DescriptionVC: UIViewController {
         ]
         
         Api.Order.initOrder(orderData: orderData) { (orderId) in
+            ProgressHUD.dismiss()
              self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,
                         "orderId": orderId]
                         )
