@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 import UIKit
-
+import ProgressHUD
 class OrderApi{
     var images: [UIImage] = [UIImage]()
     
@@ -124,6 +124,7 @@ class OrderApi{
     
     // observe orders 
     func observeOrders(completed: @escaping (Order) -> Void){
+        
         let uid = Api.User.currentUid()
         FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
             print(snapshot.key)
@@ -131,6 +132,10 @@ class OrderApi{
                 if let dict = orderSnapshot.value as? [String:Any]{
                     let order = Order(id: orderSnapshot.key, data: dict)
                     completed(order)
+//                    DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
+//                        print("download orders ok")
+//                        
+//                    }
                 }
             })
         })

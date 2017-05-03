@@ -7,24 +7,31 @@
 //
 
 import UIKit
-
+import ProgressHUD
 class MyJobsVC: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
     
     var orders = [Order]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        tableView.delegate = self
-        
+        tableView.dataSource = self
+        orders = []
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchOrders()
+    }
+    
+    func fetchOrders(){
+        ProgressHUD.show("Đang tải dữ liệu...")
         Api.Order.observeOrders { (order) in
             self.orders.append(order)
             self.tableView.reloadData()
         }
-        
-        tableView.dataSource = self
     }
     
     

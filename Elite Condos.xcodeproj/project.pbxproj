@@ -54,6 +54,8 @@
 		D29967F61DCA28F600D1A2B5 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D29967EE1DCA28F600D1A2B5 /* Ubuntu-MediumItalic.ttf */; };
 		D29967F71DCA28F600D1A2B5 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D29967EF1DCA28F600D1A2B5 /* Ubuntu-Regular.ttf */; };
 		D29C36051DE97B5000034404 /* Customer_OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C36041DE97B5000034404 /* Customer_OrderCell.swift */; };
+		D2B5E66B1E9B1F4B003489C2 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */; };
+		D2B5E66D1E9B1F64003489C2 /* PaymentConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */; };
 		D2BC647C1E7A23500031FA31 /* OrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647B1E7A23500031FA31 /* OrderDescription.swift */; };
 		D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */; };
 		D2BF5B121DCF8206002534EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BF5B111DCF8206002534EC /* Assets.xcassets */; };
@@ -119,6 +121,8 @@
 		D29967EE1DCA28F600D1A2B5 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		D29967EF1DCA28F600D1A2B5 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		D29C36041DE97B5000034404 /* Customer_OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer_OrderCell.swift; sourceTree = "<group>"; };
+		D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
+		D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationVC.swift; sourceTree = "<group>"; };
 		D2BC647B1E7A23500031FA31 /* OrderDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDescription.swift; sourceTree = "<group>"; };
 		D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		D2BF5B051DCEE2AE002534EC /* Elite Condos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elite Condos-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				D2CFB66D1E7FC36A00618683 /* AccountVC.swift */,
 				D2D5E4531E8107FE0031F79F /* SignUpVC.swift */,
 				D21DA0831E98D025005BE50A /* SupplierListVC.swift */,
+				D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */,
+				D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2411EC51E8CFC8C0022C468 /* PasswordForgetVC.swift in Sources */,
+				D2B5E66B1E9B1F4B003489C2 /* ReviewVC.swift in Sources */,
 				D28EE7C51DD95A9600BCE1E9 /* FancyBtn.swift in Sources */,
 				D2159A0E1E7B8A70006517B2 /* OrderApi.swift in Sources */,
 				D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */,
@@ -502,6 +509,7 @@
 				D21DA0841E98D025005BE50A /* SupplierListVC.swift in Sources */,
 				D2CFB66E1E7FC36A00618683 /* AccountVC.swift in Sources */,
 				D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */,
+				D2B5E66D1E9B1F64003489C2 /* PaymentConfirmationVC.swift in Sources */,
 				D25556C81DD9C56D004E7649 /* Errors.swift in Sources */,
 				D25556C41DD9B9C4004E7649 /* FirRef.swift in Sources */,
 				D2598BDD1E7938AB0096769D /* ServiceData.swift in Sources */,
