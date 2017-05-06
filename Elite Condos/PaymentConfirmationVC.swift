@@ -11,6 +11,10 @@ import UIKit
 class PaymentConfirmationVC: UIViewController {
 
     var orderId = "C46kg9qq"
+    var total = 0.0
+    var supplierName = ""
+    var serviceName = ""
+    var supplierId = ""
     @IBOutlet weak var tableView: UITableView!
     var priceTags = [PriceTag]()
     override func viewDidLoad() {
@@ -23,13 +27,49 @@ class PaymentConfirmationVC: UIViewController {
         }
         
     }
-
     @IBAction func confirm_TouchInside(_ sender: Any) {
+        Api.Order.confirmPayment(orderId: orderId, totalPrice: total) {
+            
+            let senderData: [String:Any] = [
+                "orderId": self.orderId,
+                "supplierName": self.supplierName,
+                "serviceName": self.serviceName,
+                "total": self.total,
+                "supplierId": self.supplierId
+            ]
+            
+            self.performSegue(withIdentifier: "PaymentConfirmationToReview", sender: senderData)
+        }
     }
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PaymentConfirmationToReview"{
+            if let reviewVC = segue.destination as? ReviewVC{
+               
+                if let data = sender as? [String:Any]{
+                    if let orderId = data["orderId"] as? String{
+                        reviewVC.orderId = orderId
+                    }             
+                    if let serviceName =  data["serviceName"] as? String{
+                        reviewVC.serviceName = serviceName
+                    }
+                    if let supplierName = data["supplierName"] as? String{
+                        reviewVC.supplierName = supplierName
+                    }
+                    if let supplierId = data["supplierId"] as? String{
+                        reviewVC.supplierId = supplierId
+                    }
+                    if let totalPrice = data["total"] as? Double{
+                        reviewVC.price = totalPrice
+                    }
+                }
+                
+                
+            }
+        }
+    }
     func calulateTotal(){
-        var total = 0.0
+        
         for pricetag in priceTags{
             total += pricetag.price
         }
@@ -41,6 +81,8 @@ class PaymentConfirmationVC: UIViewController {
         priceTags = priceTags.sorted{ $0.price < $1.price }
         self.tableView.reloadData()
     }
+    
+    
 
 }
 extension PaymentConfirmationVC: UITableViewDataSource{

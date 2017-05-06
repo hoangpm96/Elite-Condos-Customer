@@ -148,5 +148,23 @@ class OrderApi{
             }
         })
     }
+    
+    // confirm payment when order is finised, use in PaymentConfirmationVC
+    func confirmPayment(orderId: String, totalPrice: Double, completion: @escaping () -> Void){
+        let today = Date().description
+        FirRef.ORDERS.child(orderId).updateChildValues(["totalPrice": totalPrice, "ended_at" : today, "status": ORDER_STATUS.FINISHED.hashValue ])
+        completion()
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
 

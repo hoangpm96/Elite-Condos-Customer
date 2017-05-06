@@ -426,12 +426,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Elite Condos/PaymentConfirmationVC.swift"
-            timestampString = "513485824.46745"
+            timestampString = "513571581.890242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "calulateTotal()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Elite Condos/MyJobsVC.swift"
+            timestampString = "513571581.890242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,15 +8,20 @@
 
 import UIKit
 import Firebase
+
+protocol Customer_OrderCellDelegate {
+    func getSupplierName(name: String)
+}
+
 class Customer_OrderCell: UITableViewCell {
     
     
     @IBOutlet weak var orderId: UILabel!
     @IBOutlet weak var supplierName: UILabel!
-    @IBOutlet weak var technicianImg: CircleImage!
+    @IBOutlet weak var logo: CircleImage!
     
     @IBOutlet weak var serviceNameLbl: UILabel!
-    
+    var delegate: Customer_OrderCellDelegate?
     
     var order: Order?{
         didSet{
@@ -35,15 +40,18 @@ class Customer_OrderCell: UITableViewCell {
         orderId.text = "#\((order?.id)!)"
         
         // download supplier Image
-//        FirRef.SUPPLIERS.child(order.supplierId).observeSingleEvent(of: .value, with: {
-//            snapshot in
-//            
-//            if let snapData = snapshot.value as? Dictionary<String,Any>{
-//                if let name = snapData["name"] as? String{
-//                    self.supplierName.text = name
-//                }
-//            }
-//        })
+        Api.Supplier.getSupplierName(id: (order?.supplierId)!) { (name) in
+            self.supplierName.text = name
+            self.delegate?.getSupplierName(name: name)
+        }
+        Api.Supplier.downloadImage(id: (order?.supplierId)!, onError: { (error) in
+            print(error)
+        }) { (img) in
+            self.logo.image = img
+           
+        }
+        
+        
         
         
         

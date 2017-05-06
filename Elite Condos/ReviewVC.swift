@@ -10,31 +10,33 @@ import UIKit
 
 class ReviewVC: UIViewController {
 
-    @IBAction func backBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+   
     @IBOutlet weak var reviewTF: FancyField!
     @IBOutlet weak var nameTF: FancyField!
     @IBOutlet weak var rating: CosmosView!
-    
+ 
     @IBOutlet weak var supplierLogo: UIImageView!
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var serviceNameLbl: UILabel!
     @IBOutlet weak var supplierNameLbl: UILabel!
-    
+    var orderId = ""
     var serviceName = ""
-    var price = ""
+    var price = 0.0
     var supplierName = ""
     var employeeImge = ""
     var supplierId = ""
-    var orderId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         supplierNameLbl.text = supplierName
         serviceNameLbl.text = serviceName
-        priceLbl.text = price
-        
+        priceLbl.text = "\(price)"
+        Api.Supplier.downloadImage(id: supplierId, onError: { (error) in
+            print(error)
+        }) { (img) in
+            self.supplierLogo.image = img
+        }
     }
     
     
@@ -63,6 +65,10 @@ class ReviewVC: UIViewController {
         
         
     }
+    
+    @IBAction func backBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     func showAlert(title: String, message : String){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -78,5 +84,8 @@ class ReviewVC: UIViewController {
         
     }
     
+    @IBAction func skip_TouchInside(_ sender: Any) {
+        performSegue(withIdentifier: "ReviewToHome", sender: nil)
+    }
 
 }

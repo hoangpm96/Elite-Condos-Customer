@@ -14,13 +14,14 @@ class MyJobsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var orders = [Order]()
-    
+    var supplierName = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
-       
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,7 +38,26 @@ class MyJobsVC: UIViewController {
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MyJobToPaymentConfimation"{
+            if let paymentVC = segue.destination as? PaymentConfirmationVC{
+                if let data = sender as? [String:Any]{
+                    if let orderId = data["orderId"] as? String{
+                        paymentVC.orderId = orderId
+                    }
+                    if let supplierName = data["supplierName"] as? String{
+                        paymentVC.supplierName = supplierName
+                    }
+                    if let serviceName = data["serviceName"] as? String{
+                        paymentVC.serviceName = serviceName
+                    }
+                    if let supplierId = data["supplierId"] as? String{
+                        paymentVC.supplierId = supplierId
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -46,7 +66,25 @@ class MyJobsVC: UIViewController {
 
 extension MyJobsVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: nil)
+        let senderData: [String:Any] = [
+            "orderId": self.orders[indexPath.row].id,
+            "supplierName": supplierName,
+            "serviceName": self.orders[indexPath.row].serviceName,
+            "supplierId": self.orders[indexPath.row].supplierId
+            ]
+        
+        self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
+        
+        //        Api.Supplier.getSupplierName(id: orders[indexPath.row].id) { (name) in
+        //                        self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
+        //        }
+        
+    }
+}
+
+extension MyJobsVC: Customer_OrderCellDelegate{
+    func getSupplierName(name: String) {
+        supplierName = name
     }
 }
 
@@ -60,10 +98,9 @@ extension MyJobsVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Customer_OrderCell", for: indexPath) as! Customer_OrderCell
+            cell.delegate = self
             cell.order = orders[indexPath.row]
             return cell
-            
-            
     }
 }
 
