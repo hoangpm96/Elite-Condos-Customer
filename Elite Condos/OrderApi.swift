@@ -132,15 +132,21 @@ class OrderApi{
                 if let dict = orderSnapshot.value as? [String:Any]{
                     let order = Order(id: orderSnapshot.key, data: dict)
                     completed(order)
-//                    DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
-//                        print("download orders ok")
-//                        
-//                    }
                 }
             })
         })
     }
     
+    // observe price tags - each orders have at least 1 price tag
+    // price tags are displayed on PaymentConfirmation screen.
     
+    func observePriceTag(orderId: String, completed: @escaping (PriceTag) -> Void){
+        FirRef.ORDERS.child(orderId).child("pricetags").observe(.childAdded, with: { (snapshot) in
+            if let dict = snapshot.value as? [String:Any]{
+                let priceTag = PriceTag(id: snapshot.key, data: dict)
+                completed(priceTag)
+            }
+        })
+    }
 }
 

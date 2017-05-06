@@ -56,6 +56,7 @@
 		D29C36051DE97B5000034404 /* Customer_OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C36041DE97B5000034404 /* Customer_OrderCell.swift */; };
 		D2B5E66B1E9B1F4B003489C2 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */; };
 		D2B5E66D1E9B1F64003489C2 /* PaymentConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */; };
+		D2B5E66F1E9B2643003489C2 /* PriceTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66E1E9B2643003489C2 /* PriceTagCell.swift */; };
 		D2BC647C1E7A23500031FA31 /* OrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647B1E7A23500031FA31 /* OrderDescription.swift */; };
 		D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */; };
 		D2BF5B121DCF8206002534EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BF5B111DCF8206002534EC /* Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		D29C36041DE97B5000034404 /* Customer_OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer_OrderCell.swift; sourceTree = "<group>"; };
 		D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
 		D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationVC.swift; sourceTree = "<group>"; };
+		D2B5E66E1E9B2643003489C2 /* PriceTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTagCell.swift; sourceTree = "<group>"; };
 		D2BC647B1E7A23500031FA31 /* OrderDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDescription.swift; sourceTree = "<group>"; };
 		D2BC647D1E7A24C80031FA31 /* DescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		D2BF5B051DCEE2AE002534EC /* Elite Condos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elite Condos-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -304,11 +306,12 @@
 		D2BF5B0C1DCF1DDD002534EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D23B2FF41DE095BA00EF6A19 /* CartCell.swift */,
 				D2159A0B1E7B7AEA006517B2 /* PopupPhotoCell.swift */,
 				D20E96111E798C7900A8F3EE /* ServiceCell.swift */,
 				D20E96171E79943500A8F3EE /* SubCategoryCell.swift */,
 				D29C36041DE97B5000034404 /* Customer_OrderCell.swift */,
-				D23B2FF41DE095BA00EF6A19 /* CartCell.swift */,
+				D2B5E66E1E9B2643003489C2 /* PriceTagCell.swift */,
 				D20C5CA01E00484100D15C92 /* ServiceListCell.swift */,
 				D20C5C9E1E0031FD00D15C92 /* SupplierCell.swift */,
 				D2154FBC1DE9344A00D0DF23 /* CustomViews */,
@@ -510,6 +513,7 @@
 				D2CFB66E1E7FC36A00618683 /* AccountVC.swift in Sources */,
 				D2D66D871E7C15540029345F /* DateTimePicker.swift in Sources */,
 				D2B5E66D1E9B1F64003489C2 /* PaymentConfirmationVC.swift in Sources */,
+				D2B5E66F1E9B2643003489C2 /* PriceTagCell.swift in Sources */,
 				D25556C81DD9C56D004E7649 /* Errors.swift in Sources */,
 				D25556C41DD9B9C4004E7649 /* FirRef.swift in Sources */,
 				D2598BDD1E7938AB0096769D /* ServiceData.swift in Sources */,

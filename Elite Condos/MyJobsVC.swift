@@ -18,7 +18,8 @@ class MyJobsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        orders = []
+        tableView.delegate = self
+        
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -27,10 +28,12 @@ class MyJobsVC: UIViewController {
     }
     
     func fetchOrders(){
+        orders = []
         ProgressHUD.show("Đang tải dữ liệu...")
         Api.Order.observeOrders { (order) in
             self.orders.append(order)
             self.tableView.reloadData()
+            ProgressHUD.dismiss()
         }
     }
     
@@ -38,6 +41,12 @@ class MyJobsVC: UIViewController {
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MyJobsVC: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: nil)
     }
 }
 
