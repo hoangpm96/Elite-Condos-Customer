@@ -7,14 +7,14 @@
 //
 
 import UIKit
-
+import FirebaseAuth
+import ProgressHUD
 class ReviewVC: UIViewController {
-
-   
+    
+    
     @IBOutlet weak var reviewTF: FancyField!
-    @IBOutlet weak var nameTF: FancyField!
     @IBOutlet weak var rating: CosmosView!
- 
+    
     @IBOutlet weak var supplierLogo: UIImageView!
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var serviceNameLbl: UILabel!
@@ -39,30 +39,34 @@ class ReviewVC: UIViewController {
         }
     }
     
-    
-    
     @IBAction func addReview_TouchInside(_ sender: Any) {
-        guard let name = nameTF.text, name != "" else {
-            showAlert(title: "Error", message: "Vui lòng điền tên của bạn")
-            return
-        }
+        ProgressHUD.show("Đang đăng nhận xét...")
+    
         guard let review = reviewTF.text, review != "" else {
             showAlert(title: "Error", message: "Vui lòng điền nội dung đánh giá")
             return
         }
-        
-        
-//        DataService.ds.addReview(supplierId: supplierId, orderId: orderId, reviewData: [
-//            "created_at" : getCurrentTime(),
-//            "customerId" : userId,
-//            "customerName" : name,
-//            "serviceName" : serviceName,
-//            "stars" : rating.rating,
-//            "content" : review
-//            ])
-//        DataService.ds.updateOrders(orderId: orderId, supplierId: supplierId, customerId: userId, status: .FINISHED)
-//        showAlert(title: APP_NAME, message: "Bạn đã thêm nhận xét thành công, xin cảm ơn!")
-        
+        let username = FIRAuth.auth()?.currentUser?.email
+        let currenId = Api.User.currentUid()
+        Api.User.getImageProfile { (imgUrl) in
+            let reviewData: [String:Any] =
+                [
+                    "time" : getCurrentTime(),
+                    "customerId" : currenId,
+                    "username": username! ,
+                    "moneyAmount": self.price,
+                    "ratingStars" : self.rating.rating,
+                    "content" : review,
+                    "imgUrl": imgUrl
+            ]
+            
+            
+            Api.Order
+                .addReview(supplierId: self.supplierId, orderId: self.orderId, reviewData: reviewData)
+            self.showAlert(title: "✓", message: "Bạn đã thêm nhận xét thành công, xin cảm ơn!")
+            
+            
+        }
         
     }
     
@@ -75,7 +79,7 @@ class ReviewVC: UIViewController {
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler:  {
             action in
-            self.performSegue(withIdentifier: "CustomerOrderVC", sender: nil)
+            self.performSegue(withIdentifier: "ReviewToHome", sender: nil)
         })
         
         alert.addAction(okAction)
@@ -87,5 +91,5 @@ class ReviewVC: UIViewController {
     @IBAction func skip_TouchInside(_ sender: Any) {
         performSegue(withIdentifier: "ReviewToHome", sender: nil)
     }
-
+    
 }

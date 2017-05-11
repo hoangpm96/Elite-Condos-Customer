@@ -610,9 +610,13 @@
                                 <segment title="Hoàn thành"/>
                                 <segment title="Bị Hủy"/>
                             </segments>
+                            <connections>
+                                <action selector="segment_ChangeValue:" destination="CGZ-JL-nBJ" eventType="valueChanged" id="MOo-F7-umO"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="segment" destination="ktO-KX-fey" id="myR-89-kz6"/>
                         <outlet property="tableView" destination="suM-4H-E53" id="iOV-ge-0bo"/>
                         <segue destination="Cme-tS-51h" kind="show" identifier="MyJobToPaymentConfimation" id="WHP-Z3-eo0"/>
                     </connections>
@@ -758,7 +762,7 @@
                     <navigationItem key="navigationItem" title="Xác nhận " id="NWS-QJ-j2T"/>
                     <connections>
                         <outlet property="tableView" destination="ek0-nv-uFM" id="Row-oy-hCI"/>
-                        <segue destination="ZgD-n8-GvD" kind="presentation" identifier="PaymentConfirmationToReview" id="dbR-r3-atv"/>
+                        <segue destination="ZgD-n8-GvD" kind="show" identifier="PaymentConfirmationToReview" id="dbR-r3-atv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uj5-dy-Ecp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -778,10 +782,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qza-bC-egn">
-                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="84" width="320" height="396"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P7U-ms-mvT">
-                                        <rect key="frame" x="10" y="20" width="200" height="80"/>
+                                        <rect key="frame" x="10" y="0.0" width="200" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công ty Thái Hòa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wD-LE-H3C">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="26.5"/>
@@ -896,7 +900,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="drg-Qh-WQj" secondAttribute="trailing" constant="10" id="3tM-5s-sMT"/>
                                     <constraint firstAttribute="trailing" secondItem="uiX-FQ-PPa" secondAttribute="trailing" constant="10" id="5lI-Gb-078"/>
-                                    <constraint firstItem="P7U-ms-mvT" firstAttribute="top" secondItem="Qza-bC-egn" secondAttribute="top" constant="20" id="8H0-1C-sjd"/>
+                                    <constraint firstItem="P7U-ms-mvT" firstAttribute="top" secondItem="Qza-bC-egn" secondAttribute="top" id="8H0-1C-sjd"/>
                                     <constraint firstItem="drg-Qh-WQj" firstAttribute="top" secondItem="rUd-iG-a5M" secondAttribute="bottom" constant="20" id="Ayy-xZ-1gu"/>
                                     <constraint firstItem="rUd-iG-a5M" firstAttribute="top" secondItem="Qza-bC-egn" secondAttribute="top" constant="20" id="L7M-pb-r93"/>
                                     <constraint firstItem="Jpd-3C-RD5" firstAttribute="leading" secondItem="Qza-bC-egn" secondAttribute="leading" constant="10" id="MYI-Ur-Ycg"/>
@@ -916,7 +920,7 @@
                         <constraints>
                             <constraint firstItem="EjI-KS-oy8" firstAttribute="top" secondItem="Qza-bC-egn" secondAttribute="bottom" id="8Q7-7r-d1P"/>
                             <constraint firstAttribute="trailing" secondItem="Qza-bC-egn" secondAttribute="trailing" id="Seg-Gm-AVo"/>
-                            <constraint firstItem="Qza-bC-egn" firstAttribute="top" secondItem="KIm-hU-1Fr" secondAttribute="bottom" id="b6f-9u-kiC"/>
+                            <constraint firstItem="Qza-bC-egn" firstAttribute="top" secondItem="KIm-hU-1Fr" secondAttribute="bottom" constant="20" id="b6f-9u-kiC"/>
                             <constraint firstItem="Qza-bC-egn" firstAttribute="leading" secondItem="CHg-in-Gf3" secondAttribute="leading" id="tip-ls-Zef"/>
                         </constraints>
                     </view>
@@ -929,11 +933,12 @@
                         <outlet property="supplierLogo" destination="rUd-iG-a5M" id="HsQ-UJ-3tV"/>
                         <outlet property="supplierNameLbl" destination="3wD-LE-H3C" id="Gtw-JH-mqh"/>
                         <segue destination="zhZ-E1-RaQ" kind="showDetail" identifier="ReviewToHome" id="TSf-oD-QK9"/>
+                        <segue destination="iUg-Gk-LrE" kind="showDetail" identifier="ReviewToHome" id="dyT-e8-1Oi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbo-gd-tpg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605" y="4245"/>
+            <point key="canvasLocation" x="1751" y="4164"/>
         </scene>
         <!--DescriptionVC-->
         <scene sceneID="v57-kN-9Og">
@@ -1200,10 +1205,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chọn nhà cung cấp" id="E24-TN-iQx">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="gIy-vM-sxp"/>
+                        <barButtonItem key="backBarButtonItem" title="Hủy" id="gIy-vM-sxp"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="fXs-dT-fpK" id="Ry3-e0-g5G"/>
+                        <segue destination="IBo-NO-Jmr" kind="showDetail" identifier="SupplierListToMyJobs" id="0cZ-sx-ZfT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyi-Om-Zbq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1367,4 +1373,8 @@
         <image name="techician" width="16" height="16"/>
         <image name="user" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dyT-e8-1Oi"/>
+        <segue reference="0cZ-sx-ZfT"/>
+    </inferredMetricsTieBreakers>
 </document>

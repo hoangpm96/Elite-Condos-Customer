@@ -11,6 +11,21 @@ import Firebase
 
 class UserApi{
    
+    
+    // get user image profile 
+    
+    func getImageProfile(onSuccess: @escaping (String) -> Void){
+        let currentId = Api.User.currentUid()
+        FirRef.CUSTOMERS.child(currentId).observeSingleEvent(of: .  value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String:Any]{
+                if let imgUrl = dict["avatarUrl"] as? String{
+                    onSuccess(imgUrl)
+                }
+            }
+        })
+    }
+    
+    
     func currentUid() -> String{
         
         let currentUser = FIRAuth.auth()?.currentUser

@@ -19,6 +19,11 @@ class OrderApi{
     var serviceId = ""
     
     
+    // add order - add reviewID to order
+    func addReview(supplierId: String, orderId: String, reviewData: [String:Any] ){
+        FirRef.REVIEWS.child(orderId).updateChildValues(reviewData)
+        FirRef.SUPPLIER_REVIEWS.child(supplierId).child(orderId).setValue(true)
+    }
     // upload order photos -> img links
     func initOrder(orderData: [String:Any], onSuccess: @escaping (String) -> Void){
         uploadPhotos { (imgUrls) in
@@ -33,9 +38,6 @@ class OrderApi{
             }
             newData["imgUrls"] = imgStrings
             let newChildId = randomString(length: 8)
-            
-            
-            
             FirRef.ORDERS.child(newChildId).updateChildValues(newData)
             onSuccess(newChildId)
         }
@@ -78,7 +80,7 @@ class OrderApi{
         
         
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 10 ) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
             print("upload ok")
             onSuccess(imgUrls)
         }
@@ -113,7 +115,7 @@ class OrderApi{
         
         FirRef.ORDERS.child(orderId).updateChildValues(orderData)
         
-//        
+        //
         
         FirRef.SUPPLIER_ORDERS.child(supplierId).child(orderId).setValue(true)
         FirRef.CUSTOMER_ORDERS.child(customerId).child(orderId).setValue(true)
@@ -122,20 +124,78 @@ class OrderApi{
     }
     
     
-    // observe orders 
-    func observeOrders(completed: @escaping (Order) -> Void){
+    // observe orders
+    func observeCancelOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
         
         let uid = Api.User.currentUid()
         FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
             print(snapshot.key)
             FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
                 if let dict = orderSnapshot.value as? [String:Any]{
-                    let order = Order(id: orderSnapshot.key, data: dict)
-                    completed(order)
+                    if let status = dict["status"] as? Int{
+                        if status == 1 {
+                            print("status \(status)")
+                            let order = Order(id: orderSnapshot.key, data: dict)
+                            completed(order)
+                        }else {
+                            onNotFound()
+                        }
+                    }
+                    
                 }
             })
         })
     }
+    
+    // observe Orders with ORDER STATUS
+    func observeOnGoingOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
+        
+        let uid = Api.User.currentUid()
+        FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
+            print(snapshot.key)
+            FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
+                if let dict = orderSnapshot.value as? [String:Any]{
+                    print(dict)
+                    if let status = dict["status"] as? Int{
+                        if status == 0 {
+                            print("status \(status)")
+                            let order = Order(id: orderSnapshot.key, data: dict)
+                            completed(order)
+                        }else {
+                            onNotFound()
+                        }
+                    }
+                    
+                    
+                }
+            })
+        })
+    }
+    // observe Orders with ORDER STATUS
+    func observeFinishOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
+        
+        let uid = Api.User.currentUid()
+        FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
+            print(snapshot.key)
+            FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
+                if let dict = orderSnapshot.value as? [String:Any]{
+                    print(dict)
+                    if let status = dict["status"] as? Int{
+                        if status == 2 {
+                            print("status \(status)")
+                            let order = Order(id: orderSnapshot.key, data: dict)
+                            completed(order)
+                        }else {
+                            onNotFound()
+                        }
+                    }
+                    
+                    
+                }
+            })
+        })
+    }
+    
     
     // observe price tags - each orders have at least 1 price tag
     // price tags are displayed on PaymentConfirmation screen.

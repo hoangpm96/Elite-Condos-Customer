@@ -14,9 +14,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "init(id:data:)"
-            landmarkType = "7">
+            endingLineNumber = "58">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,9 +28,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "init(id:data:)"
-            landmarkType = "7">
+            endingLineNumber = "57">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -202,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Elite Condos/HomeVC.swift"
-            timestampString = "513396782.691072"
+            timestampString = "513747821.430009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Elite Condos/UserApi.swift"
-            timestampString = "513395249.357429"
+            timestampString = "514022805.849231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "updateEmail(email:onError:onSuccess:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,204 +229,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Elite Condos/OrderApi.swift"
-            timestampString = "513396782.691072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "initOrder(orderData:onSuccess:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Elite Condos/OrderApi.swift"
-            timestampString = "513396782.691072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "initOrder(orderData:onSuccess:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Elite_Condos.OrderApi.addNewOrder (orderData : Swift.Dictionary&lt;Swift.String, Any&gt;, onSuccess : () -&gt; ()) -&gt; ()"
-                  moduleName = "Elite Condos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
-                  timestampString = "513133122.363775"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Elite_Condos.OrderApi.(addNewOrder (orderData : Swift.Dictionary&lt;Swift.String, Any&gt;, onSuccess : () -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Elite Condos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
-                  timestampString = "513133122.367463"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Elite Condos/OrderApi.swift"
-            timestampString = "513396782.691072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "uploadPhotos(onSuccess:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Elite_Condos.OrderApi.uploadPhoto (photo : __ObjC.UIImage, onSuccess : (Swift.String) -&gt; (), onError : (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "Elite Condos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
-                  timestampString = "513133129.147354"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "43">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Elite_Condos.OrderApi.uploadPhoto (photo : __ObjC.UIImage, onSuccess : (Swift.String) -&gt; (), onError : (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "Elite Condos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
-                  timestampString = "513133129.150305"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "194">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Elite Condos/OrderApi.swift"
-            timestampString = "513396782.691072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "OrderApi"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Elite Condos/OrderApi.swift"
-            timestampString = "513396782.691072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "initOrder(orderData:onSuccess:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Elite Condos/OrderApi.swift"
-            timestampString = "513480388.795452"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "observeOrders(completed:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Elite_Condos.OrderApi.(observeOrders (completed : (Elite_Condos.Order) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Elite Condos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
-                  timestampString = "513402983.991924"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "59">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Elite_Condos.OrderApi.(observeOrders (completed : (Elite_Condos.Order) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Elite Condos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khoa/Documents/DATA/Projects/Elite%20Condos/Elite%20Condos/OrderApi.swift"
-                  timestampString = "513402983.995932"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "77">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Elite Condos/PaymentConfirmationVC.swift"
-            timestampString = "513571581.890242"
+            timestampString = "513694318.114695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "calulateTotal()"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Elite Condos/MyJobsVC.swift"
-            timestampString = "513571581.890242"
+            timestampString = "513744596.755897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>

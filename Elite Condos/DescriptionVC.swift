@@ -55,6 +55,7 @@ class DescriptionVC: UIViewController {
             }
         }
         if segue.identifier == "DescriptionToSupplierList"{
+            ProgressHUD.dismiss()
             if let supplierListVC = segue.destination as? SupplierListVC{
                
                 guard let sender = sender as? [String:Any] else {
@@ -104,7 +105,7 @@ class DescriptionVC: UIViewController {
     
     @IBAction func continueBtnPressed(_ sender: Any) {
         
-        ProgressHUD.show("Đang tìm kiếm nhà cung cấp...")
+        ProgressHUD.show("Đang tạo đơn hàng...")
         
         guard let description = descriptionTF.text, description != "" else {
             showAlert(title: APP_NAME, message: "You should fill in description")
@@ -143,6 +144,7 @@ class DescriptionVC: UIViewController {
              self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,
                         "orderId": orderId]
                         )
+            
         }
         
    

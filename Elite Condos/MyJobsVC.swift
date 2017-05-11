@@ -10,12 +10,13 @@ import UIKit
 import ProgressHUD
 class MyJobsVC: UIViewController {
     
+    @IBOutlet weak var segment: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
     
     var orders = [Order]()
     var supplierName = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,17 +26,44 @@ class MyJobsVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchOrders()
+        fetchOrders(status: 0)
     }
     
-    func fetchOrders(){
+    func fetchOrders(status: Int){
         orders = []
+        self.tableView.reloadData()
         ProgressHUD.show("Đang tải dữ liệu...")
-        Api.Order.observeOrders { (order) in
-            self.orders.append(order)
-            self.tableView.reloadData()
-            ProgressHUD.dismiss()
+        
+        switch status {
+        case 0:
+            Api.Order.observeOnGoingOrders(completed: { (order) in
+                self.orders.append(order)
+                self.tableView.reloadData()
+                ProgressHUD.dismiss()
+            }, onNotFound: {
+                ProgressHUD.dismiss()
+            })
+        case 1:
+            Api.Order.observeCancelOrders(completed: { (order) in
+                self.orders.append(order)
+                self.tableView.reloadData()
+                ProgressHUD.dismiss()
+            }, onNotFound: {
+                ProgressHUD.dismiss()
+            })
+        case 2:
+            Api.Order.observeFinishOrders(completed: { (order) in
+                self.orders.append(order)
+                self.tableView.reloadData()
+                ProgressHUD.dismiss()
+            }, onNotFound: {
+                ProgressHUD.dismiss()
+            })
+        default:
+            return
         }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,6 +90,19 @@ class MyJobsVC: UIViewController {
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func segment_ChangeValue(_ sender: Any) {
+        
+        let segmentValue = segment.selectedSegmentIndex
+        
+        if segmentValue == 0 {
+            fetchOrders(status: 0)
+        }else if segmentValue == 1 {
+            fetchOrders(status: 1)
+        }else {
+            fetchOrders(status: 2)
+        }
+    }
 }
 
 extension MyJobsVC: UITableViewDelegate{
@@ -71,7 +112,7 @@ extension MyJobsVC: UITableViewDelegate{
             "supplierName": supplierName,
             "serviceName": self.orders[indexPath.row].serviceName,
             "supplierId": self.orders[indexPath.row].supplierId
-            ]
+        ]
         
         self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
         

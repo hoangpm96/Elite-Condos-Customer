@@ -19,14 +19,14 @@ class SupplierListVC: UIViewController {
         suppliers = []
         tableView.dataSource = self
         
-        ProgressHUD.show("Đang tìm kiếm nhà cung cấp")
+        //        ProgressHUD.show("Đang tìm kiếm nhà cung cấp")
         Api.Supplier.observeSuppliers { (supplier) in
             self.suppliers.append(supplier)
             self.tableView.reloadData()
-            ProgressHUD.dismiss()
+            //            ProgressHUD.dismiss()
         }
     }
-
+    
 }
 
 extension SupplierListVC: SupplierCellDelegate{
@@ -36,11 +36,27 @@ extension SupplierListVC: SupplierCellDelegate{
         newOrderData["supplierId"] = supplierId
         let currentUid = Api.User.currentUid()
         
-        ProgressHUD.show("Đang tạo đơn hàng...")
+        
+        
+        let alert = UIAlertController(title: APP_NAME, message: "Bạn đồng ý chọn nhà cung cấp này?", preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        
+        let okAction = UIAlertAction(title: "Đồng ý", style: .default, handler: { action in
+            ProgressHUD.show("Đang tạo đơn hàng...")
+            
+            Api.Order.updateOrder(orderId: self.orderId,supplierId: supplierId, customerId: currentUid, orderData: newOrderData) {
+//                ProgressHUD.dismiss()
+                self.performSegue(withIdentifier: "SupplierListToMyJobs", sender: nil)
+            }
+            }
+        )
+        alert.addAction(cancel)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+         
        
-        Api.Order.updateOrder(orderId: self.orderId,supplierId: supplierId, customerId: currentUid, orderData: newOrderData) {
-            ProgressHUD.dismiss()
-        }
     }
 }
 

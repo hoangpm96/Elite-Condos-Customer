@@ -25,7 +25,6 @@ class PaymentConfirmationVC: UIViewController {
             self.priceTags.append(pricetag)
             self.calulateTotal()
         }
-        
     }
     @IBAction func confirm_TouchInside(_ sender: Any) {
         Api.Order.confirmPayment(orderId: orderId, totalPrice: total) {

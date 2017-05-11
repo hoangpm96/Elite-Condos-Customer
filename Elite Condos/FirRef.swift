@@ -12,7 +12,7 @@ import Firebase
 let DB_BASE = FIRDatabase.database().reference()
 let STORAGE_BASE = FIRStorage.storage().reference()
 
-class FirRef {
+struct FirRef {
     // DB references
     static let POSTS = DB_BASE.child("posts")
     static let USERS = DB_BASE.child("users")
@@ -22,7 +22,8 @@ class FirRef {
     static let ORDERS = DB_BASE.child("orders")
     static let SUPPLIER_ORDERS = DB_BASE.child("supplier-orders")
     static let CUSTOMER_ORDERS = DB_BASE.child("customer-orders")
-    
+    static let REVIEWS = DB_BASE.child("reviews")
+    static let SUPPLIER_REVIEWS = DB_BASE.child("supplier-reviews")
     
     // Storage references
     static  let POST_IMAGES = STORAGE_BASE.child("post-pics")

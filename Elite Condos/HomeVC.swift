@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import FirebaseInstanceID
+import FirebaseMessaging
 class HomeVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +18,7 @@ class HomeVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self 
 
+        FIRMessaging.messaging().subscribe(toTopic: "/topics/news")
         // Do any additional setup after loading the view.
     }
     
