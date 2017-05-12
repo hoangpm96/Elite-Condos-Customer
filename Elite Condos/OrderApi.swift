@@ -61,26 +61,26 @@ class OrderApi{
                 
             }}
         
-        
-        let start = DispatchTime.now()
+//        
+//        let start = DispatchTime.now()
         task.perform()
         
-        
-        let end  = DispatchTime.now()
-        
-        
-        
-        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
-        
-        let timeInterval = Double(nanoTime) / 1_000_000_000
-        
-        print("time= \(timeInterval))")
-        
-        
+//        
+//        let end  = DispatchTime.now()
+//        
+//        
+//        
+//        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
+//        
+//        let timeInterval = Double(nanoTime) / 1_000_000_000
+//        
+//        print("time= \(timeInterval))")
         
         
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
+        
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 10 ) {
             print("upload ok")
             onSuccess(imgUrls)
         }
@@ -89,7 +89,7 @@ class OrderApi{
     
     // upload 1 photo
     func uploadPhoto(photo: UIImage, onSuccess: @escaping (String) -> Void, onError: @escaping (String) -> Void){
-        if let imgData = UIImageJPEGRepresentation(photo, 0.2){
+        if let imgData = UIImageJPEGRepresentation(photo, 0.1){
             let imgUid = NSUUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"

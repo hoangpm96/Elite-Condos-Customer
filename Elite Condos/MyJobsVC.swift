@@ -8,12 +8,13 @@
 
 import UIKit
 import ProgressHUD
+import Firebase
 class MyJobsVC: UIViewController {
     
     @IBOutlet weak var segment: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
-    
+    let currendId = Api.User.currentUid()
     var orders = [Order]()
     var supplierName = ""
     
@@ -22,46 +23,81 @@ class MyJobsVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+      
+        
+        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
+            print(snapshots)
+            
+            if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
+                self.orders.removeAll()
+                for orderSnapshot in snapshots{
+                    if let dict = orderSnapshot.value as? [String:Any]{
+                        print(dict)
+                        if let status = dict["status"] as? Int{
+                            if status == 0 {
+                                print("alo \(status)")
+                                let order = Order(id: orderSnapshot.key, data: dict)
+                                self.orders.append(order)
+                            }
+                        }
+                    }
+                    
+                }
+                ProgressHUD.dismiss()
+                self.tableView.reloadData()
+            }
+            
+            
+            
+        })
+        
+        
+//        
+//        self.navigationItem.hidesBackButton = true
+//        let newBackButton = UIBarButtonItem(title: "Back1", style: .plain, target: self, action: #selector(backButtonAction))
+//        self.navigationItem.leftBarButtonItem = newBackButton
         
     }
+    
+//    func backButtonAction(){
+//        print("say hi")
+//        
+//        
+//    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchOrders(status: 0)
     }
     
     func fetchOrders(status: Int){
-        orders = []
-        self.tableView.reloadData()
-        ProgressHUD.show("Đang tải dữ liệu...")
         
-        switch status {
-        case 0:
-            Api.Order.observeOnGoingOrders(completed: { (order) in
-                self.orders.append(order)
+        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
+            print(snapshots)
+            
+            if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
+                self.orders.removeAll()
+                for orderSnapshot in snapshots{
+                    if let dict = orderSnapshot.value as? [String:Any]{
+                        print(dict)
+                        if let status = dict["status"] as? Int{
+                            if status == status {
+                                print("alo \(status)")
+                                let order = Order(id: orderSnapshot.key, data: dict)
+                                self.orders.append(order)
+                            }
+                        }
+                    }
+                    
+                }
+                ProgressHUD.dismiss()
                 self.tableView.reloadData()
-                ProgressHUD.dismiss()
-            }, onNotFound: {
-                ProgressHUD.dismiss()
-            })
-        case 1:
-            Api.Order.observeCancelOrders(completed: { (order) in
-                self.orders.append(order)
-                self.tableView.reloadData()
-                ProgressHUD.dismiss()
-            }, onNotFound: {
-                ProgressHUD.dismiss()
-            })
-        case 2:
-            Api.Order.observeFinishOrders(completed: { (order) in
-                self.orders.append(order)
-                self.tableView.reloadData()
-                ProgressHUD.dismiss()
-            }, onNotFound: {
-                ProgressHUD.dismiss()
-            })
-        default:
-            return
-        }
+            }
+            
+            
+            
+        })
         
         
     }
@@ -89,19 +125,36 @@ class MyJobsVC: UIViewController {
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+//        performSegue(withIdentifier: "MyJobToHome", sender: nil)
     }
     
     @IBAction func segment_ChangeValue(_ sender: Any) {
         
         let segmentValue = segment.selectedSegmentIndex
         
-        if segmentValue == 0 {
-            fetchOrders(status: 0)
-        }else if segmentValue == 1 {
+        switch segmentValue {
+        case 0:
+             fetchOrders(status: 0)
+        case 1:
             fetchOrders(status: 1)
-        }else {
+        case 2:
             fetchOrders(status: 2)
+        case 3:
+            fetchOrders(status: 3)
+        default:
+            return
         }
+        
+//        
+//        if segmentValue == 0 {
+//            fetchOrders(status: 0)
+//        }else if segmentValue == 1 {
+//            fetchOrders(status: 1)
+//        }else if segmentValue == 2 {
+//            fetchOrders(status: 2)
+//        }else if segmentValue == 3 {
+//             fetchOrders(status: 3)
+//        }
     }
 }
 
@@ -127,6 +180,7 @@ extension MyJobsVC: Customer_OrderCellDelegate{
     func getSupplierName(name: String) {
         supplierName = name
     }
+    
 }
 
 extension MyJobsVC: UITableViewDataSource{

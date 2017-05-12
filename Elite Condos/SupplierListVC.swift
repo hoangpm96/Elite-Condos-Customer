@@ -25,6 +25,19 @@ class SupplierListVC: UIViewController {
             self.tableView.reloadData()
             //            ProgressHUD.dismiss()
         }
+        
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back1", style: .plain, target: self, action: #selector(backButtonAction))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        
+    }
+    
+    func backButtonAction(){
+        print("say hi")
+        
+        FirRef.ORDERS.child(orderId).removeValue()
+        navigationController?.popViewController(animated: true)
+        
     }
     
 }
@@ -46,17 +59,17 @@ extension SupplierListVC: SupplierCellDelegate{
             ProgressHUD.show("Đang tạo đơn hàng...")
             
             Api.Order.updateOrder(orderId: self.orderId,supplierId: supplierId, customerId: currentUid, orderData: newOrderData) {
-//                ProgressHUD.dismiss()
-                self.performSegue(withIdentifier: "SupplierListToMyJobs", sender: nil)
+                ProgressHUD.dismiss()
+            self.navigationController?.popToRootViewController(animated: true)
             }
-            }
+        }
         )
         alert.addAction(cancel)
         alert.addAction(okAction)
         
         present(alert, animated: true, completion: nil)
-         
-       
+        
+        
     }
 }
 
