@@ -54,7 +54,7 @@
 		D29967F51DCA28F600D1A2B5 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D29967ED1DCA28F600D1A2B5 /* Ubuntu-Medium.ttf */; };
 		D29967F61DCA28F600D1A2B5 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D29967EE1DCA28F600D1A2B5 /* Ubuntu-MediumItalic.ttf */; };
 		D29967F71DCA28F600D1A2B5 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D29967EF1DCA28F600D1A2B5 /* Ubuntu-Regular.ttf */; };
-		D29C36051DE97B5000034404 /* Customer_OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C36041DE97B5000034404 /* Customer_OrderCell.swift */; };
+		D29C36051DE97B5000034404 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C36041DE97B5000034404 /* OrderCell.swift */; };
 		D2B5E66B1E9B1F4B003489C2 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */; };
 		D2B5E66D1E9B1F64003489C2 /* PaymentConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */; };
 		D2B5E66F1E9B2643003489C2 /* PriceTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5E66E1E9B2643003489C2 /* PriceTagCell.swift */; };
@@ -123,7 +123,7 @@
 		D29967ED1DCA28F600D1A2B5 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		D29967EE1DCA28F600D1A2B5 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		D29967EF1DCA28F600D1A2B5 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
-		D29C36041DE97B5000034404 /* Customer_OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer_OrderCell.swift; sourceTree = "<group>"; };
+		D29C36041DE97B5000034404 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		D2B5E66A1E9B1F4B003489C2 /* ReviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
 		D2B5E66C1E9B1F64003489C2 /* PaymentConfirmationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationVC.swift; sourceTree = "<group>"; };
 		D2B5E66E1E9B2643003489C2 /* PriceTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTagCell.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 				D2159A0B1E7B7AEA006517B2 /* PopupPhotoCell.swift */,
 				D20E96111E798C7900A8F3EE /* ServiceCell.swift */,
 				D20E96171E79943500A8F3EE /* SubCategoryCell.swift */,
-				D29C36041DE97B5000034404 /* Customer_OrderCell.swift */,
+				D29C36041DE97B5000034404 /* OrderCell.swift */,
 				D2B5E66E1E9B2643003489C2 /* PriceTagCell.swift */,
 				D20C5CA01E00484100D15C92 /* ServiceListCell.swift */,
 				D20C5C9E1E0031FD00D15C92 /* SupplierCell.swift */,
@@ -482,7 +482,7 @@
 				D2BC647E1E7A24C80031FA31 /* DescriptionVC.swift in Sources */,
 				D28EE7C71DD95A9600BCE1E9 /* FancyView.swift in Sources */,
 				D205619F1DD70A4D008B7EB5 /* CircleImage.swift in Sources */,
-				D29C36051DE97B5000034404 /* Customer_OrderCell.swift in Sources */,
+				D29C36051DE97B5000034404 /* OrderCell.swift in Sources */,
 				D24459261DDDF2FB00F51EE6 /* Service.swift in Sources */,
 				D2159A0C1E7B7AEA006517B2 /* PopupPhotoCell.swift in Sources */,
 				D2D5E4541E8107FE0031F79F /* SignUpVC.swift in Sources */,

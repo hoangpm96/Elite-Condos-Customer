@@ -11,7 +11,7 @@ import ProgressHUD
 import Firebase
 class MyJobsVC: UIViewController {
     
-    @IBOutlet weak var segment: UISegmentedControl!
+//    @IBOutlet weak var segment: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
     let currendId = Api.User.currentUid()
@@ -23,9 +23,9 @@ class MyJobsVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-      
         
-        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
+        ProgressHUD.show("Đang tải dữ liệu...")
+        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: "eKjdAIqJEUN0HIFO8gd4mkMLbo93").observe(.value, with: { (snapshots) in
             print(snapshots)
             
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
@@ -52,30 +52,14 @@ class MyJobsVC: UIViewController {
         })
         
         
-//        
-//        self.navigationItem.hidesBackButton = true
-//        let newBackButton = UIBarButtonItem(title: "Back1", style: .plain, target: self, action: #selector(backButtonAction))
-//        self.navigationItem.leftBarButtonItem = newBackButton
-        
     }
-    
-//    func backButtonAction(){
-//        print("say hi")
-//        
-//        
-//    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchOrders(status: 0)
-    }
-    
-    func fetchOrders(status: Int){
+
+    func fetchOrders(orderStatus: Int){
         
-        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
+        ProgressHUD.show("Đang tải dữ liệu...")
+        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: "eKjdAIqJEUN0HIFO8gd4mkMLbo93").observe(.value, with: { (snapshots) in
             print(snapshots)
-            
+            print("currentId = \(self.currendId)")
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
                 for orderSnapshot in snapshots{
@@ -102,6 +86,20 @@ class MyJobsVC: UIViewController {
         
     }
     
+    @IBAction func ongoingBtn(_ sender: Any) {
+        fetchOrders(orderStatus: ORDER_STATUS.ONGOING.hashValue)
+    }
+    @IBAction func rejectedBtn_TouchInside(_ sender: Any) {
+        fetchOrders(orderStatus: ORDER_STATUS.REJECTED.hashValue)
+    }
+    @IBAction func cancelBtn(_ sender: Any) {
+        fetchOrders(orderStatus: ORDER_STATUS.CANCEL.hashValue)
+    }
+    
+    @IBAction func finishBtn(_ sender: Any) {
+        fetchOrders(orderStatus: ORDER_STATUS.FINISHED.hashValue)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MyJobToPaymentConfimation"{
             if let paymentVC = segue.destination as? PaymentConfirmationVC{
@@ -122,40 +120,12 @@ class MyJobsVC: UIViewController {
             }
         }
     }
-    
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-//        performSegue(withIdentifier: "MyJobToHome", sender: nil)
+        //        performSegue(withIdentifier: "MyJobToHome", sender: nil)
     }
     
-    @IBAction func segment_ChangeValue(_ sender: Any) {
-        
-        let segmentValue = segment.selectedSegmentIndex
-        
-        switch segmentValue {
-        case 0:
-             fetchOrders(status: 0)
-        case 1:
-            fetchOrders(status: 1)
-        case 2:
-            fetchOrders(status: 2)
-        case 3:
-            fetchOrders(status: 3)
-        default:
-            return
-        }
-        
-//        
-//        if segmentValue == 0 {
-//            fetchOrders(status: 0)
-//        }else if segmentValue == 1 {
-//            fetchOrders(status: 1)
-//        }else if segmentValue == 2 {
-//            fetchOrders(status: 2)
-//        }else if segmentValue == 3 {
-//             fetchOrders(status: 3)
-//        }
-    }
+    
 }
 
 extension MyJobsVC: UITableViewDelegate{
@@ -192,7 +162,7 @@ extension MyJobsVC: UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Customer_OrderCell", for: indexPath) as! Customer_OrderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
             cell.delegate = self
             cell.order = orders[indexPath.row]
             return cell

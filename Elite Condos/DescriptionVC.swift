@@ -55,9 +55,9 @@ class DescriptionVC: UIViewController {
             }
         }
         if segue.identifier == "DescriptionToSupplierList"{
-            ProgressHUD.dismiss()
+            
             if let supplierListVC = segue.destination as? SupplierListVC{
-               
+                
                 guard let sender = sender as? [String:Any] else {
                     return
                 }
@@ -136,20 +136,20 @@ class DescriptionVC: UIViewController {
             "customerId": Api.User.currentUid(),
             "serviceId": Api.Order.serviceId,
             "serviceName": Api.Order.mainService,
-            "status": ORDER_STATUS.ONGOING.hashValue
+            "status": ORDER_STATUS.NOTACCEPTED.hashValue
         ]
         
         Api.Order.initOrder(orderData: orderData) { (orderId) in
-           
+            ProgressHUD.dismiss()
             self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,
                                                                                     "orderId": orderId]
             )
-            ProgressHUD.dismiss()
+            
             
             
         }
         
-   
+        
         
         
     }

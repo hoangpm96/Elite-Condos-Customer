@@ -13,7 +13,7 @@ protocol Customer_OrderCellDelegate {
     func getSupplierName(name: String)
 }
 
-class Customer_OrderCell: UITableViewCell {
+class OrderCell: UITableViewCell {
     
     
     @IBOutlet weak var orderId: UILabel!

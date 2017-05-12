@@ -489,7 +489,7 @@
             </objects>
             <point key="canvasLocation" x="3138.75" y="1597.5"/>
         </scene>
-        <!--My JobsVC-->
+        <!--My Jobs-->
         <scene sceneID="LrI-Fg-eDG">
             <objects>
                 <viewController id="CGZ-JL-nBJ" customClass="MyJobsVC" customModule="Elite_Condos" customModuleProvider="target" sceneMemberID="viewController">
@@ -502,10 +502,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="168" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="suM-4H-E53">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Customer_OrderCell" rowHeight="168" id="KnX-6X-2a0" customClass="Customer_OrderCell" customModule="Elite_Condos" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="168" id="KnX-6X-2a0" customClass="OrderCell" customModule="Elite_Condos" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KnX-6X-2a0" id="rP6-zJ-xn5">
@@ -587,44 +587,95 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGS-4o-urq">
+                                <rect key="frame" x="0.0" y="20" width="320" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tpa-Cd-nzm">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuw-88-Z5C">
+                                                <rect key="frame" x="0.0" y="0.0" width="72.5" height="40"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="15"/>
+                                                <state key="normal" title="OnGoing">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="ongoingBtn:" destination="CGZ-JL-nBJ" eventType="touchUpInside" id="fV2-ec-m80"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvm-x5-4DY">
+                                                <rect key="frame" x="82.5" y="0.0" width="72.5" height="40"/>
+                                                <color key="backgroundColor" red="0.30588235289999999" green="0.69019607839999997" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="15"/>
+                                                <state key="normal" title="Rejected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rejectedBtn_TouchInside:" destination="CGZ-JL-nBJ" eventType="touchUpInside" id="gZa-it-YoQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAo-ZU-1Xn">
+                                                <rect key="frame" x="165" y="0.0" width="72.5" height="40"/>
+                                                <color key="backgroundColor" red="1" green="0.35440495640000003" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="15"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelBtn:" destination="CGZ-JL-nBJ" eventType="touchUpInside" id="FVl-ow-88c"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-ar-8e9">
+                                                <rect key="frame" x="247.5" y="0.0" width="72.5" height="40"/>
+                                                <color key="backgroundColor" red="0.0" green="0.82953090949999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="15"/>
+                                                <state key="normal" title="Finish">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="finishBtn:" destination="CGZ-JL-nBJ" eventType="touchUpInside" id="ZH3-N0-TII"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Tpa-Cd-nzm" secondAttribute="bottom" constant="10" id="4J4-yX-ufm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tpa-Cd-nzm" secondAttribute="trailing" id="LjY-tv-w8J"/>
+                                    <constraint firstItem="Tpa-Cd-nzm" firstAttribute="top" secondItem="cGS-4o-urq" secondAttribute="top" constant="10" id="ScW-Mj-Hb4"/>
+                                    <constraint firstItem="Tpa-Cd-nzm" firstAttribute="leading" secondItem="cGS-4o-urq" secondAttribute="leading" id="T1J-Ji-Iej"/>
+                                    <constraint firstAttribute="height" constant="60" id="yxp-mA-7Ae"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="suM-4H-E53" firstAttribute="top" secondItem="Hld-U6-G8f" secondAttribute="top" id="NRn-ts-jix"/>
+                            <constraint firstItem="cGS-4o-urq" firstAttribute="top" secondItem="d4o-1B-gmd" secondAttribute="bottom" id="5Xw-Gt-sHO"/>
+                            <constraint firstAttribute="trailing" secondItem="cGS-4o-urq" secondAttribute="trailing" id="PfI-dE-bx3"/>
                             <constraint firstAttribute="trailing" secondItem="suM-4H-E53" secondAttribute="trailing" id="So9-1Z-Ofu"/>
+                            <constraint firstItem="suM-4H-E53" firstAttribute="top" secondItem="cGS-4o-urq" secondAttribute="bottom" id="WAU-lx-3n5"/>
+                            <constraint firstItem="cGS-4o-urq" firstAttribute="leading" secondItem="Hld-U6-G8f" secondAttribute="leading" id="Yqa-wq-dOL"/>
                             <constraint firstItem="suM-4H-E53" firstAttribute="leading" secondItem="Hld-U6-G8f" secondAttribute="leading" id="kfv-fW-CCP"/>
                             <constraint firstItem="I0z-Jq-jjy" firstAttribute="top" secondItem="suM-4H-E53" secondAttribute="bottom" id="yzZ-GS-1Pb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" prompt="My Jobs" id="X6A-53-QP0">
+                    <navigationItem key="navigationItem" title="My Jobs" id="X6A-53-QP0">
                         <barButtonItem key="leftBarButtonItem" title="X" id="M6v-Zi-e6v">
                             <connections>
                                 <action selector="backBtnPressed:" destination="CGZ-JL-nBJ" id="AHC-RI-eK5"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ktO-KX-fey">
-                            <rect key="frame" x="42" y="37" width="254" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="OnGoing"/>
-                                <segment title="Rejected"/>
-                                <segment title="Cancel"/>
-                                <segment title="Finish"/>
-                            </segments>
-                            <connections>
-                                <action selector="segment_ChangeValue:" destination="CGZ-JL-nBJ" eventType="valueChanged" id="MOo-F7-umO"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="segment" destination="ktO-KX-fey" id="myR-89-kz6"/>
                         <outlet property="tableView" destination="suM-4H-E53" id="iOV-ge-0bo"/>
                         <segue destination="Cme-tS-51h" kind="show" identifier="MyJobToPaymentConfimation" id="WHP-Z3-eo0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCW-2w-vhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317.5" y="3320"/>
+            <point key="canvasLocation" x="2317.5" y="3308.75"/>
         </scene>
         <!--Xác nhận -->
         <scene sceneID="XHs-ZN-D06">

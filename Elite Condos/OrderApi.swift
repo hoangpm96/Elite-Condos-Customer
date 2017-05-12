@@ -38,8 +38,15 @@ class OrderApi{
             }
             newData["imgUrls"] = imgStrings
             let newChildId = randomString(length: 8)
+            // wait here
+            
             FirRef.ORDERS.child(newChildId).updateChildValues(newData)
-            onSuccess(newChildId)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + 2 ) {
+                print("all new child")
+                onSuccess(newChildId)
+            }
+            
         }
     }
     
@@ -79,6 +86,7 @@ class OrderApi{
         
         
         
+        // wait 10s to finish upload image task
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 10 ) {
             print("upload ok")
