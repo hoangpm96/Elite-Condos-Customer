@@ -23,7 +23,11 @@ class MyJobsVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         ProgressHUD.show("Đang tải dữ liệu...")
         FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: "eKjdAIqJEUN0HIFO8gd4mkMLbo93").observe(.value, with: { (snapshots) in
             print(snapshots)
@@ -43,15 +47,14 @@ class MyJobsVC: UIViewController {
                     }
                     
                 }
-                ProgressHUD.dismiss()
                 self.tableView.reloadData()
+                ProgressHUD.dismiss()
             }
             
             
             
         })
-        
-        
+
     }
 
     func fetchOrders(orderStatus: Int){
@@ -62,11 +65,12 @@ class MyJobsVC: UIViewController {
             print("currentId = \(self.currendId)")
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
+                self.tableView.reloadData()
                 for orderSnapshot in snapshots{
                     if let dict = orderSnapshot.value as? [String:Any]{
                         print(dict)
                         if let status = dict["status"] as? Int{
-                            if status == status {
+                            if status == orderStatus {
                                 print("alo \(status)")
                                 let order = Order(id: orderSnapshot.key, data: dict)
                                 self.orders.append(order)
@@ -75,8 +79,9 @@ class MyJobsVC: UIViewController {
                     }
                     
                 }
-                ProgressHUD.dismiss()
+                 ProgressHUD.dismiss()
                 self.tableView.reloadData()
+               
             }
             
             
