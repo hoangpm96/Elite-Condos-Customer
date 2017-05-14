@@ -29,7 +29,7 @@ class SupplierCell: UITableViewCell {
     }
     
     func updateView(){
-        
+        ProgressHUD.show("Loading...")
   
         
         nameLbl.text = supplier?.name
@@ -39,7 +39,13 @@ class SupplierCell: UITableViewCell {
             logoImage.sd_setImage(with: url)
         }
     
+        Api.Supplier.getTotalReviewScore(supplierId: (supplier?.id)!) { (score) in
+            self.rating.rating = score
+        }
         
+        
+        
+        ProgressHUD.dismiss()
         
     }
     @IBAction func book_TouchUpInside(_ sender: Any) {

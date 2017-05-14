@@ -68,35 +68,21 @@ class SupplierApi{
     
     // get total reviews score of a supplier
     
-//    func getTotalReviewScore(supplierId: String, onSuccess: @escaping (Double) -> Void){
-//        
-//        var totalStars = 0
-//        var count = 1
-//        var average = 0.0
-//        
-//    
-//        FirRef.SUPPLIER_REVIEWS.child("LYFqRhNNYnNEJS8Ju9zVbc9J1Jk2").observe(.value, with: { (snapshot) in
-//            for ele in snapshot.children.allObjects as! [FIRDataSnapshot] {
-//                FirRef.REVIEWS.child(ele.key).observeSingleEvent(of: .value, with: { (reviewSnapshot) in
-//                    if let dict = reviewSnapshot.value as? [String:Any]{
-//                        
-//                        if let reviewStars = dict["ratingStars"] as? Int {
-//                            count += 1
-//                            totalStars += reviewStars
-//                        }
-//                    }
-//                })
-//            }
-//            
-//            average = Double(totalStars) / Double(count)
-//
-//            onSuccess(average)
-//            
-//        })
-//    }
+    func getTotalReviewScore(supplierId: String, onSuccess: @escaping (Double) -> Void){
+        
+        let ref = FirRef.SUPPLIER_REVIEWS.child(supplierId).child("totalStars")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String:Double]{
+                if let rating = dict["rating"] {
+                    onSuccess(rating)
+                }
+                
+            }
+        
+        })
     
-    
-    
+    }
+
     func calculateTotalRating(supplierId: String, newRating: Double,  onSuccess: @escaping () -> Void){
         
         // if exit else
