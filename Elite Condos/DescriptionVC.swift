@@ -54,7 +54,7 @@ class DescriptionVC: UIViewController {
                 popover.delegate = self
             }
         }
-        if segue.identifier == "DescriptionToSupplierList"{
+        else if segue.identifier == "DescriptionToSupplierList"{
             
             if let supplierListVC = segue.destination as? SupplierListVC{
                 
@@ -138,7 +138,7 @@ class DescriptionVC: UIViewController {
             "serviceName": Api.Order.mainService,
             "status": ORDER_STATUS.NOTACCEPTED.hashValue
         ]
-        
+      
         Api.Order.initOrder(orderData: orderData) { (orderId) in
             ProgressHUD.dismiss()
             self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,

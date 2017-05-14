@@ -81,6 +81,12 @@ UINavigationControllerDelegate{
                 showAlert(title: SIGN_UP_ERROR, message: SIGN_UP_ERROR_PHONE)
                 return
         }
+        
+//        callback
+        
+//        Api.User.signUp(name: "", email: "", password: "", phone: "", avatarImg: "", onSuccess: { 
+//            <#code#>
+//        }, onError: <#T##(String) -> Void#>)
         ProgressHUD.show("Creating account")
         Api.User.signUp(name: name, email: email, password: password, phone: phone, avatarImg: avatarImage.image!, onSuccess: {
             let alert = UIAlertController(title: APP_NAME, message: "Đăng Ký Thành Công, tự động đăng nhập", preferredStyle: .alert)

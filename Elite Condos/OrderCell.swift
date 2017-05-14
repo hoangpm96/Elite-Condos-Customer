@@ -40,6 +40,10 @@ class OrderCell: UITableViewCell {
         orderId.text = "#\((order?.id)!)"
         
         // download supplier Image
+        
+        
+    
+        
         Api.Supplier.getSupplierName(id: (order?.supplierId)!) { (name) in
             self.supplierName.text = name
             self.delegate?.getSupplierName(name: name)

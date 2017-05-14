@@ -24,6 +24,8 @@ class SubCategoryVC: UIViewController {
     
     // get main - subcatergory
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         if let descriptionVC = segue.destination as? DescriptionVC{
             if let data = sender as? [String:Any]{
                 if let main = data["main"] as? String{
@@ -37,6 +39,18 @@ class SubCategoryVC: UIViewController {
             }
         }
     }
+    
+    
+    // sign in 
+    
+    // load orders
+    
+    // create orders 
+    
+    /// 
+    
+    
+    
 }
 
 extension SubCategoryVC: UITableViewDelegate{

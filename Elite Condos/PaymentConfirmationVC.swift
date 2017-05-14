@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 class PaymentConfirmationVC: UIViewController {
 
+    @IBOutlet weak var confirmButton: FancyBtn!
     @IBOutlet weak var totalLbl: UILabel!
     var orderId = ""
     var total = 0.0
@@ -23,6 +24,7 @@ class PaymentConfirmationVC: UIViewController {
         tableView.dataSource = self
         print("orderId: \(orderId)")
         
+        self.confirmButton.isHidden = true
         
         FirRef.ORDERS.child(orderId).child("pricetag").observe(.value, with:  { (snapshot) in
             
@@ -43,6 +45,7 @@ class PaymentConfirmationVC: UIViewController {
             if let totalPrice = snapshot.value as? Double{
                 self.total  = totalPrice
                 self.totalLbl.text = "\(totalPrice) VNĐ"
+                self.confirmButton.isHidden = false
             }
         })
         

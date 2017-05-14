@@ -26,12 +26,15 @@ class ReviewVC: UIViewController {
     var employeeImge = ""
     var supplierId = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         supplierNameLbl.text = supplierName
         serviceNameLbl.text = serviceName
         priceLbl.text = "\(price)"
+        
+        
         Api.Supplier.downloadImage(id: supplierId, onError: { (error) in
             print(error)
         }) { (img) in
@@ -48,6 +51,7 @@ class ReviewVC: UIViewController {
         }
         let username = FIRAuth.auth()?.currentUser?.email
         let currenId = Api.User.currentUid()
+        
         Api.User.getImageProfile { (imgUrl) in
             let reviewData: [String:Any] =
                 [
@@ -61,9 +65,12 @@ class ReviewVC: UIViewController {
             ]
             
             
-            Api.Order
-                .addReview(supplierId: self.supplierId, orderId: self.orderId, reviewData: reviewData)
-            self.showAlert(title: "✓", message: "Bạn đã thêm nhận xét thành công, xin cảm ơn!")
+            
+            Api.Order.addReview(supplierId: self.supplierId, orderId: self.orderId, reviewData: reviewData, onSuccess: { 
+                self.showAlert(title: "✓", message: "Bạn đã thêm nhận xét thành công, xin cảm ơn!")
+                ProgressHUD.dismiss()
+            })
+            
             
             
         }

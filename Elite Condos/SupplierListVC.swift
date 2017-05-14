@@ -11,7 +11,6 @@ import ProgressHUD
 class SupplierListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var suppliers: [Supplier]!
-    
     var orderData: [String:Any]!
     var orderId =  ""
     override func viewDidLoad() {
@@ -27,7 +26,7 @@ class SupplierListVC: UIViewController {
         }
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back1", style: .plain, target: self, action: #selector(backButtonAction))
+        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.leftBarButtonItem = newBackButton
         
     }
@@ -41,7 +40,6 @@ class SupplierListVC: UIViewController {
     }
     
 }
-
 extension SupplierListVC: SupplierCellDelegate{
     func book(supplierId: String) {
         
@@ -72,8 +70,6 @@ extension SupplierListVC: SupplierCellDelegate{
         
     }
 }
-
-
 extension SupplierListVC: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

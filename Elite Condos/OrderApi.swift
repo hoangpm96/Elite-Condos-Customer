@@ -17,13 +17,31 @@ class OrderApi{
     var subService = ""
     
     var serviceId = ""
-    
-    
     // add order - add reviewID to order
-    func addReview(supplierId: String, orderId: String, reviewData: [String:Any] ){
-        FirRef.REVIEWS.child(orderId).updateChildValues(reviewData)
-        FirRef.SUPPLIER_REVIEWS.child(supplierId).child(orderId).setValue(true)
+    func addReview(supplierId: String, orderId: String, reviewData: [String:Any], onSuccess: @escaping () -> Void ){
+        
+        
+        if let rating = reviewData["ratingStars"] as? Double{
+       
+            
+            FirRef.REVIEWS.child(orderId).updateChildValues(reviewData)
+            FirRef.SUPPLIER_REVIEWS.child(supplierId).child(orderId).setValue(true)
+            
+            Api.Supplier.calculateTotalRating(supplierId: supplierId, newRating: rating, onSuccess: {
+                
+                onSuccess()
+            
+            })
+        }
+        
+        
+        
+        
     }
+    
+    
+    
+    
     // upload order photos -> img links
     func initOrder(orderData: [String:Any], onSuccess: @escaping (String) -> Void){
         uploadPhotos { (imgUrls) in
@@ -41,11 +59,8 @@ class OrderApi{
             // wait here
             
             FirRef.ORDERS.child(newChildId).updateChildValues(newData)
-            
-            DispatchQueue.global().asyncAfter(deadline: .now() + 2 ) {
-                print("all new child")
-                onSuccess(newChildId)
-            }
+            print("all new child")
+            onSuccess(newChildId)
             
         }
     }
@@ -57,41 +72,47 @@ class OrderApi{
             return
         }
         
-        let task = DispatchWorkItem {
-            for img in self.images{
-                
-                self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
-                    imgUrls.append(imgUrl)
-                }, onError: { (error) in
-                    print(error)
-                })
-                
-            }}
+        for img in self.images{
+            
+            self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
+                imgUrls.append(imgUrl)
+            }, onError: { (error) in
+                print(error)
+            })
+            
+        }
+
         
+//        DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
+//            print("upload ok")
 //        
-//        let start = DispatchTime.now()
-        task.perform()
-        
-//        
-//        let end  = DispatchTime.now()
-//        
-//        
-//        
-//        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
-//        
-//        let timeInterval = Double(nanoTime) / 1_000_000_000
-//        
-//        print("time= \(timeInterval))")
+//        }
         
         
+//        let task = DispatchWorkItem {
+//            for img in self.images{
+//                
+//                self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
+//                    imgUrls.append(imgUrl)
+//                }, onError: { (error) in
+//                    print(error)
+//                })
+//                
+//            }}
+//
+//        task.perform()
+//
         
+        onSuccess(imgUrls)
+//        DispatchQueue.global().sync {
+//             onSuccess(imgUrls)
+//        }
         
         // wait 10s to finish upload image task
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 10 ) {
-            print("upload ok")
-            onSuccess(imgUrls)
-        }
+//        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ) {
+//            print("upload ok")
+//        }
         
     }
     
@@ -183,6 +204,7 @@ class OrderApi{
     func observeFinishOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
         
         let uid = Api.User.currentUid()
+        
         FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
             print(snapshot.key)
             FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
@@ -207,7 +229,7 @@ class OrderApi{
     
     // observe price tags - each orders have at least 1 price tag
     // price tags are displayed on PaymentConfirmation screen.
-    
+    // closure - function
     func observePriceTag(orderId: String, completed: @escaping (PriceTag) -> Void){
         FirRef.ORDERS.child(orderId).child("pricetags").observe(.childAdded, with: { (snapshot) in
             

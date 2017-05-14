@@ -216,6 +216,10 @@
 		D2502C141DC8E2DF009189E7 /* Elite Condos */ = {
 			isa = PBXGroup;
 			children = (
+				D2502C1E1DC8E2DF009189E7 /* LaunchScreen.storyboard */,
+				D25556CA1DDA0D3B004E7649 /* Start.storyboard */,
+				D2598BDA1E7938080096769D /* Home.storyboard */,
+				D2502C211DC8E2DF009189E7 /* Info.plist */,
 				D25556C91DD9C837004E7649 /* Elite Condos.entitlements */,
 				D2502C151DC8E2DF009189E7 /* AppDelegate.swift */,
 				D2159A0F1E7B8B2F006517B2 /* Api */,
@@ -224,10 +228,6 @@
 				D2BF5B091DCEE2C4002534EC /* Lib */,
 				D25556CD1DDA7A78004E7649 /* Models */,
 				D2BF5B0C1DCF1DDD002534EC /* Views */,
-				D2502C1E1DC8E2DF009189E7 /* LaunchScreen.storyboard */,
-				D25556CA1DDA0D3B004E7649 /* Start.storyboard */,
-				D2598BDA1E7938080096769D /* Home.storyboard */,
-				D2502C211DC8E2DF009189E7 /* Info.plist */,
 				D2BF5B111DCF8206002534EC /* Assets.xcassets */,
 				D29967E71DCA28E200D1A2B5 /* Resources */,
 				D2502C271DC8E2F7009189E7 /* GoogleService-Info.plist */,

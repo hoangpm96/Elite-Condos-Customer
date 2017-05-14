@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseInstanceID
 import FirebaseMessaging
+import FirebaseDatabase
 class HomeVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +20,15 @@ class HomeVC: UIViewController {
         tableView.delegate = self 
 
         FIRMessaging.messaging().subscribe(toTopic: "/topics/news")
+        
+        
+        var totalStars: Double = 0.0
+        var count: Int = 1
+        var average = 0.0
+        
+        
+     
+        
         // Do any additional setup after loading the view.
     }
     

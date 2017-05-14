@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ProgressHUD
 
 protocol SupplierCellDelegate {
     func book(supplierId: String)
@@ -28,12 +29,16 @@ class SupplierCell: UITableViewCell {
     }
     
     func updateView(){
+        
+  
+        
         nameLbl.text = supplier?.name
         
         if let imgUrl = supplier?.logo {
             let url = URL(string: imgUrl)
             logoImage.sd_setImage(with: url)
         }
+    
         
         
     }
