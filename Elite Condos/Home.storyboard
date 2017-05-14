@@ -785,7 +785,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJO-hd-Dsj" customClass="FancyBtn" customModule="Elite_Condos" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="260" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="280" width="320" height="30"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.69019607839999997" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="jwZ-21-Qie"/>
@@ -797,23 +797,58 @@
                                     <action selector="confirm_TouchInside:" destination="Cme-tS-51h" eventType="touchUpInside" id="XFa-pa-xZx"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBO-HX-t8C">
+                                <rect key="frame" x="0.0" y="230" width="320" height="25"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xLl-Lc-BwO">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pN8-0Y-huZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kme-Zi-BAW">
+                                                <rect key="frame" x="160" y="0.0" width="160" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="17s-vD-p93"/>
+                                    <constraint firstAttribute="trailing" secondItem="xLl-Lc-BwO" secondAttribute="trailing" id="3aH-Ri-4p4"/>
+                                    <constraint firstItem="xLl-Lc-BwO" firstAttribute="top" secondItem="nBO-HX-t8C" secondAttribute="top" id="7JY-cb-TaP"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="GUw-Xf-eDD"/>
+                                    <constraint firstItem="xLl-Lc-BwO" firstAttribute="leading" secondItem="nBO-HX-t8C" secondAttribute="leading" id="KnZ-zw-IjV"/>
+                                    <constraint firstAttribute="bottom" secondItem="xLl-Lc-BwO" secondAttribute="bottom" id="zuK-ur-Hod"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nBO-HX-t8C" firstAttribute="leading" secondItem="KbA-qa-ckW" secondAttribute="leading" id="2H2-Vp-Lsp"/>
+                            <constraint firstItem="aJO-hd-Dsj" firstAttribute="top" secondItem="nBO-HX-t8C" secondAttribute="bottom" constant="25" id="2yD-NE-c9m"/>
+                            <constraint firstItem="nBO-HX-t8C" firstAttribute="top" secondItem="ek0-nv-uFM" secondAttribute="bottom" id="7Ly-V9-lLN"/>
                             <constraint firstAttribute="trailing" secondItem="aJO-hd-Dsj" secondAttribute="trailing" id="Fr5-fN-S55"/>
                             <constraint firstAttribute="trailing" secondItem="ek0-nv-uFM" secondAttribute="trailing" id="I5a-0y-yaz"/>
                             <constraint firstAttribute="trailing" secondItem="zXT-j9-qM4" secondAttribute="trailing" id="I82-XO-9Zu"/>
                             <constraint firstItem="zXT-j9-qM4" firstAttribute="top" secondItem="0Kb-6G-Ggu" secondAttribute="bottom" id="O6r-k6-4f3"/>
+                            <constraint firstAttribute="trailing" secondItem="nBO-HX-t8C" secondAttribute="trailing" id="OfM-lO-m6s"/>
                             <constraint firstItem="ek0-nv-uFM" firstAttribute="top" secondItem="zXT-j9-qM4" secondAttribute="bottom" id="U7A-hM-SNN"/>
                             <constraint firstItem="aJO-hd-Dsj" firstAttribute="leading" secondItem="KbA-qa-ckW" secondAttribute="leading" id="Uu2-Xb-kk4"/>
                             <constraint firstItem="ek0-nv-uFM" firstAttribute="leading" secondItem="KbA-qa-ckW" secondAttribute="leading" id="Vep-6I-Kb4"/>
-                            <constraint firstItem="aJO-hd-Dsj" firstAttribute="top" secondItem="ek0-nv-uFM" secondAttribute="bottom" constant="30" id="jXs-YI-7oj"/>
                             <constraint firstItem="zXT-j9-qM4" firstAttribute="leading" secondItem="KbA-qa-ckW" secondAttribute="leading" id="tog-Cm-fJU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Xác nhận " id="NWS-QJ-j2T"/>
                     <connections>
                         <outlet property="tableView" destination="ek0-nv-uFM" id="Row-oy-hCI"/>
+                        <outlet property="totalLbl" destination="Kme-Zi-BAW" id="xlU-Ib-r7n"/>
                         <segue destination="ZgD-n8-GvD" kind="show" identifier="PaymentConfirmationToReview" id="dbR-r3-atv"/>
                     </connections>
                 </viewController>

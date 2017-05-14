@@ -7,10 +7,11 @@
 //
 
 import UIKit
-
+import Firebase
 class PaymentConfirmationVC: UIViewController {
 
-    var orderId = "C46kg9qq"
+    @IBOutlet weak var totalLbl: UILabel!
+    var orderId = ""
     var total = 0.0
     var supplierName = ""
     var serviceName = ""
@@ -20,12 +21,44 @@ class PaymentConfirmationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        print("orderId: \(orderId)")
         
-        Api.Order.observePriceTag(orderId: orderId) { (pricetag) in
-            self.priceTags.append(pricetag)
-            self.calulateTotal()
-        }
+        
+        FirRef.ORDERS.child(orderId).child("pricetag").observe(.value, with:  { (snapshot) in
+            
+            self.priceTags = []
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
+                for snap in snapshots{
+                    if let snapData = snap.value as? Dictionary<String,Any>{
+                        
+                        let priceTag = PriceTag(id: snap.key, data: snapData)
+                        self.priceTags.append(priceTag)
+                    }
+                }
+                self.tableView.reloadData()
+             
+            }
+        })
+        FirRef.ORDERS.child(orderId).child("total").observe(.value, with: { (snapshot) in
+            if let totalPrice = snapshot.value as? Double{
+                self.total  = totalPrice
+                self.totalLbl.text = "\(totalPrice) VNĐ"
+            }
+        })
+        
+        
+
+        
+        
+        
+//        Api.Order.observePriceTag(orderId: orderId) { (pricetag) in
+//            self.priceTags.append(pricetag)
+//            self.calulateTotal()
+//        }
     }
+    
+  
+    
     @IBAction func confirm_TouchInside(_ sender: Any) {
         Api.Order.confirmPayment(orderId: orderId, totalPrice: total) {
             
@@ -67,19 +100,7 @@ class PaymentConfirmationVC: UIViewController {
             }
         }
     }
-    func calulateTotal(){
-        
-        for pricetag in priceTags{
-            total += pricetag.price
-        }
-        let random = randomString(length: 5)
-        let id = "total\(random)"
-        let totalPrice = PriceTag(id: id, name: "Tổng", price: total)
-        priceTags.append(totalPrice)
-//        priceTags = priceTags.sorted(by: { $0.price < $1.price  })
-        priceTags = priceTags.sorted{ $0.price < $1.price }
-        self.tableView.reloadData()
-    }
+  
     
     
 

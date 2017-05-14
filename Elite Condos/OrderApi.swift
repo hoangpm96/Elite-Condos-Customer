@@ -210,7 +210,9 @@ class OrderApi{
     
     func observePriceTag(orderId: String, completed: @escaping (PriceTag) -> Void){
         FirRef.ORDERS.child(orderId).child("pricetags").observe(.childAdded, with: { (snapshot) in
+            
             if let dict = snapshot.value as? [String:Any]{
+                print(dict)
                 let priceTag = PriceTag(id: snapshot.key, data: dict)
                 completed(priceTag)
             }
@@ -220,7 +222,7 @@ class OrderApi{
     // confirm payment when order is finised, use in PaymentConfirmationVC
     func confirmPayment(orderId: String, totalPrice: Double, completion: @escaping () -> Void){
         let today = Date().description
-        FirRef.ORDERS.child(orderId).updateChildValues(["totalPrice": totalPrice, "ended_at" : today, "status": ORDER_STATUS.FINISHED.hashValue ])
+        FirRef.ORDERS.child(orderId).updateChildValues(["total": totalPrice, "ended_at" : today, "status": ORDER_STATUS.FINISHED.hashValue ])
         completion()
     }
 }

@@ -23,23 +23,17 @@ class MyJobsVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         ProgressHUD.show("Đang tải dữ liệu...")
         FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: "eKjdAIqJEUN0HIFO8gd4mkMLbo93").observe(.value, with: { (snapshots) in
-            print(snapshots)
+        
             
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
                 for orderSnapshot in snapshots{
                     if let dict = orderSnapshot.value as? [String:Any]{
-                        print(dict)
+                        
                         if let status = dict["status"] as? Int{
-                            if status == 0 {
-                                print("alo \(status)")
+                            if status == ORDER_STATUS.ONGOING.hashValue {
                                 let order = Order(id: orderSnapshot.key, data: dict)
                                 self.orders.append(order)
                             }
@@ -47,31 +41,34 @@ class MyJobsVC: UIViewController {
                     }
                     
                 }
+                 ProgressHUD.dismiss()
                 self.tableView.reloadData()
-                ProgressHUD.dismiss()
+               
             }
             
             
             
         })
 
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
     }
 
     func fetchOrders(orderStatus: Int){
         
         ProgressHUD.show("Đang tải dữ liệu...")
         FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: "eKjdAIqJEUN0HIFO8gd4mkMLbo93").observe(.value, with: { (snapshots) in
-            print(snapshots)
-            print("currentId = \(self.currendId)")
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
                 self.tableView.reloadData()
                 for orderSnapshot in snapshots{
                     if let dict = orderSnapshot.value as? [String:Any]{
-                        print(dict)
                         if let status = dict["status"] as? Int{
                             if status == orderStatus {
-                                print("alo \(status)")
+                               
                                 let order = Order(id: orderSnapshot.key, data: dict)
                                 self.orders.append(order)
                             }
@@ -135,14 +132,20 @@ class MyJobsVC: UIViewController {
 
 extension MyJobsVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let senderData: [String:Any] = [
-            "orderId": self.orders[indexPath.row].id,
-            "supplierName": supplierName,
-            "serviceName": self.orders[indexPath.row].serviceName,
-            "supplierId": self.orders[indexPath.row].supplierId
-        ]
         
-        self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
+        let status = orders[indexPath.row].status
+        if status == ORDER_STATUS.ONGOING.hashValue {
+            let senderData: [String:Any] = [
+                "orderId": self.orders[indexPath.row].id,
+                "supplierName": supplierName,
+                "serviceName": self.orders[indexPath.row].serviceName,
+                "supplierId": self.orders[indexPath.row].supplierId
+            ]
+            
+            self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
+        }
+        
+       
         
         //        Api.Supplier.getSupplierName(id: orders[indexPath.row].id) { (name) in
         //                        self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
