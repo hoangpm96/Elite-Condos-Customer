@@ -59,8 +59,11 @@ class MyJobsVC: UIViewController {
 
     func fetchOrders(orderStatus: Int){
         
+        let userid = Api.User.currentUid()
+        
+        
         ProgressHUD.show("Đang tải dữ liệu...")
-        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: "eKjdAIqJEUN0HIFO8gd4mkMLbo93").observe(.value, with: { (snapshots) in
+        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: userid).observe(.value, with: { (snapshots) in
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
                 self.tableView.reloadData()

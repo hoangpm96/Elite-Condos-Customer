@@ -105,49 +105,81 @@ class DescriptionVC: UIViewController {
     
     @IBAction func continueBtnPressed(_ sender: Any) {
         
-        ProgressHUD.show("Đang tạo đơn hàng...")
-        
-        guard let description = descriptionTF.text, description != "" else {
-            showAlert(title: APP_NAME, message: "You should fill in description")
-            return
-        }
-        guard Api.Order.images.count > 0 else {
-            showAlert(title: APP_NAME, message: "You should pick at least one picture")
-            return
-        }
-        guard isGetTime == true else {
-            showAlert(title: APP_NAME, message: "You should pick a time")
-            return
-        }
-        guard isGetLocation == true else {
-            showAlert(title: APP_NAME, message: "You should choose your address")
-            return
-        }
-        
-        let today = Date().description
         
         
-        var orderData: [String:Any]
-        orderData = [
-            "created_at": today,
-            "lat": userLocation.coordinate.latitude,
-            "long": userLocation.coordinate.longitude,
-            "time": (timeBtn.titleLabel?.text)! as String,
-            "customerId": Api.User.currentUid(),
-            "serviceId": Api.Order.serviceId,
-            "serviceName": Api.Order.mainService,
-            "status": ORDER_STATUS.NOTACCEPTED.hashValue
-        ]
-      
-        Api.Order.initOrder(orderData: orderData) { (orderId) in
-            ProgressHUD.dismiss()
-            self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,
-                                                                                    "orderId": orderId]
-            )
+        
+        
+        let alert = UIAlertController(title: APP_NAME , message: "Bạn muốn?", preferredStyle: .alert)
+        
+        let watingAction = UIAlertAction(title: "Chế độ chờ", style: .default, handler: {
+            action in
+        
+            
+        })
+        
+        let supplierSelectionAction = UIAlertAction(title: "Chế độ chờ", style: .default, handler: {
+            action in
+        
+            
+            ProgressHUD.show("Đang tạo đơn hàng...")
+            
+            guard let description = self.descriptionTF.text, description != "" else {
+                self.showAlert(title: APP_NAME, message: "You should fill in description")
+                return
+            }
+            guard Api.Order.images.count > 0 else {
+                self.showAlert(title: APP_NAME, message: "You should pick at least one picture")
+                return
+            }
+            guard self.isGetTime == true else {
+                self.showAlert(title: APP_NAME, message: "You should pick a time")
+                return
+            }
+            guard self.isGetLocation == true else {
+                self.showAlert(title: APP_NAME, message: "You should choose your address")
+                return
+            }
+            
+            let today = Date().description
             
             
+            var orderData: [String:Any]
+            orderData = [
+                "created_at": today,
+                "lat": self.userLocation.coordinate.latitude,
+                "long": self.userLocation.coordinate.longitude,
+                "time": (self.timeBtn.titleLabel?.text)! as String,
+                "customerId": Api.User.currentUid(),
+                "serviceId": Api.Order.serviceId,
+                "serviceName": Api.Order.mainService,
+                "status": ORDER_STATUS.NOTACCEPTED.hashValue
+            ]
             
-        }
+            Api.Order.initOrder(orderData: orderData) { (orderId) in
+                ProgressHUD.dismiss()
+                self.performSegue(withIdentifier: "DescriptionToSupplierList", sender: ["orderData": orderData,
+                                                                                        "orderId": orderId]
+                )
+                
+                
+                
+            }
+
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        
+        alert.addAction(watingAction)
+        alert.addAction(supplierSelectionAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
         
         
         

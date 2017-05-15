@@ -16,6 +16,8 @@ class Supplier {
     var phone: String?
     var email: String?
     var stars: String?
+    
+    var distance: Double?
     //var serviceRef : FIRDatabaseReference!
     
     init(id : String, data : Dictionary<String, Any>) {

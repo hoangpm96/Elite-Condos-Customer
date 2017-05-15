@@ -10,9 +10,36 @@ import Foundation
 import Firebase
 
 class UserApi{
-   
     
-    // get user image profile 
+    
+    
+    // get user location
+    
+    func getLocation(onSuccess: @escaping (Double, Double) -> Void){
+        
+        let currentId = Api.User.currentUid()
+        
+        FirRef.USERS.child(currentId).child("locations").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+            if let dict = snapshot.value as? [String:Double] {
+                
+                  print("dict of user: \(dict)")
+                
+                if let lat = dict["lat"], let long = dict["long"] {
+                    onSuccess(lat,long)
+                }
+                
+            }
+            
+            
+        })
+        
+        
+    }
+    
+    
+    // get user image profile
     
     func getImageProfile(onSuccess: @escaping (String) -> Void){
         let currentId = Api.User.currentUid()
@@ -39,9 +66,9 @@ class UserApi{
             return
         }
         
-      
         
-         FirRef.CUSTOMERS.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        FirRef.CUSTOMERS.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snap = snapshot.value as? [String:Any]{
                 if let imgUrl = snap["avatarUrl"] as? String{
                     self.downloadImage(imgUrl: imgUrl, onError: { (error) in
@@ -71,7 +98,7 @@ class UserApi{
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             if error != nil {
                 onError((error?.localizedDescription)!)
-                return 
+                return
             }
             onSuccess()
         })
@@ -81,7 +108,7 @@ class UserApi{
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
-         FirRef.CUSTOMERS.child(user.uid).updateChildValues(["phone": phone])
+        FirRef.CUSTOMERS.child(user.uid).updateChildValues(["phone": phone])
         
         onSuccess()
     }
@@ -90,21 +117,21 @@ class UserApi{
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
-         FirRef.CUSTOMERS.child(user.uid).updateChildValues(["name": name])
+        FirRef.CUSTOMERS.child(user.uid).updateChildValues(["name": name])
         
         onSuccess()
     }
     
     
     func updateEmail(email: String, onError: @escaping (String) -> Void, onSuccess: @escaping () -> Void){
- 
+        
         
         guard let user = FIRAuth.auth()?.currentUser else {
             return
         }
         
-         FirRef.CUSTOMERS.child(user.uid).updateChildValues(["email": email])
-       
+        FirRef.CUSTOMERS.child(user.uid).updateChildValues(["email": email])
+        
         FIRAuth.auth()?.currentUser?.updateEmail(email, completion: { (callback) in
             if callback != nil {
                 onError((callback?.localizedDescription)!)
@@ -116,7 +143,7 @@ class UserApi{
     }
     
     func updatePassword(password: String, onError: @escaping (String) -> Void){
-       
+        
         FIRAuth.auth()?.currentUser?.updatePassword(password, completion: { (error) in
             if error != nil {
                 onError((error?.localizedDescription)!)
@@ -126,7 +153,7 @@ class UserApi{
     
     func signOut(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void){
         do {
-           try  FIRAuth.auth()?.signOut()
+            try  FIRAuth.auth()?.signOut()
             onSuccess()
         } catch{
             onError("can't sign out")
@@ -144,7 +171,7 @@ class UserApi{
                 if error != nil{
                     onError(error.debugDescription)
                 }else{
-                     let downloadURL = metaData!.downloadURL()!.absoluteString
+                    let downloadURL = metaData!.downloadURL()!.absoluteString
                     onSuccess(downloadURL)
                 }
             })
@@ -196,14 +223,14 @@ class UserApi{
                 guard let name = dict["name"] as? String else{
                     return
                 }
-            
+                
                 
                 let email = FIRAuth.auth()?.currentUser?.email
                 
                 if let email = email{
                     completed(name, email, phone)
                 }
-   
+                
             }
         })
     }
@@ -233,7 +260,7 @@ class UserApi{
                             print(supplier)
                             
                             onError("Tài khoản của bạn là tài khoản nhà cung cấp, vui lòng sử dụng ứng dụng \(APP_NAME) Supplier")
-   
+                            
                         }
                     }
                 }
@@ -244,7 +271,7 @@ class UserApi{
                 
             }
         })
-
+        
     }
     
     
@@ -256,7 +283,7 @@ class UserApi{
         
         let currentTime = getCurrentTime()
         FirRef.USERS.child(uid).updateChildValues(["customer" : true,
-                                                "created_at" : currentTime])
+                                                   "created_at" : currentTime])
     }
     
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 class SupplierApi{
     
     
@@ -28,7 +29,12 @@ class SupplierApi{
             
             if let dict = snapshot.value as? [String:Any]{
                 let supplier = Supplier(id: snapshot.key, data: dict)
-                completion(supplier)
+                
+                
+                self.calculateDistance(supplierId: supplier.id!, onSuccess: { (distance) in
+                    supplier.distance = distance
+                    completion(supplier)
+                })
             }
         })
     }
@@ -111,12 +117,6 @@ class SupplierApi{
                         }
                     }
                 })
-
-                
-                
-                
-                
-                
             }
         })
         
@@ -129,5 +129,62 @@ class SupplierApi{
         onSuccess()
     }
 
+    
+    // calculate distance between supplier and customer 
+    
+    func calculateDistance(supplierId: String, onSuccess: @escaping (Double) -> Void) {
+        
+        FirRef.USERS.child(supplierId).child("locations").observeSingleEvent(of: .value, with: { (snapshot) in
+          
+            if let dict = snapshot.value as? [String:Double] {
+//                guard let lat = dict["lat"] else { return}
+//                guard let long = dict["long"] else { return}
+//              
+                print("dict of supplier: \(dict)")
+                
+                
+                if let lat = dict["lat"], let long = dict["long"] {
+                    
+                    Api.User.getLocation(onSuccess: { (userLat, userLong) in
+                        let result = self.calculateDistanceBetween(firsLat: lat, firstLong: long, secondLat: userLat, secondLong: userLong)
+                        print("result : \(result)")
+                        onSuccess(result)
+                        // REMINDER: return here to escape function ???
+                        
+                    })
+
+                }
+            }
+            print("out of onSuccess")
+            onSuccess(0.0)
+            
+        })
+        
+        
+    }
+    
+    
+    
+    
+    func calculateDistanceBetween(firsLat: Double, firstLong: Double, secondLat: Double, secondLong: Double) -> Double {
+        
+        
+        
+        
+        let coordinate₀ = CLLocation(latitude: firsLat , longitude: firstLong)
+        let coordinate₁ = CLLocation(latitude: secondLat, longitude: secondLong)
+        
+        let distanceInMeters = coordinate₀.distance(from: coordinate₁)
+        
+//        let result = String(format: "%.2f", distanceInMeters/1000)
+        
+        return distanceInMeters
+    }
+    
+    
+    
+    
+    
+    
     
 }

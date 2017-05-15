@@ -31,6 +31,17 @@ class SupplierCell: UITableViewCell {
     func updateView(){
         ProgressHUD.show("Loading...")
   
+        rating.isUserInteractionEnabled = false
+        
+        
+        if let distanceInMeters = supplier?.distance {
+            
+            
+            let distanceString = String(format: "%.2f", distanceInMeters/1000)
+            distance.text = "\(distanceString)Km"
+        }
+        
+       
         
         nameLbl.text = supplier?.name
         

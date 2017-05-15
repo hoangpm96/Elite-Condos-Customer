@@ -18,13 +18,21 @@ class SupplierListVC: UIViewController {
         suppliers = []
         tableView.dataSource = self
         
-        //        ProgressHUD.show("Đang tìm kiếm nhà cung cấp")
+//        ProgressHUD.show("Đang tìm kiếm nhà cung cấp")
         Api.Supplier.observeSuppliers { (supplier) in
             self.suppliers.append(supplier)
             self.tableView.reloadData()
-            //            ProgressHUD.dismiss()
+//            ProgressHUD.dismiss()
         }
         
+//        self.suppliers = self.suppliers.sorted(by: { (s1, s2) -> Bool in
+//            
+//            guard let d1 = s1.distance else { return false }
+//            guard let d2 = s2.distance else { return false }
+//            return d2.isLess(than: d1)
+//        })
+//        self.tableView.reloadData()
+//        
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -32,8 +40,6 @@ class SupplierListVC: UIViewController {
     }
     
     func backButtonAction(){
-        print("say hi")
-        
         FirRef.ORDERS.child(orderId).removeValue()
         navigationController?.popViewController(animated: true)
         
@@ -58,7 +64,7 @@ extension SupplierListVC: SupplierCellDelegate{
             
             Api.Order.updateOrder(orderId: self.orderId,supplierId: supplierId, customerId: currentUid, orderData: newOrderData) {
                 ProgressHUD.dismiss()
-            self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }
         )

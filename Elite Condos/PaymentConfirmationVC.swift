@@ -98,15 +98,9 @@ class PaymentConfirmationVC: UIViewController {
                         reviewVC.price = totalPrice
                     }
                 }
-                
-                
             }
         }
     }
-  
-    
-    
-
 }
 extension PaymentConfirmationVC: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
