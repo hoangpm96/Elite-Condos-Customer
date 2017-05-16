@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 let APP_NAME = "Elite Condos"
 
 
@@ -46,6 +45,7 @@ enum ORDER_STATUS{
     case CANCEL
     case FINISHED
     case REJECTED
+    case WAITING
 }
 
 

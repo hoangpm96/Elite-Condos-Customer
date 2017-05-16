@@ -153,11 +153,7 @@ class SupplierApi{
                         
                         Api.User.getLocation(onSuccess: { (userLat, userLong) in
                             let result = self.calculateDistanceBetween(firsLat: lat, firstLong: long, secondLat: userLat, secondLong: userLong)
-                            print("result : \(result)")
                             onSuccess(result)
-                            return
-                            // REMINDER: return here to escape function ???
-                            
                         })
                         
                     }

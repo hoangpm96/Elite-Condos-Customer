@@ -13,31 +13,57 @@ class SupplierListVC: UIViewController {
     var suppliers: [Supplier]!
     var orderData: [String:Any]!
     var orderId =  ""
+    
+    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         suppliers = []
         tableView.dataSource = self
-        
-//        ProgressHUD.show("Đang tìm kiếm nhà cung cấp")
         Api.Supplier.observeSuppliers { (supplier) in
             self.suppliers.append(supplier)
+            
+            
+            
+            
             self.tableView.reloadData()
-//            ProgressHUD.dismiss()
         }
-        
-//        self.suppliers = self.suppliers.sorted(by: { (s1, s2) -> Bool in
-//            
-//            guard let d1 = s1.distance else { return false }
-//            guard let d2 = s2.distance else { return false }
-//            return d2.isLess(than: d1)
-//        })
-//        self.tableView.reloadData()
-//        
+
+       
+//
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.leftBarButtonItem = newBackButton
         
     }
+ 
+    
+    func sortSupplierArray(onSuccess: @escaping () -> Void){
+        
+        
+        self.suppliers = self.suppliers.sorted(by: { (s1, s2) -> Bool in
+            
+            if let d1 = s1.distance, let d2 = s2.distance {
+                return d1.isLess(than: d2)
+            }else {
+                return true
+            }
+            
+        })
+        
+        self.suppliers = self.suppliers.sorted(by: { (s1, s2) -> Bool in
+            
+            if let d1 = s1.distance, let d2 = s2.distance {
+                return d1.isLess(than: d2)
+                
+                
+            }else {
+                return true
+            }
+            
+        })
+    }
+    
     
     func backButtonAction(){
         FirRef.ORDERS.child(orderId).removeValue()

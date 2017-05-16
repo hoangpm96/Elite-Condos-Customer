@@ -22,7 +22,7 @@ class OrderApi{
         
         
         if let rating = reviewData["ratingStars"] as? Double{
-       
+            
             
             FirRef.REVIEWS.child(orderId).updateChildValues(reviewData)
             FirRef.SUPPLIER_REVIEWS.child(supplierId).child(orderId).setValue(true)
@@ -30,7 +30,7 @@ class OrderApi{
             Api.Supplier.calculateTotalRating(supplierId: supplierId, newRating: rating, onSuccess: {
                 
                 onSuccess()
-            
+                
             })
         }
         
@@ -81,38 +81,38 @@ class OrderApi{
             })
             
         }
-
-        
-//        DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
-//            print("upload ok")
-//        
-//        }
         
         
-//        let task = DispatchWorkItem {
-//            for img in self.images{
-//                
-//                self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
-//                    imgUrls.append(imgUrl)
-//                }, onError: { (error) in
-//                    print(error)
-//                })
-//                
-//            }}
-//
-//        task.perform()
-//
+        //        DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
+        //            print("upload ok")
+        //
+        //        }
+        
+        
+        //        let task = DispatchWorkItem {
+        //            for img in self.images{
+        //
+        //                self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
+        //                    imgUrls.append(imgUrl)
+        //                }, onError: { (error) in
+        //                    print(error)
+        //                })
+        //
+        //            }}
+        //
+        //        task.perform()
+        //
         
         onSuccess(imgUrls)
-//        DispatchQueue.global().sync {
-//             onSuccess(imgUrls)
-//        }
+        //        DispatchQueue.global().sync {
+        //             onSuccess(imgUrls)
+        //        }
         
         // wait 10s to finish upload image task
         
-//        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ) {
-//            print("upload ok")
-//        }
+        //        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ) {
+        //            print("upload ok")
+        //        }
         
     }
     
@@ -145,10 +145,13 @@ class OrderApi{
         FirRef.ORDERS.child(orderId).updateChildValues(orderData)
         
         //
-        
-        FirRef.SUPPLIER_ORDERS.child(supplierId).child(orderId).setValue(true)
         FirRef.CUSTOMER_ORDERS.child(customerId).child(orderId).setValue(true)
+        FirRef.SUPPLIER_ORDERS.child(supplierId).child(orderId).setValue(true)
         
+//        if supplierId != nil {
+//            
+//        }
+//        
         onSuccess()
     }
     

@@ -42,22 +42,18 @@ class OrderCell: UITableViewCell {
         // download supplier Image
         
         
-    
-        
-        Api.Supplier.getSupplierName(id: (order?.supplierId)!) { (name) in
-            self.supplierName.text = name
-            self.delegate?.getSupplierName(name: name)
+        if order?.supplierId != nil {
+            Api.Supplier.getSupplierName(id: (order?.supplierId)!) { (name) in
+                self.supplierName.text = name
+                self.delegate?.getSupplierName(name: name)
+            }
+            Api.Supplier.downloadImage(id: (order?.supplierId)!, onError: { (error) in
+                print(error)
+            }) { (img) in
+                self.logo.image = img
+                
+            }
         }
-        Api.Supplier.downloadImage(id: (order?.supplierId)!, onError: { (error) in
-            print(error)
-        }) { (img) in
-            self.logo.image = img
-           
-        }
-        
-        
-        
-        
         
     }
     
