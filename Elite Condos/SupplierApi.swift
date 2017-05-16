@@ -56,8 +56,8 @@ class SupplierApi{
     }
     
     func downloadImage(id: String,onError: @escaping (String) -> Void, onSuccess: @escaping (UIImage) -> Void ){
-    
-       
+        
+        
         
         FirRef.SUPPLIERS.child(id).observeSingleEvent(of: .value, with: {
             snapshot in
@@ -65,7 +65,7 @@ class SupplierApi{
                 if let imgUrl = snapData["logoUrl"] as? String{
                     print("URL = \(imgUrl)")
                     Api.User
-                    .downloadImage(imgUrl: imgUrl, onError: onError, onSuccess: onSuccess)
+                        .downloadImage(imgUrl: imgUrl, onError: onError, onSuccess: onSuccess)
                 }
             }
         })
@@ -84,18 +84,18 @@ class SupplierApi{
                 }
                 
             }
-        
+            
         })
-    
+        
     }
-
+    
     func calculateTotalRating(supplierId: String, newRating: Double,  onSuccess: @escaping () -> Void){
         
         // if exit else
         
         let ref = FirRef.SUPPLIER_REVIEWS.child(supplierId).child("totalStars")
-//
-
+        //
+        
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -125,38 +125,52 @@ class SupplierApi{
     
     func updateTotalRating(supplierId: String, newRating: Double,  onSuccess: @escaping () -> Void){
         FirRef.SUPPLIER_REVIEWS.child(supplierId).child("totalStars").updateChildValues(["rating":newRating])
-
+        
         onSuccess()
     }
-
     
-    // calculate distance between supplier and customer 
+    
+    // calculate distance between supplier and customer
     
     func calculateDistance(supplierId: String, onSuccess: @escaping (Double) -> Void) {
         
-        FirRef.USERS.child(supplierId).child("locations").observeSingleEvent(of: .value, with: { (snapshot) in
-          
-            if let dict = snapshot.value as? [String:Double] {
-//                guard let lat = dict["lat"] else { return}
-//                guard let long = dict["long"] else { return}
-//              
-                print("dict of supplier: \(dict)")
-                
-                
-                if let lat = dict["lat"], let long = dict["long"] {
+        
+        let ref = FirRef.USERS.child(supplierId).child("locations")
+        
+        
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() {
+                if let dict = snapshot.value as? [String:Double] {
+                    //                guard let lat = dict["lat"] else { return}
+                    //                guard let long = dict["long"] else { return}
+                    //
+                    print("dict of supplier: \(dict)")
                     
-                    Api.User.getLocation(onSuccess: { (userLat, userLong) in
-                        let result = self.calculateDistanceBetween(firsLat: lat, firstLong: long, secondLat: userLat, secondLong: userLong)
-                        print("result : \(result)")
-                        onSuccess(result)
-                        // REMINDER: return here to escape function ???
+                    
+                    if let lat = dict["lat"], let long = dict["long"] {
                         
-                    })
-
+                        Api.User.getLocation(onSuccess: { (userLat, userLong) in
+                            let result = self.calculateDistanceBetween(firsLat: lat, firstLong: long, secondLat: userLat, secondLong: userLong)
+                            print("result : \(result)")
+                            onSuccess(result)
+                            return
+                            // REMINDER: return here to escape function ???
+                            
+                        })
+                        
+                    }
                 }
+                
+            }else {
+                print("out of onSuccess")
+                
+                onSuccess(0.0)
             }
-            print("out of onSuccess")
-            onSuccess(0.0)
+            
+            
+            
             
         })
         
@@ -176,7 +190,7 @@ class SupplierApi{
         
         let distanceInMeters = coordinate₀.distance(from: coordinate₁)
         
-//        let result = String(format: "%.2f", distanceInMeters/1000)
+        //        let result = String(format: "%.2f", distanceInMeters/1000)
         
         return distanceInMeters
     }

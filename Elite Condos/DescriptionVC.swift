@@ -117,7 +117,7 @@ class DescriptionVC: UIViewController {
             
         })
         
-        let supplierSelectionAction = UIAlertAction(title: "Chế độ chờ", style: .default, handler: {
+        let supplierSelectionAction = UIAlertAction(title: "Chọn nhà cung cấp", style: .default, handler: {
             action in
         
             
