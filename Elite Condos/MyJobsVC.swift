@@ -22,19 +22,14 @@ class MyJobsVC: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+     
         fetchOrders(orderStatus: ORDER_STATUS.NOTACCEPTED.hashValue)
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
-    }
-
     func fetchOrders(orderStatus: Int){
         
-        
+        ProgressHUD.show("Đang tải dữ liệu...")
         FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
-            ProgressHUD.show("Đang tải dữ liệu...")
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
                 self.tableView.reloadData()
