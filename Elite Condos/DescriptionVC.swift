@@ -107,8 +107,6 @@ class DescriptionVC: UIViewController {
         
         ProgressHUD.show("Đang tạo đơn hàng...")
         
-        let currentId = Api.User.currentUid()
-        
         guard let description = self.descriptionTF.text, description != "" else {
             self.showAlert(title: APP_NAME, message: "You should fill in description")
             return
@@ -126,12 +124,10 @@ class DescriptionVC: UIViewController {
             return
         }
         
-        let today = Date().description
-        
         
         var orderData: [String:Any]
         orderData = [
-            "created_at": today,
+            "created_at": getCurrentTime(),
             "lat": self.userLocation.coordinate.latitude,
             "long": self.userLocation.coordinate.longitude,
             "time": (self.timeBtn.titleLabel?.text)! as String,
@@ -141,15 +137,12 @@ class DescriptionVC: UIViewController {
             "status": ORDER_STATUS.NOTACCEPTED.hashValue
         ]
         
-        
-        
-        
         let alert = UIAlertController(title: APP_NAME , message: "Bạn muốn?", preferredStyle: .alert)
         
         let watingAction = UIAlertAction(title: "Chế độ chờ", style: .default, handler: {
             action in
             
-            orderData["status"] = ORDER_STATUS.WAITING.hashValue
+            orderData["status"] = ORDER_STATUS.NOTACCEPTED.hashValue
             
             Api.Order.initOrder(orderData: orderData) { (orderId) in
                 ProgressHUD.dismiss()

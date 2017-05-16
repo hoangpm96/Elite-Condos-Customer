@@ -22,34 +22,7 @@ class MyJobsVC: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
-        ProgressHUD.show("Đang tải dữ liệu...")
-        FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
-        
-            
-            if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
-                self.orders.removeAll()
-                for orderSnapshot in snapshots{
-                    if let dict = orderSnapshot.value as? [String:Any]{
-                        
-                        if let status = dict["status"] as? Int{
-                            if status == ORDER_STATUS.ONGOING.hashValue {
-                                let order = Order(id: orderSnapshot.key, data: dict)
-                                self.orders.append(order)
-                            }
-                        }
-                    }
-                    
-                }
-                 ProgressHUD.dismiss()
-                self.tableView.reloadData()
-               
-            }
-            
-            
-            
-        })
-
+        fetchOrders(orderStatus: ORDER_STATUS.NOTACCEPTED.hashValue)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -60,10 +33,8 @@ class MyJobsVC: UIViewController {
     func fetchOrders(orderStatus: Int){
         
         
-        
-        
-        ProgressHUD.show("Đang tải dữ liệu...")
         FirRef.ORDERS.queryOrdered(byChild: "customerId").queryEqual(toValue: currendId).observe(.value, with: { (snapshots) in
+            ProgressHUD.show("Đang tải dữ liệu...")
             if let snapshots = snapshots.children.allObjects as? [FIRDataSnapshot]{
                 self.orders.removeAll()
                 self.tableView.reloadData()
@@ -79,23 +50,16 @@ class MyJobsVC: UIViewController {
                     }
                     
                 }
-                 ProgressHUD.dismiss()
                 self.tableView.reloadData()
-               
+                ProgressHUD.dismiss()
             }
-            
-            
-            
         })
         
         
     }
-    
-    
     @IBAction func waitingBtn(_ sender: Any) {
-        fetchOrders(orderStatus: ORDER_STATUS.WAITING.hashValue)
+        fetchOrders(orderStatus: ORDER_STATUS.NOTACCEPTED.hashValue)
     }
-    
     @IBAction func ongoingBtn(_ sender: Any) {
         fetchOrders(orderStatus: ORDER_STATUS.ONGOING.hashValue)
     }
@@ -132,7 +96,6 @@ class MyJobsVC: UIViewController {
     }
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        //        performSegue(withIdentifier: "MyJobToHome", sender: nil)
     }
     
     
@@ -143,11 +106,11 @@ extension MyJobsVC: UITableViewDelegate{
         
         let status = orders[indexPath.row].status
         if status == ORDER_STATUS.ONGOING.hashValue {
-            let senderData: [String:Any] = [
-                "orderId": self.orders[indexPath.row].id,
+            let senderData: [String:String] = [
+                "orderId": self.orders[indexPath.row].id ?? "",
                 "supplierName": supplierName,
-                "serviceName": self.orders[indexPath.row].serviceName,
-                "supplierId": self.orders[indexPath.row].supplierId
+                "serviceName": self.orders[indexPath.row].serviceName ?? "",
+                "supplierId": self.orders[indexPath.row].supplierId ?? ""
             ]
             
             self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
@@ -155,9 +118,6 @@ extension MyJobsVC: UITableViewDelegate{
         
        
         
-        //        Api.Supplier.getSupplierName(id: orders[indexPath.row].id) { (name) in
-        //                        self.performSegue(withIdentifier: "MyJobToPaymentConfimation", sender: senderData)
-        //        }
         
     }
 }

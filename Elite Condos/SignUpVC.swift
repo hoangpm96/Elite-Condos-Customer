@@ -82,11 +82,7 @@ UINavigationControllerDelegate{
                 return
         }
         
-//        callback
-        
-//        Api.User.signUp(name: "", email: "", password: "", phone: "", avatarImg: "", onSuccess: { 
-//            <#code#>
-//        }, onError: <#T##(String) -> Void#>)
+
         ProgressHUD.show("Creating account")
         Api.User.signUp(name: name, email: email, password: password, phone: phone, avatarImg: avatarImage.image!, onSuccess: {
             let alert = UIAlertController(title: APP_NAME, message: "Đăng Ký Thành Công, tự động đăng nhập", preferredStyle: .alert)
@@ -107,9 +103,6 @@ UINavigationControllerDelegate{
         
         
     }
-    
-    
-    
     func showAlert(title: String, message : String){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

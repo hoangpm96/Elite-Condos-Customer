@@ -499,11 +499,11 @@
                         <viewControllerLayoutGuide type="bottom" id="I0z-Jq-jjy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Hld-U6-G8f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="168" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="suM-4H-E53">
-                                <rect key="frame" x="0.0" y="124" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="356"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="168" id="KnX-6X-2a0" customClass="OrderCell" customModule="Elite_Condos" customModuleProvider="target">
@@ -584,12 +584,13 @@
                                             <outlet property="orderId" destination="EjU-Kv-AdK" id="DAv-8g-3Uu"/>
                                             <outlet property="serviceNameLbl" destination="j4b-dK-NN3" id="I92-ti-ZNa"/>
                                             <outlet property="supplierName" destination="iDP-wH-Zge" id="Uv7-46-PCQ"/>
+                                            <outlet property="timeLbl" destination="UuH-R4-sGP" id="bKB-Ee-oZN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGS-4o-urq">
-                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Tpa-Cd-nzm">
                                         <rect key="frame" x="0.0" y="10" width="320" height="40"/>
@@ -673,6 +674,7 @@
                             <constraint firstItem="I0z-Jq-jjy" firstAttribute="top" secondItem="suM-4H-E53" secondAttribute="bottom" id="yzZ-GS-1Pb"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="My Jobs" id="X6A-53-QP0">
                         <barButtonItem key="leftBarButtonItem" title="X" id="M6v-Zi-e6v">
                             <connections>

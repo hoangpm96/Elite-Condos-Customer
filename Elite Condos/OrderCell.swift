@@ -16,6 +16,7 @@ protocol Customer_OrderCellDelegate {
 class OrderCell: UITableViewCell {
     
     
+    @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var orderId: UILabel!
     @IBOutlet weak var supplierName: UILabel!
     @IBOutlet weak var logo: CircleImage!
@@ -38,6 +39,11 @@ class OrderCell: UITableViewCell {
         
         serviceNameLbl.text = order?.serviceName
         orderId.text = "#\((order?.id)!)"
+        
+        if order?.time != nil {
+            timeLbl.text = getTimeStringFrom(str: (order?.time)!)
+        }
+        
         
         // download supplier Image
         
