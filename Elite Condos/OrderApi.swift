@@ -44,75 +44,75 @@ class OrderApi{
     
     // upload order photos -> img links
     func initOrder(orderData: [String:Any], onSuccess: @escaping (String) -> Void){
-        uploadPhotos { (imgUrls) in
-            var newData = orderData
-            var imgStrings = ""
-            for (index,value) in imgUrls.enumerated(){
-                if (index == imgUrls.count - 1){
-                    imgStrings += value
-                }else {
-                    imgStrings += "\(value),"
-                }
-            }
-            newData["imgUrls"] = imgStrings
-            let newChildId = randomString(length: 8)
-            // wait here
-            
-            FirRef.ORDERS.child(newChildId).updateChildValues(newData)
-            print("all new child")
-            onSuccess(newChildId)
-            
-        }
-    }
-    
-    // upload multiple photos
-    func uploadPhotos(onSuccess: @escaping ([String]) -> Void){
-        var imgUrls: [String] = []
+        
+        
+        var newData = orderData
+        var imgStrings = ""
         guard images.count > 0 else {
             return
         }
         
-        for img in self.images{
+        for (index,img) in self.images.enumerated() {
             
-            self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
-                imgUrls.append(imgUrl)
-            }, onError: { (error) in
-                print(error)
-            })
-            
+            if let imgData = UIImageJPEGRepresentation(img, 0.1){
+                let imgUid = NSUUID().uuidString
+                let metadata = FIRStorageMetadata()
+                metadata.contentType = "image/jpeg"
+                FirRef.ORDER_IMAGES.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
+                    if error != nil{
+                       print(error.debugDescription)
+                    }else{
+                        let downloadURL = metaData!.downloadURL()!.absoluteString
+                        if index == self.images.count - 1 {
+                            imgStrings += "\(downloadURL)"
+                            
+                            
+                            newData["imgUrls"] = imgStrings
+                            let newChildId = randomString(length: 8)
+                            // wait here
+                            
+                            FirRef.ORDERS.child(newChildId).updateChildValues(newData)
+                            onSuccess(newChildId)
+                        }else {
+                            imgStrings += "\(downloadURL),"
+                        }
+                        
+                        print("imageUrl = \(downloadURL)")
+                        
+                    }
+                })
+            }
         }
         
         
-        //        DispatchQueue.global().asyncAfter(deadline: .now() + 5 ) {
-        //            print("upload ok")
-        //
-        //        }
+        
+    }
+    
+    // upload multiple photos
+    func uploadPhotos(onSuccess: @escaping ([String]) -> Void){
+        
+        var imgUrls: [String] = []
+        
+        defer {
+            print("imgUrls count \(imgUrls.count)")
+            onSuccess(imgUrls)
+        }
         
         
-        //        let task = DispatchWorkItem {
-        //            for img in self.images{
-        //
-        //                self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
-        //                    imgUrls.append(imgUrl)
-        //                }, onError: { (error) in
-        //                    print(error)
-        //                })
-        //
-        //            }}
-        //
-        //        task.perform()
-        //
-        
-        onSuccess(imgUrls)
-        //        DispatchQueue.global().sync {
-        //             onSuccess(imgUrls)
-        //        }
-        
-        // wait 10s to finish upload image task
-        
-        //        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ) {
-        //            print("upload ok")
-        //        }
+        guard images.count > 0 else {
+            return
+        }
+        for img in self.images{
+            
+                    print("upload lan 1")
+
+                self.uploadPhoto(photo: img, onSuccess: { (imgUrl) in
+                    imgUrls.append(imgUrl)
+                }, onError: { (error) in
+                    print(error)
+                
+            })
+        }
         
     }
     
@@ -122,9 +122,6 @@ class OrderApi{
             let imgUid = NSUUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
-            
-            
-            
             FirRef.ORDER_IMAGES.child(imgUid).put(imgData, metadata: metadata, completion: { (metaData, error) in
                 if error != nil{
                     onError("error \(error.debugDescription)")
@@ -137,28 +134,19 @@ class OrderApi{
         }
     }
     
+    
+    
     // update order with new supplierid
     func updateOrder(orderId: String, supplierId : String, customerId : String, orderData : Dictionary<String,Any>, onSuccess: @escaping () -> Void){
         
-        
-        
         FirRef.ORDERS.child(orderId).updateChildValues(orderData)
         
-        //
-        FirRef.CUSTOMER_ORDERS.child(customerId).child(orderId).setValue(true)
+        //        FirRef.CUSTOMER_ORDERS.child(customerId).child(orderId).setValue(true)
         FirRef.SUPPLIER_ORDERS.child(supplierId).child(orderId).setValue(true)
-        
-//        if supplierId != nil {
-//            
-//        }
-//        
         onSuccess()
     }
-    
-    
     // observe orders
     func observeCancelOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
-        
         let uid = Api.User.currentUid()
         FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
             print(snapshot.key)
@@ -173,57 +161,6 @@ class OrderApi{
                             onNotFound()
                         }
                     }
-                    
-                }
-            })
-        })
-    }
-    
-    // observe Orders with ORDER STATUS
-    func observeOnGoingOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
-        
-        let uid = Api.User.currentUid()
-        FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
-            print(snapshot.key)
-            FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
-                if let dict = orderSnapshot.value as? [String:Any]{
-                    print(dict)
-                    if let status = dict["status"] as? Int{
-                        if status == 0 {
-                            print("status \(status)")
-                            let order = Order(id: orderSnapshot.key, data: dict)
-                            completed(order)
-                        }else {
-                            onNotFound()
-                        }
-                    }
-                    
-                    
-                }
-            })
-        })
-    }
-    // observe Orders with ORDER STATUS
-    func observeFinishOrders(completed: @escaping (Order) -> Void, onNotFound: @escaping () -> Void){
-        
-        let uid = Api.User.currentUid()
-        
-        FirRef.CUSTOMER_ORDERS.child(uid).observe(.childAdded, with: { (snapshot) in
-            print(snapshot.key)
-            FirRef.ORDERS.child(snapshot.key).observe(.value, with: { (orderSnapshot) in
-                if let dict = orderSnapshot.value as? [String:Any]{
-                    print(dict)
-                    if let status = dict["status"] as? Int{
-                        if status == 2 {
-                            print("status \(status)")
-                            let order = Order(id: orderSnapshot.key, data: dict)
-                            completed(order)
-                        }else {
-                            onNotFound()
-                        }
-                    }
-                    
-                    
                 }
             })
         })
