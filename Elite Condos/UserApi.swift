@@ -13,6 +13,18 @@ class UserApi{
     
     
     
+    // update user location
+    
+    func updateUserLocation(lat: Double, long: Double, onSuccess: @escaping () -> Void){
+        FirRef.USERS.child(currentUid()).child("locations").updateChildValues(["lat": lat, "long": long])
+        
+        onSuccess()
+        
+        
+        
+    }
+    
+    
     // get user location
     
     func getLocation(onSuccess: @escaping (Double, Double) -> Void){
@@ -24,7 +36,7 @@ class UserApi{
             
             if let dict = snapshot.value as? [String:Double] {
                 
-                  print("dict of user: \(dict)")
+                print("dict of user: \(dict)")
                 
                 if let lat = dict["lat"], let long = dict["long"] {
                     onSuccess(lat,long)

@@ -124,7 +124,6 @@ class DescriptionVC: UIViewController {
             return
         }
         
-        
         var orderData: [String:Any]
         orderData = [
             "created_at": getCurrentTime(),
@@ -134,7 +133,8 @@ class DescriptionVC: UIViewController {
             "customerId": Api.User.currentUid(),
             "serviceId": "",
             "serviceName": Api.Order.mainService,
-            "status": ORDER_STATUS.NOTACCEPTED.hashValue
+            "status": ORDER_STATUS.NOTACCEPTED.hashValue,
+            "description": description
         ]
         
         let alert = UIAlertController(title: APP_NAME , message: "Bạn muốn?", preferredStyle: .alert)
@@ -246,7 +246,14 @@ extension DescriptionVC: CLLocationManagerDelegate{
             print(location.coordinate.latitude)
             print(location.coordinate.longitude )
             userLocation = location
-            reserveGeo()
+            
+            // update user locaiton
+            Api.User.updateUserLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude, onSuccess: { 
+                self.reserveGeo()
+            })
+            
+            
+            
             
         }
     }
