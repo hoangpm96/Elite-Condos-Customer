@@ -51,7 +51,7 @@ UINavigationControllerDelegate{
             avatarImage.image = image
             pickedImage = true
         }else {
-            print("Can't show picker")
+            self.showAlert(title: "Lỗi", message: "Không thể chọn hình")
         }
         
         imagePicker.dismiss(animated: true, completion: nil)
@@ -85,6 +85,9 @@ UINavigationControllerDelegate{
 
         ProgressHUD.show("Creating account")
         Api.User.signUp(name: name, email: email, password: password, phone: phone, avatarImg: avatarImage.image!, onSuccess: {
+            
+            ProgressHUD.dismiss()
+            
             let alert = UIAlertController(title: APP_NAME, message: "Đăng Ký Thành Công, tự động đăng nhập", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                 self.performSegue(withIdentifier: "SignUpToHome", sender: nil)
@@ -98,6 +101,7 @@ UINavigationControllerDelegate{
             
             
         }) { (error) in
+            ProgressHUD.dismiss()
             self.showAlert(title: APP_NAME, message: error)
         }
         

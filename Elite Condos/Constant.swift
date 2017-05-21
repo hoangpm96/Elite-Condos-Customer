@@ -27,7 +27,7 @@ var SUPPLIER_ID = "SUPPLIER_ID"
 var SUPPLIER_NAME = "SUPPLIER_NAME"
 let USER_ID = "USER_ID"
 
-var userId = ""
+var token = ""
 
 
 enum ORDER_STATUS{

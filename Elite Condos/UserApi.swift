@@ -2,8 +2,8 @@
 //  UserApi.swift
 //  Elite Condos
 //
-//  Created by Khoa on 3/21/17.
-//  Copyright © 2017 Khoa. All rights reserved.
+//  Created by Hien on 3/21/17.
+//  Copyright © 2017 Hien. All rights reserved.
 //
 
 import Foundation
@@ -142,16 +142,19 @@ class UserApi{
             return
         }
         
-        FirRef.CUSTOMERS.child(user.uid).updateChildValues(["email": email])
+        
         
         FIRAuth.auth()?.currentUser?.updateEmail(email, completion: { (callback) in
             if callback != nil {
                 onError((callback?.localizedDescription)!)
                 return
+            }else {
+                FirRef.CUSTOMERS.child(user.uid).updateChildValues(["email": email])
+                onSuccess()
             }
             
         })
-        onSuccess()
+        
     }
     
     func updatePassword(password: String, onError: @escaping (String) -> Void){
@@ -162,6 +165,18 @@ class UserApi{
             }
         })
     }
+    
+    
+    func updateAvatar(image: UIImage,onSuccess: @escaping (String) -> Void, onError: @escaping (String) -> Void ){
+        
+        uploadAvatar(avatarImg: image, onSuccess: { (imageUrl) in
+            FirRef.CUSTOMERS.child(Api.User.currentUid()).updateChildValues(["avatarUrl": imageUrl])
+            
+        }, onError: onError)
+        
+        
+    }
+    
     
     func signOut(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void){
         do {

@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-//        FIRApp.configure()
         NotificationCenter.default.addObserver(self, selector: #selector(self.tokenRefreshNotification(notification:)), name: NSNotification.Name.firInstanceIDTokenRefresh, object: nil)
         
         return true
@@ -47,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        
+//        FIRMessaging.messaging().disconnect()
           }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -54,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        connectToFCM()
            }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -64,9 +66,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let refreshedToken = FIRInstanceID.instanceID().token()
         print("InstanceID token: \(refreshedToken)")
         
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            FirRef.CUSTOMERS.child(user.uid).updateChildValues(["token": token])
+        }
+        
+        
         connectToFCM()
     }
-    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if let refreshToken = FIRInstanceID.instanceID().token(){
+            print("Token ID: \(refreshToken)")
+            token = refreshToken
+            if let user = FIRAuth.auth()?.currentUser {
+                FirRef.CUSTOMERS.child(user.uid).updateChildValues(["token": token])
+            }
+            connectToFCM()
+        }
+    }
     func connectToFCM() {
         FIRMessaging.messaging().connect { (error) in
             
@@ -74,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Unable to connect to FCM \(error)")
             } else {
                 print("Connected to FCM")
+                
             }
         }
     }

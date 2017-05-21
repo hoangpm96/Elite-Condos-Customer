@@ -2,8 +2,8 @@
 //  ReviewVC.swift
 //  Elite Condos
 //
-//  Created by Khoa on 4/10/17.
-//  Copyright © 2017 Khoa. All rights reserved.
+//  Created by Hien on 4/10/17.
+//  Copyright © 2017 Hien. All rights reserved.
 //
 
 import UIKit
@@ -63,15 +63,13 @@ class ReviewVC: UIViewController {
                     "content" : review,
                     "imgUrl": imgUrl
             ]
-            
-            
-            
+        
             Api.Order.addReview(supplierId: self.supplierId, orderId: self.orderId, reviewData: reviewData, onSuccess: { 
                 self.showAlert(title: "✓", message: "Bạn đã thêm nhận xét thành công, xin cảm ơn!")
                 ProgressHUD.dismiss()
             })
             
-            
+
             
         }
         

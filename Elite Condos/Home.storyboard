@@ -330,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4y-PE-T6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132.5" y="2745"/>
+            <point key="canvasLocation" x="-495" y="2745"/>
         </scene>
         <!--Elite Condos-->
         <scene sceneID="eg5-wj-YHy">
@@ -395,7 +395,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Elite Condos" id="GPB-WM-PPg">
-                        <barButtonItem key="leftBarButtonItem" title="Account" id="ka3-Mg-YaR">
+                        <barButtonItem key="leftBarButtonItem" image="user-settings" id="ka3-Mg-YaR">
                             <connections>
                                 <segue destination="KeO-L5-7bi" kind="showDetail" action="showViewController:sender:" id="qkw-0P-050"/>
                             </connections>
@@ -1472,6 +1472,7 @@
         <image name="photo" width="128" height="128"/>
         <image name="techician" width="16" height="16"/>
         <image name="user" width="64" height="64"/>
+        <image name="user-settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6gR-oC-MUO"/>

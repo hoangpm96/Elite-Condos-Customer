@@ -105,7 +105,7 @@ class DescriptionVC: UIViewController {
     
     @IBAction func continueBtnPressed(_ sender: Any) {
         
-        ProgressHUD.show("Đang tạo đơn hàng...")
+        
         
         guard let description = self.descriptionTF.text, description != "" else {
             self.showAlert(title: APP_NAME, message: "You should fill in description")
@@ -124,6 +124,7 @@ class DescriptionVC: UIViewController {
             return
         }
         
+        
         var orderData: [String:Any]
         orderData = [
             "created_at": getCurrentTime(),
@@ -136,6 +137,7 @@ class DescriptionVC: UIViewController {
             "status": ORDER_STATUS.NOTACCEPTED.hashValue,
             "description": description
         ]
+        ProgressHUD.show("Đang tạo đơn hàng...")
         
         let alert = UIAlertController(title: APP_NAME , message: "Bạn muốn?", preferredStyle: .alert)
         
@@ -151,10 +153,6 @@ class DescriptionVC: UIViewController {
                 {
                     action in
                     self.navigationController?.popToRootViewController(animated: true)
-                    
-                    
-                   
-                    
                 }
                     
                 )

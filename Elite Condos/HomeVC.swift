@@ -19,10 +19,9 @@ class HomeVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self 
 
-        FIRMessaging.messaging().subscribe(toTopic: "/topics/news")
-        
-        
-    
+//        if token != "" {
+//            FirRef.CUSTOMERS.child(Api.User.currentUid()).updateChildValues(["token": token])
+//        }
         // Do any additional setup after loading the view.
     }
     
